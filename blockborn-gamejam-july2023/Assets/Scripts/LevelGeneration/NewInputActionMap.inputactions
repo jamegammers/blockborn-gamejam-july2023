@@ -1,0 +1,34 @@
+{
+    "name": "NewInputActionMap",
+    "maps": [
+        {
+            "name": "PlayerTesting",
+            "id": "a5df7299-91ed-4d01-977e-512ae936774a",
+            "actions": [
+                {
+                    "name": "Test",
+                    "type": "Button",
+                    "id": "e5fa4497-41fb-4b2c-a517-d3d96a29039d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7cc5c811-5e21-433a-bf04-295753ee48a0",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Test",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
