@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CRT-Screen
-  m_Shader: {fileID: -6465566751694194690, guid: 6934b1e76e13bd7448bf07c553e03f4a, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: b26c3ff7e9d64914fb74da48698bff75, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -70,9 +70,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AberrationFactor: 0.005
     - _EnableExternalAlpha: 0
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Scanlines: 100
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
