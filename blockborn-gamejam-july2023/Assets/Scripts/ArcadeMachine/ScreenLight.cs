@@ -8,6 +8,7 @@ namespace ArcadeMachine {
         
         [SerializeField] private Light _light;
         [SerializeField] private RenderTexture _renderTexture;
+        [SerializeField] private int _calculationStep = 1;
         
         private Texture2D _screen;
 
@@ -22,8 +23,7 @@ namespace ArcadeMachine {
             _screen.Apply();
             RenderTexture.active = null;
          
-            _light.color = CalculateAverageColor(_screen);
-            
+            _light.color = CalculateAverageColor(_screen, _calculationStep);
             // _light.cookie = _screen;
         }
         
