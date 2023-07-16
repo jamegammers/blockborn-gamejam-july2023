@@ -72,11 +72,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _AberrationFactor: 0.002
-    - _EmissionFactor: 2
+    - _EmissionFactor: 2.5
     - _EnableExternalAlpha: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scanlines: 100
+    - _VignetteInside: 0.21
+    - _VignetteOutside: 0.81
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
