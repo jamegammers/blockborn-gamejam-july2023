@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private int _currentAim = 0; //0..right, 1..up-right, 2..up,..., 7..down-right
     private int _checkedAim = 0;
     private AimDirections _aimDirections;
+    private bool _crouching;
 
     private float _groundHeight;
 
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        //Setting up the inputs
         _playerInput = new PlayerInput();
 
         _playerInput.Player.Move.performed += ctx => {  
@@ -41,12 +43,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        //Raycast for later ground detection
         RaycastHit _hit;
         if (Physics.Raycast(transform.position, Vector3.down, out _hit)) _groundHeight = _hit.distance;
     }
 
     private void Update()
     {
+        //do the moving when moving is pressed
         if (_movementPressed)
         {
             Move();
@@ -55,25 +59,58 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    //Checks in which direction the joystick is facing
     private void CheckAimAngle()
     {
         //Debug.Log("Input:" + _moveInput);
         if (_moveInput.y >= -0.5 && _moveInput.y < 0.5)
         {
-            if (_moveInput.x >= 0) _checkedAim = 0;
-            else _checkedAim = 4;
+            if (_moveInput.x >= 0) //aiming right
+            {
+                _checkedAim = 0;
+                _crouching = false;
+            }
+            else //aiming left
+            {
+                _checkedAim = 4;
+                _crouching = false;
+            }
         } else if (_moveInput.x >= -0.5 && _moveInput.x < 0.5)
         {
-            if (_moveInput.y >= 0) _checkedAim = 2;
-            else _checkedAim = 6;
-        }else if (_moveInput.x >= 0.5)
+            if (_moveInput.y >= 0) //aiming up
+            {
+                _checkedAim = 2;
+                _crouching = false;
+            }
+            else //aiming down
+            {
+                _checkedAim = 6;
+                _crouching = true;
+            }
+        }else if (_moveInput.x >= 0.5) 
         {
-            if (_moveInput.y >= 0.5) _checkedAim = 1;
-            else if (_moveInput.y <= -0.5) _checkedAim = 7;
+            if (_moveInput.y >= 0.5) //aiming up right
+            {
+                _checkedAim = 1;
+                _crouching = false;
+            }
+            else if (_moveInput.y <= -0.5) //aiming down right
+            {
+                _checkedAim = 7;
+                _crouching = true;
+            }
         } else if (_moveInput.x <= -0.5)
         {
-            if (_moveInput.y >= 0.5) _checkedAim = 3;
-            else if (_moveInput.y <= -0.5) _checkedAim = 5;
+            if (_moveInput.y >= 0.5) //aiming up left
+            {
+                _checkedAim = 3;
+                _crouching = false;
+            }
+            else if (_moveInput.y <= -0.5) //aiming down left
+            {
+                _checkedAim = 5;
+                _crouching = true;
+            }
         }
 
         _aimDirections = (AimDirections)_checkedAim;
@@ -104,7 +141,14 @@ public class PlayerMovement : MonoBehaviour
                 _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 135));
                 break;
             case 6:
-                _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 180));
+                if (!Physics.Raycast(transform.position, Vector3.down, _groundHeight))
+                {
+                    _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 180));
+                } else
+                {
+                    //crouch and aim forward
+                    _currentAim = 10;
+                }
                 break;
             case 7:
                 _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 225));
@@ -117,8 +161,10 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         _moveInput = _playerInput.Player.Move.ReadValue<Vector2>();
-        transform.position = transform.position + new Vector3(_moveInput.x * Time.deltaTime * _playerSpeed * 10, 0, 0);
-    }
+        //check for crouching and grounded before moving
+        if (!_crouching) transform.position = transform.position + new Vector3(_moveInput.x * Time.deltaTime * _playerSpeed * 10, 0, 0); 
+        else if (_crouching && !Physics.Raycast(transform.position, Vector3.down, _groundHeight)) transform.position = transform.position + new Vector3(_moveInput.x * Time.deltaTime * _playerSpeed * 10, 0, 0);
+        }
 
     private void Jump()
     {
@@ -126,6 +172,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //_rbody.velocity += _jumpHeight * Vector3.up;
             _rbody.AddForce(Vector3.up * _jumpHeight, ForceMode.Impulse);
+            _crouching = false;
         }
         
     }
