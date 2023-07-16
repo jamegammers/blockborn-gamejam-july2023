@@ -34,48 +34,47 @@ namespace ArcadeMachine {
         [SerializeField] private ArcadeButton[] _buttons;
 
         private void Awake() {
+            // register events for all buttons in the list
             foreach (ArcadeButton button in _buttons)
-                RegisterEvents(button);
+                switch (button.Type) {
+                    case ArcadeButtonType.Button:
+                        RegisterButton(button);
+                        break;
+                    case ArcadeButtonType.Joystick:
+                        RegisterJoystick(button);
+                        break;
+
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
         }
 
-        private static void RegisterEvents(ArcadeButton button) {
-            switch (button.Type) {
-                case ArcadeButtonType.Button:
-                    button.InputAction.action.started += _ =>
-                        button.Object.localPosition = new Vector3(0, -button.OffsetPressed, 0);
+        private static void RegisterButton(ArcadeButton button) {
+            button.InputAction.action.started += _ =>
+                button.Object.localPosition = new Vector3(0, -button.OffsetPressed, 0);
                 
-                    button.InputAction.action.canceled += _ =>
-                        button.Object.localPosition = Vector3.zero;
+            button.InputAction.action.canceled += _ =>
+                button.Object.localPosition = Vector3.zero;
                     
-                    button.InputAction.action.Enable();
-                    break;
+            button.InputAction.action.Enable();
+        }
 
-                case ArcadeButtonType.Joystick:
-                    button.InputAction.action.performed += ctx => {
-                        Vector2 dir = ctx.ReadValue<Vector2>();
-                        // Debug.Log($"input performed: {dir}");
-                        
-                        float x = 0, y = 0;
-                        
-                        if (dir.x > 0) x = button.RotationOffsetPressed;
-                        else if (dir.x < 0) x = -button.RotationOffsetPressed;
-                        
-                        if (dir.y > 0) y = button.RotationOffsetPressed;
-                        else if (dir.y < 0) y = -button.RotationOffsetPressed;
-                    
-                        // z = x; x = y
-                        button.Object.localRotation = Quaternion.Euler(y, 0, -x);
-                    };
-                    
-                    button.InputAction.action.canceled += _ =>
-                        button.Object.localRotation = Quaternion.identity;
-                    
-                    button.InputAction.action.Enable();
-                    break;
+        private static void RegisterJoystick(ArcadeButton button) {
+            button.InputAction.action.started += ctx => {
+                Vector2 inputDir = ctx.ReadValue<Vector2>();
+                Vector2 joystickRotation = new (
+                    button.RotationOffsetPressed * inputDir.x,
+                    button.RotationOffsetPressed * inputDir.y
+                );
 
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+                // z = x; x = y
+                button.Object.localRotation = Quaternion.Euler(joystickRotation.y, 0, -joystickRotation.x);
+            };
+            
+            button.InputAction.action.canceled += _ =>
+                button.Object.localRotation = Quaternion.identity;
+                    
+            button.InputAction.action.Enable();
         }
 
         private void OnDisable() {

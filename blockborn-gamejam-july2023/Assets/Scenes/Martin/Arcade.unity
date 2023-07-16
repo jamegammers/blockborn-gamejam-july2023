@@ -1251,7 +1251,7 @@ MonoBehaviour:
     _inputAction: {fileID: 665090540312550538, guid: f2c7ca125d2525b4ca3b28b64a72cb9b,
       type: 3}
     _offsetPressed: 0
-    _rotationOffsetPressed: 45
+    _rotationOffsetPressed: 15
 --- !u!1 &1244216696
 GameObject:
   m_ObjectHideFlags: 0
