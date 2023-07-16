@@ -2,7 +2,6 @@ using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Vector2 = System.Numerics.Vector2;
 
 namespace ArcadeMachine {
 
@@ -52,21 +51,37 @@ namespace ArcadeMachine {
                     break;
 
                 case ArcadeButtonType.Joystick:
-                    button.InputAction.action.started += ctx => {
+                    button.InputAction.action.performed += ctx => {
                         Vector2 dir = ctx.ReadValue<Vector2>();
+                        // Debug.Log($"input performed: {dir}");
+                        
+                        float x = 0, y = 0;
+                        
+                        if (dir.x > 0) x = button.RotationOffsetPressed;
+                        else if (dir.x < 0) x = -button.RotationOffsetPressed;
+                        
+                        if (dir.y > 0) y = button.RotationOffsetPressed;
+                        else if (dir.y < 0) y = -button.RotationOffsetPressed;
                     
-                        // z = x
-                        // x = y
-                    
-                        button.Object.localRotation = Quaternion.Euler(0, 0, 0);
+                        // z = x; x = y
+                        button.Object.localRotation = Quaternion.Euler(y, 0, -x);
                     };
+                    
+                    button.InputAction.action.canceled += _ =>
+                        button.Object.localRotation = Quaternion.identity;
+                    
+                    button.InputAction.action.Enable();
                     break;
 
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
-        
+
+        private void OnDisable() {
+            foreach (ArcadeButton button in _buttons)
+                button.InputAction.action.Disable();
+        }
     }
 
 }
