@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -342,7 +342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 114896343}
-  - component: {fileID: 114896344}
+  - component: {fileID: 114896348}
   - component: {fileID: 114896346}
   - component: {fileID: 114896347}
   m_Layer: 0
@@ -369,20 +369,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114896344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 114896342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87601f90ffd63d54faf30888810f8512, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerSpeed: 2
-  _weaponHolder: {fileID: 1243986327}
 --- !u!54 &114896346
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -431,6 +417,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2734327, y: 2.702121, z: 0.096390456}
   m_Center: {x: 0.0068359375, y: 1.1860162, z: -0.002053365}
+--- !u!114 &114896348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114896342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7109c0b112471a8499b568dfbdbeff72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerSpeed: 2
+  _weaponHolder: {fileID: 1243986327}
 --- !u!1 &326355992
 GameObject:
   m_ObjectHideFlags: 0
