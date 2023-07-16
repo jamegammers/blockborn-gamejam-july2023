@@ -369,7 +369,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 336.2, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &637542172
 MonoBehaviour:
@@ -391,10 +391,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: hewwo :3
+  m_text: Highscores
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a031c87b695da464a802b6ebfdc492ba, type: 2}
-  m_sharedMaterial: {fileID: 5961903953909017750, guid: a031c87b695da464a802b6ebfdc492ba,
+  m_fontAsset: {fileID: 11400000, guid: 9e8686e3f30e03647aa2479e3edec1cd, type: 2}
+  m_sharedMaterial: {fileID: 7211894558020578904, guid: 9e8686e3f30e03647aa2479e3edec1cd,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
