@@ -1222,6 +1222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1181261822}
+  - component: {fileID: 1181261823}
   m_Layer: 3
   m_Name: ArcadeMachine
   m_TagString: Untagged
@@ -1248,6 +1249,23 @@ Transform:
   m_Father: {fileID: 2143987832}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1181261823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181261821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b9b13903bae46bf8fca582f47d9fc1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttons:
+  - _object: {fileID: 0}
+    _type: 0
+    _inputAction: {fileID: 665090540312550538, guid: f2c7ca125d2525b4ca3b28b64a72cb9b,
+      type: 3}
 --- !u!1 &1244216696
 GameObject:
   m_ObjectHideFlags: 0
