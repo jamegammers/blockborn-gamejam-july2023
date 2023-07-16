@@ -33,7 +33,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties: _Scanlines
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -72,7 +72,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AberrationFactor: 0.002
-    - _EmissionFactor: 2.5
+    - _EmissionFactor: 2
     - _EnableExternalAlpha: 0
     - _QueueControl: 0
     - _QueueOffset: 0
