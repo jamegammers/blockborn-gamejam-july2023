@@ -15,9 +15,11 @@ public class LevelGeneration : MonoBehaviour
     
     private void Awake()
     {
+        /* Just tesing, delete later
         _inputActionMap = new NewInputActionMap();
         _inputActionMap.PlayerTesting.Enable();
         _inputActionMap.PlayerTesting.Test.performed += context =>  GenerateLevel();
+        */
     }
 
     private void Start()
@@ -25,7 +27,8 @@ public class LevelGeneration : MonoBehaviour
         _levelHolder = GameObject.Find("LevelHolder").transform;
     }
 
-    private void GenerateLevel()
+    // Spawns a tile at the end of the current last tile
+    public void GenerateLevel()
     {
         //spawn a tile, use counter to determine position
         Vector3 position = new Vector3(counter * 25, 0, 0);
