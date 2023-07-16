@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7873226971140980198}
   - component: {fileID: 2439126844817994413}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 1086128446808238857}
   - component: {fileID: 7937546174662437234}
   - component: {fileID: 9126902703782737807}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ Transform:
   - {fileID: 7873226971140980198}
   - {fileID: 2751850930576709115}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1086128446808238857
 MonoBehaviour:
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 5043532970321117274}
   - component: {fileID: 115519508377873379}
   - component: {fileID: 447798030459490547}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2751850930576709115}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waffenhalter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
