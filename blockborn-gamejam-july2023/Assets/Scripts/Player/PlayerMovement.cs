@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //[SerializeField] private Rigidbody _rbody;
-    [SerializeField, Range(0.1f, 5)] private float _playerSpeed = 2.0f;
+    [SerializeField] private Rigidbody _rbody;
+    [SerializeField, Range(0.1f, 5)] private float _playerSpeed = 0.3f;
+    [SerializeField, Range(0.1f, 20f)] private float _jumpHeight = 12f;
     private Vector2 _moveInput;
     private PlayerInput _playerInput;
     private bool _movementPressed;
     private int _currentAim = 0; //0..right, 1..up-right, 2..up,..., 7..down-right
     private int _checkedAim = 0;
     private AimDirections _aimDirections;
+
+    private float _groundHeight;
 
     [SerializeField] private GameObject _weaponHolder;
 
@@ -34,6 +37,12 @@ public class PlayerMovement : MonoBehaviour
     private void OnDisable()
     {
         _playerInput.Player.Disable();
+    }
+
+    private void Start()
+    {
+        RaycastHit _hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out _hit)) _groundHeight = _hit.distance;
     }
 
     private void Update()
@@ -68,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         _aimDirections = (AimDirections)_checkedAim;
-        Debug.Log("Aim: " + _aimDirections);
+        //Debug.Log("Aim: " + _aimDirections);
     }
 
     //placeholder until i do the shooting
@@ -113,7 +122,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        Debug.Log("Jump");
+        if (Physics.Raycast(transform.position, Vector3.down, _groundHeight))
+        {
+            //_rbody.velocity += _jumpHeight * Vector3.up;
+            _rbody.AddForce(Vector3.up * _jumpHeight, ForceMode.Impulse);
+        }
+        
     }
     private enum AimDirections
     {

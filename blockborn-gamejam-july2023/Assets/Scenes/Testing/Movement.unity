@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -333,6 +333,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58594685}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &162515414 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 7937546174662437234, guid: c932bdc7f979b024194b8e40d82b4ced,
+    type: 3}
+  m_PrefabInstance: {fileID: 1777844717263862805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &326355992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,6 +1271,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1086128446808238857, guid: c932bdc7f979b024194b8e40d82b4ced,
+        type: 3}
+      propertyPath: _rbody
+      value: 
+      objectReference: {fileID: 162515414}
+    - target: {fileID: 1086128446808238857, guid: c932bdc7f979b024194b8e40d82b4ced,
+        type: 3}
+      propertyPath: _jumpHeight
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086128446808238857, guid: c932bdc7f979b024194b8e40d82b4ced,
+        type: 3}
+      propertyPath: _playerSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5187552047133379782, guid: c932bdc7f979b024194b8e40d82b4ced,
         type: 3}
       propertyPath: m_Name
