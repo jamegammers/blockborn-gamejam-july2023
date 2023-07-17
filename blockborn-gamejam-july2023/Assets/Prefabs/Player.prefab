@@ -118,7 +118,7 @@ Transform:
   - {fileID: 7873226971140980198}
   - {fileID: 2751850930576709115}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1086128446808238857
 MonoBehaviour:
@@ -132,7 +132,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7109c0b112471a8499b568dfbdbeff72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerSpeed: 2
+  _rbody: {fileID: 7937546174662437234}
+  _playerSpeed: 0.3
+  _jumpHeight: 12
+  _shootCD: 1
+  _bulletSpeed: 3
+  _bullet: {fileID: 6381419228182649146, guid: 55c6df75418895c42848f5fd35217f3c, type: 3}
   _weaponHolder: {fileID: 9164860175485283125}
 --- !u!54 &7937546174662437234
 Rigidbody:
