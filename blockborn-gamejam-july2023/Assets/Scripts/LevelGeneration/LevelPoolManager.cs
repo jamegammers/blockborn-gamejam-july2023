@@ -16,11 +16,11 @@ public class LevelPoolManager : MonoBehaviour
     private void Awake()
     {
         //Just tesing, delete later
-        
+        /*
         _inputActionMap = new NewInputActionMap();
         _inputActionMap.PlayerTesting.Enable();
         _inputActionMap.PlayerTesting.Test.performed += context =>  GenerateLevel();
-        
+        */
     }
 
     private void Start()
@@ -37,5 +37,10 @@ public class LevelPoolManager : MonoBehaviour
         // Instaniate a random tile from the array of tiles using the RandomizeNumbers method from the Randomize class
         Instantiate(_levelTiles[GetComponent<Randomize>().RandomizeNumbers(0, _levelTiles.Length)], position, Quaternion.identity).transform.parent = _levelHolder;
         counter++;
+    }
+
+    public int GetCounter()
+    {
+        return counter;
     }
 }
