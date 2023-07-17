@@ -4,26 +4,40 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //[SerializeField] private Rigidbody _rbody;
-    [SerializeField, Range(0.1f, 5)] private float _playerSpeed = 2.0f;
+    [SerializeField] private Rigidbody _rbody;
+    [SerializeField, Range(0.1f, 5)] private float _playerSpeed = 0.3f;
+    [SerializeField, Range(0.1f, 20f)] private float _jumpHeight = 12f;
     private Vector2 _moveInput;
     private PlayerInput _playerInput;
     private bool _movementPressed;
     private int _currentAim = 0; //0..right, 1..up-right, 2..up,..., 7..down-right
     private int _checkedAim = 0;
-    private AimDirections _aimDirections;
+    //private AimDirections _aimDirections;
+    private bool _crouching;
+    private Vector3 _weaponHolderPosition;
+
+    private float _groundHeight;
+
+    //shooting variables
+    [SerializeField, Range(0, 3f)] private float _shootCD = 1f;
+    [SerializeField, Range(1f, 10f)] private float _bulletSpeed = 3f;
+    private bool _currentlyShooting = false;
+    [SerializeField] private GameObject _bullet;
 
     [SerializeField] private GameObject _weaponHolder;
 
     private void Awake()
     {
+        //Setting up the inputs
         _playerInput = new PlayerInput();
 
         _playerInput.Player.Move.performed += ctx => {  
             _moveInput = ctx.ReadValue<Vector2>();
             _movementPressed = _moveInput.x != 0 || _moveInput.y != 0;
+            Crouch(false);
         };
         _playerInput.Player.Jump.performed += ctx => Jump();
+        _playerInput.Player.Shoot.performed += ctx => Shoot();
     }
 
     private void OnEnable()
@@ -36,8 +50,17 @@ public class PlayerMovement : MonoBehaviour
         _playerInput.Player.Disable();
     }
 
+    private void Start()
+    {
+        //Raycast for later ground detection
+        RaycastHit _hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out _hit)) _groundHeight = _hit.distance;
+        _weaponHolderPosition = _weaponHolder.transform.localPosition;
+    }
+
     private void Update()
     {
+        //do the moving when moving is pressed
         if (_movementPressed)
         {
             Move();
@@ -46,29 +69,62 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    //Checks in which direction the joystick is facing
     private void CheckAimAngle()
     {
         //Debug.Log("Input:" + _moveInput);
         if (_moveInput.y >= -0.5 && _moveInput.y < 0.5)
         {
-            if (_moveInput.x >= 0) _checkedAim = 0;
-            else _checkedAim = 4;
+            if (_moveInput.x >= 0) //aiming right
+            {
+                _checkedAim = 0;
+                Crouch(false);
+            }
+            else //aiming left
+            {
+                _checkedAim = 4;
+                Crouch(false);
+            }
         } else if (_moveInput.x >= -0.5 && _moveInput.x < 0.5)
         {
-            if (_moveInput.y >= 0) _checkedAim = 2;
-            else _checkedAim = 6;
-        }else if (_moveInput.x >= 0.5)
+            if (_moveInput.y >= 0) //aiming up
+            {
+                _checkedAim = 2;
+                Crouch(false);
+            }
+            else //aiming down
+            {
+                _checkedAim = 6;
+                Crouch(true);
+            }
+        }else if (_moveInput.x >= 0.5) 
         {
-            if (_moveInput.y >= 0.5) _checkedAim = 1;
-            else if (_moveInput.y <= -0.5) _checkedAim = 7;
+            if (_moveInput.y >= 0.5) //aiming up right
+            {
+                _checkedAim = 1;
+                Crouch(false);
+            }
+            else if (_moveInput.y <= -0.5) //aiming down right
+            {
+                _checkedAim = 7;
+                Crouch(true);
+            }
         } else if (_moveInput.x <= -0.5)
         {
-            if (_moveInput.y >= 0.5) _checkedAim = 3;
-            else if (_moveInput.y <= -0.5) _checkedAim = 5;
+            if (_moveInput.y >= 0.5) //aiming up left
+            {
+                _checkedAim = 3;
+                Crouch(false);
+            }
+            else if (_moveInput.y <= -0.5) //aiming down left
+            {
+                _checkedAim = 5;
+                Crouch(true);
+            }
         }
 
-        _aimDirections = (AimDirections)_checkedAim;
-        Debug.Log("Aim: " + _aimDirections);
+        //_aimDirections = (AimDirections)_checkedAim;
+        //Debug.Log("Aim: " + _aimDirections);
     }
 
     //placeholder until i do the shooting
@@ -77,7 +133,8 @@ public class PlayerMovement : MonoBehaviour
         _currentAim = _checkedAim;
         switch (_currentAim)
         {
-            case 0: _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3( 0, 0, -90));
+            case 0: 
+                _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3( 0, 0, -90));
                 break;
             case 1:
                 _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -45));
@@ -95,7 +152,14 @@ public class PlayerMovement : MonoBehaviour
                 _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 135));
                 break;
             case 6:
-                _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 180));
+                if (!Physics.Raycast(transform.position, Vector3.down, _groundHeight))
+                {
+                    _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 180));
+                } else
+                {
+                    //crouch and aim forward
+                    _currentAim = 10;
+                }
                 break;
             case 7:
                 _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 225));
@@ -108,12 +172,84 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         _moveInput = _playerInput.Player.Move.ReadValue<Vector2>();
+        //check for crouching and grounded before moving
+        //if (!_crouching)
         transform.position = transform.position + new Vector3(_moveInput.x * Time.deltaTime * _playerSpeed * 10, 0, 0);
-    }
+        Crouch(false);
+        //else if (_crouching && !Physics.Raycast(transform.position, Vector3.down, _groundHeight)) transform.position = transform.position + new Vector3(_moveInput.x * Time.deltaTime * _playerSpeed * 10, 0, 0);
+        }
 
     private void Jump()
     {
-        Debug.Log("Jump");
+        if (Physics.Raycast(transform.position, Vector3.down, _groundHeight))
+        {
+            //_rbody.velocity += _jumpHeight * Vector3.up;
+            _rbody.AddForce(Vector3.up * _jumpHeight, ForceMode.Impulse);
+            Crouch(false);
+        }
+        
+    }
+
+    private void Shoot()
+    {
+        if (!_currentlyShooting)
+        {
+            _currentlyShooting = true;
+            StartCoroutine(ShootBullet());
+        }
+    }
+
+    private void Crouch(bool crouch)
+    {
+        if (crouch != _crouching)
+        {
+            if (crouch && _currentAim == 10)
+            {
+                _weaponHolder.transform.localPosition = new Vector3(_weaponHolderPosition.x, _weaponHolderPosition.y - 0.5f, _weaponHolderPosition.z);
+                _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -90));
+            }
+            else _weaponHolder.transform.localPosition = _weaponHolderPosition;
+            _crouching = crouch;
+        }
+        
+    }
+
+    private IEnumerator ShootBullet()
+    {
+        Debug.Log("Shoot");
+        GameObject _newBullet = Instantiate(_bullet, _weaponHolder.transform.position, Quaternion.Euler(Vector3.zero));
+        Rigidbody _bulletRb = _newBullet.GetComponent<Rigidbody>();
+        Vector3 direction = new Vector3();
+        switch (_currentAim)
+        {
+            case 0: case 10: //shoot right
+                direction = Vector3.right;
+                break;
+            case 1: //shoot up right
+                direction = new Vector3(0.71f, 0.71f, 0);
+                break;
+            case 2: //shoot up
+                direction = Vector3.up;
+                break;
+            case 3: //shoot up left
+                direction = new Vector3(-0.71f, 0.71f, 0);
+                break;
+            case 4: //shoot left
+                direction = Vector3.left;
+                break;
+            case 5: //shoot down left
+                direction = new Vector3(-0.71f, -0.71f, 0);
+                break;
+            case 6: //shoot down
+                direction = Vector3.down;
+                break;
+            case 7: //shoot down right
+                direction = new Vector3(0.71f, -0.71f, 0);
+                break;
+        }
+        _bulletRb.AddForce(direction * 10 * _bulletSpeed, ForceMode.Impulse);
+        yield return new WaitForSeconds(_shootCD);
+        _currentlyShooting = false;
     }
     private enum AimDirections
     {
