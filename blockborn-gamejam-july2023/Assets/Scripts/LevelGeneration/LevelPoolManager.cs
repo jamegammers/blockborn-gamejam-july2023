@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class LevelGeneration : MonoBehaviour
+public class LevelPoolManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] _levelTiles;
     private NewInputActionMap _inputActionMap;
@@ -15,11 +15,12 @@ public class LevelGeneration : MonoBehaviour
     
     private void Awake()
     {
-        /* Just tesing, delete later
+        //Just tesing, delete later
+        
         _inputActionMap = new NewInputActionMap();
         _inputActionMap.PlayerTesting.Enable();
         _inputActionMap.PlayerTesting.Test.performed += context =>  GenerateLevel();
-        */
+        
     }
 
     private void Start()
@@ -37,5 +38,4 @@ public class LevelGeneration : MonoBehaviour
         Instantiate(_levelTiles[GetComponent<Randomize>().RandomizeNumbers(0, _levelTiles.Length)], position, Quaternion.identity).transform.parent = _levelHolder;
         counter++;
     }
-
 }

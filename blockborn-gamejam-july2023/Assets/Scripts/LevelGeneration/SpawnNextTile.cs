@@ -15,10 +15,12 @@ public class SpawnNextTile : MonoBehaviour
     // due to collision matrix, only player can trigger this
     private void OnTriggerEnter(Collider other)
     {
-        _gameManager.GetComponent<LevelGeneration>().GenerateLevel();
+        _gameManager.GetComponent<LevelPoolManager>().GenerateLevel();
         
         //remove Box Collider to prevent spawning multiple tiles
         Destroy(GetComponent<BoxCollider>());
     }
+    
+    //TODO: spawn enemies using gameManager
     
 }
