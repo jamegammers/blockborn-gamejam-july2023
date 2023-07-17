@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private int _checkedAim = 0;
     //private AimDirections _aimDirections;
     private bool _crouching;
+    private Vector3 _weaponHolderPosition;
 
     private float _groundHeight;
 
@@ -33,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         _playerInput.Player.Move.performed += ctx => {  
             _moveInput = ctx.ReadValue<Vector2>();
             _movementPressed = _moveInput.x != 0 || _moveInput.y != 0;
+            Crouch(false);
         };
         _playerInput.Player.Jump.performed += ctx => Jump();
         _playerInput.Player.Shoot.performed += ctx => Shoot();
@@ -53,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         //Raycast for later ground detection
         RaycastHit _hit;
         if (Physics.Raycast(transform.position, Vector3.down, out _hit)) _groundHeight = _hit.distance;
+        _weaponHolderPosition = _weaponHolder.transform.localPosition;
     }
 
     private void Update()
@@ -75,48 +78,48 @@ public class PlayerMovement : MonoBehaviour
             if (_moveInput.x >= 0) //aiming right
             {
                 _checkedAim = 0;
-                _crouching = false;
+                Crouch(false);
             }
             else //aiming left
             {
                 _checkedAim = 4;
-                _crouching = false;
+                Crouch(false);
             }
         } else if (_moveInput.x >= -0.5 && _moveInput.x < 0.5)
         {
             if (_moveInput.y >= 0) //aiming up
             {
                 _checkedAim = 2;
-                _crouching = false;
+                Crouch(false);
             }
             else //aiming down
             {
                 _checkedAim = 6;
-                _crouching = true;
+                Crouch(true);
             }
         }else if (_moveInput.x >= 0.5) 
         {
             if (_moveInput.y >= 0.5) //aiming up right
             {
                 _checkedAim = 1;
-                _crouching = false;
+                Crouch(false);
             }
             else if (_moveInput.y <= -0.5) //aiming down right
             {
                 _checkedAim = 7;
-                _crouching = true;
+                Crouch(true);
             }
         } else if (_moveInput.x <= -0.5)
         {
             if (_moveInput.y >= 0.5) //aiming up left
             {
                 _checkedAim = 3;
-                _crouching = false;
+                Crouch(false);
             }
             else if (_moveInput.y <= -0.5) //aiming down left
             {
                 _checkedAim = 5;
-                _crouching = true;
+                Crouch(true);
             }
         }
 
@@ -130,7 +133,8 @@ public class PlayerMovement : MonoBehaviour
         _currentAim = _checkedAim;
         switch (_currentAim)
         {
-            case 0: _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3( 0, 0, -90));
+            case 0: 
+                _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3( 0, 0, -90));
                 break;
             case 1:
                 _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -45));
@@ -169,8 +173,10 @@ public class PlayerMovement : MonoBehaviour
     {
         _moveInput = _playerInput.Player.Move.ReadValue<Vector2>();
         //check for crouching and grounded before moving
-        if (!_crouching) transform.position = transform.position + new Vector3(_moveInput.x * Time.deltaTime * _playerSpeed * 10, 0, 0); 
-        else if (_crouching && !Physics.Raycast(transform.position, Vector3.down, _groundHeight)) transform.position = transform.position + new Vector3(_moveInput.x * Time.deltaTime * _playerSpeed * 10, 0, 0);
+        //if (!_crouching)
+        transform.position = transform.position + new Vector3(_moveInput.x * Time.deltaTime * _playerSpeed * 10, 0, 0);
+        Crouch(false);
+        //else if (_crouching && !Physics.Raycast(transform.position, Vector3.down, _groundHeight)) transform.position = transform.position + new Vector3(_moveInput.x * Time.deltaTime * _playerSpeed * 10, 0, 0);
         }
 
     private void Jump()
@@ -179,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //_rbody.velocity += _jumpHeight * Vector3.up;
             _rbody.AddForce(Vector3.up * _jumpHeight, ForceMode.Impulse);
-            _crouching = false;
+            Crouch(false);
         }
         
     }
@@ -193,6 +199,21 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void Crouch(bool crouch)
+    {
+        if (crouch != _crouching)
+        {
+            if (crouch && _currentAim == 10)
+            {
+                _weaponHolder.transform.localPosition = new Vector3(_weaponHolderPosition.x, _weaponHolderPosition.y - 0.5f, _weaponHolderPosition.z);
+                _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -90));
+            }
+            else _weaponHolder.transform.localPosition = _weaponHolderPosition;
+            _crouching = crouch;
+        }
+        
+    }
+
     private IEnumerator ShootBullet()
     {
         Debug.Log("Shoot");
@@ -201,7 +222,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction = new Vector3();
         switch (_currentAim)
         {
-            case 0: //shoot right
+            case 0: case 10: //shoot right
                 direction = Vector3.right;
                 break;
             case 1: //shoot up right
