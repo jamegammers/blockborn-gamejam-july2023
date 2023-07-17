@@ -33,4 +33,6 @@ public class Enemy : ScriptableObject
     {
         //TODO: Spawning
     }
+    
+    //TODO: Aufrufbare Methode die das Health updated und den Enemy zerstört wenn Health <= 0
 }
