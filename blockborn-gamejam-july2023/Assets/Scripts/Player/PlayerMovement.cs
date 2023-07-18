@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] private Rigidbody _rbody;
-    [SerializeField, Range(0.1f, 5)] private float _playerSpeed = 0.3f;
+    [SerializeField, Range(0.1f, 5)] private float _playerSpeed = 0.3f;   
     [SerializeField, Range(0.1f, 20f)] private float _jumpHeight = 12f;
+    private bool _grounded;
     private Vector2 _moveInput;
     private PlayerInput _playerInput;
     private bool _movementPressed;
@@ -16,15 +18,25 @@ public class PlayerMovement : MonoBehaviour
     private bool _crouching;
     private Vector3 _weaponHolderPosition;
 
-    private float _groundHeight;
+    private float _groundHeight;    
 
     //shooting variables
+    [Header("Shooting")]
     [SerializeField, Range(0, 3f)] private float _shootCD = 1f;
     [SerializeField, Range(1f, 10f)] private float _bulletSpeed = 3f;
     private bool _currentlyShooting = false;
     [SerializeField] private GameObject _bullet;
 
     [SerializeField] private GameObject _weaponHolder;
+
+    //transform variables
+    [Header("Tranform")]
+    [SerializeField, Range(0.1f, 5)] private float _playerCarSpeed = 0.6f;
+    private bool _carMode = false;
+    [SerializeField, Range(0, 3f)] private float _transformationSpeed = 0.5f;
+    private bool _transforming;
+    [SerializeField] private GameObject _robotSprite;
+    [SerializeField] private GameObject _carSprite;
 
     private void Awake()
     {
@@ -38,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         };
         _playerInput.Player.Jump.performed += ctx => Jump();
         _playerInput.Player.Shoot.performed += ctx => Shoot();
+        _playerInput.Player.Transform.performed += ctx => Transform();
     }
 
     private void OnEnable()
@@ -60,13 +73,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        //do the moving when moving is pressed
-        if (_movementPressed)
+        //do the moving when moving is pressed. look if carMode or not and not currently transforming
+        if (_movementPressed && !_carMode && !_transforming)
         {
             Move();
             CheckAimAngle();
             if (_checkedAim != _currentAim) Aim();
+        } else if (_movementPressed && _carMode && !_transforming)
+        {
+            CarMove();
+            CheckAimAngle();
+            if (_checkedAim != _currentAim) Aim();
         }
+
+        if (!_grounded) CheckForGround();
     }
 
     //Checks in which direction the joystick is facing
@@ -152,7 +172,7 @@ public class PlayerMovement : MonoBehaviour
                 _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 135));
                 break;
             case 6:
-                if (!Physics.Raycast(transform.position, Vector3.down, _groundHeight))
+                if (!_grounded)
                 {
                     _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 180));
                 } else
@@ -174,25 +194,45 @@ public class PlayerMovement : MonoBehaviour
         _moveInput = _playerInput.Player.Move.ReadValue<Vector2>();
         //check for crouching and grounded before moving
         //if (!_crouching)
-        transform.position = transform.position + new Vector3(_moveInput.x * Time.deltaTime * _playerSpeed * 10, 0, 0);
+        if (_moveInput.x > 0.3) transform.position = transform.position + new Vector3(1 * Time.deltaTime * _playerSpeed * 10, 0, 0);
+        else if (_moveInput.x < -0.3) transform.position = transform.position + new Vector3(-1 * Time.deltaTime * _playerSpeed * 10, 0, 0);
         Crouch(false);
         //else if (_crouching && !Physics.Raycast(transform.position, Vector3.down, _groundHeight)) transform.position = transform.position + new Vector3(_moveInput.x * Time.deltaTime * _playerSpeed * 10, 0, 0);
-        }
+    }
+
+    private void CarMove()
+    {
+        _moveInput = _playerInput.Player.Move.ReadValue<Vector2>();
+        if (_moveInput.x > 0.3) transform.position = transform.position + new Vector3(1 * Time.deltaTime * _playerCarSpeed * 10, 0, 0);
+        else if (_moveInput.x < -0.3) transform.position = transform.position + new Vector3(-1 * Time.deltaTime * _playerCarSpeed * 10, 0, 0);
+    }
 
     private void Jump()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, _groundHeight))
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, _groundHeight))
         {
-            //_rbody.velocity += _jumpHeight * Vector3.up;
-            _rbody.AddForce(Vector3.up * _jumpHeight, ForceMode.Impulse);
-            Crouch(false);
+            //check if on platform and crouching to pass throuhg
+            if (_currentAim == 10 && hit.transform.gameObject.layer == 11)
+            {
+                hit.transform.gameObject.GetComponentInChildren<PlatformEffector>().DisablePlatform();
+            } else if (_carMode && hit.transform.gameObject.layer == 11 && (_currentAim == 10 || _currentAim ==5 || _currentAim ==7)) //check same, but for car and down left or down right
+            {
+                hit.transform.gameObject.GetComponentInChildren<PlatformEffector>().DisablePlatform();
+            } else //jump normaly
+            {
+                _rbody.AddForce(Vector3.up * _jumpHeight, ForceMode.Impulse);
+                Crouch(false);
+                StartCoroutine(ChangeGroundedAfterSeconds(0.1f));
+            }
+            
         }
         
     }
 
     private void Shoot()
     {
-        if (!_currentlyShooting)
+        if (!_currentlyShooting && !_carMode)
         {
             _currentlyShooting = true;
             StartCoroutine(ShootBullet());
@@ -216,7 +256,6 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator ShootBullet()
     {
-        Debug.Log("Shoot");
         GameObject _newBullet = Instantiate(_bullet, _weaponHolder.transform.position, Quaternion.Euler(Vector3.zero));
         Rigidbody _bulletRb = _newBullet.GetComponent<Rigidbody>();
         Vector3 direction = new Vector3();
@@ -251,6 +290,44 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(_shootCD);
         _currentlyShooting = false;
     }
+
+    //used to transform
+    private void Transform()
+    {
+        if (!_transforming)
+        {
+            StartCoroutine(TransformCar());
+            Crouch(false);
+        }
+    }
+
+    private IEnumerator TransformCar()
+    {
+        _transforming = true;
+        _carMode = !_carMode;
+        _weaponHolder.SetActive(!_carMode);
+        yield return new WaitForSeconds(_transformationSpeed);
+        _carSprite.SetActive(_carMode);
+        _robotSprite.SetActive(!_carMode);
+        _transforming = false;
+    }
+
+    private void CheckForGround()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, _groundHeight))
+        {
+            _grounded = true;
+            _checkedAim = 0;
+            Aim();
+        }
+    }
+
+    private IEnumerator ChangeGroundedAfterSeconds(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _grounded = false;
+    }
+
     private enum AimDirections
     {
         right = 0,

@@ -15,8 +15,8 @@ TagManager:
   - Border
   - Enemy
   - Wall
-  - 
-  - 
+  - PlayerFoot
+  - Platform
   - 
   - 
   - 
