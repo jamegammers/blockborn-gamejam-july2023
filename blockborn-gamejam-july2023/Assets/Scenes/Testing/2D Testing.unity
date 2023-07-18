@@ -711,6 +711,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3719437140647137495, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
         type: 3}
+      propertyPath: _globalEnemyHealth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719437140647137495, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
+        type: 3}
       propertyPath: _levelTiles.Array.size
       value: 1
       objectReference: {fileID: 0}
