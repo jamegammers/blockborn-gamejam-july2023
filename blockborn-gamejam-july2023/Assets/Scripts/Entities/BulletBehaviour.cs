@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BulletBehaviour : MonoBehaviour
@@ -14,10 +15,10 @@ public class BulletBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Bullet collision");
-        if (other.gameObject.GetComponent<HealthManager>() != null)
+        //Debug.Log("Bullet collision");
+        if (other.gameObject.layer == 8)
         {
-            other.gameObject.GetComponent<HealthManager>().GetDamage(1);
+            other.GetComponent<EnemyLoop>().GetHit(1);
         }
         Destroy(gameObject);
     }
