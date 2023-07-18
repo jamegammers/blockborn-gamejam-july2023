@@ -11,10 +11,10 @@ TagManager:
   - ArcadeMachine
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Border
+  - Enemy
+  - Wall
   - 
   - 
   - 
