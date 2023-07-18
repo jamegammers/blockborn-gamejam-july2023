@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -5,15 +6,22 @@ namespace UI {
 
     public class HighscoreInput : MonoBehaviour {
 
+        [Header("References")]
         [SerializeField] private TMP_Text _upArrow;
         [SerializeField] private TMP_Text _downArrow;
         [SerializeField] private TMP_Text _nameText;
 
         [SerializeField] private TMP_Text _scoreText;
 
+        [Space(15), Header("Settings")]
+        [SerializeField] private float _blinkingSpeed = 0.3f;
+
         private int[] _name = {1, 1, 1};
         private int _charIndex;
         private PlayerInput _playerInput;
+
+        private bool _blinkArrows = true;
+        private IEnumerator _blinkArrowsCoroutine;
 
         private const string ALPHABET = " ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         private static readonly TextAlignmentOptions[] ALIGNMENT_OPTIONS = new TextAlignmentOptions[] {
@@ -35,7 +43,11 @@ namespace UI {
             };
 
             UpdateText();
+
+            _blinkArrowsCoroutine = BlinkArrows();
+            StartCoroutine(_blinkArrowsCoroutine);
         }
+
 
         private void OnEnable() {
             _playerInput.Enable();
@@ -68,8 +80,21 @@ namespace UI {
             _downArrow.alignment = ALIGNMENT_OPTIONS[_charIndex];
         }
 
+
+        private IEnumerator BlinkArrows() {
+            while (_blinkArrows) {
+                _upArrow.enabled = !_upArrow.enabled;
+                _downArrow.enabled = !_downArrow.enabled;
+                yield return new WaitForSeconds(_blinkingSpeed);
+            }
+        }
+
+
         private void OnDisable() {
             _playerInput.Disable();
+
+            _blinkArrows = false;
+            StopCoroutine(_blinkArrowsCoroutine);
         }
 
     }

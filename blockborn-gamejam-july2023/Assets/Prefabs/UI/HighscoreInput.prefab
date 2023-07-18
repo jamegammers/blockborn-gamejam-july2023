@@ -285,6 +285,7 @@ MonoBehaviour:
   _downArrow: {fileID: 418186349163998396}
   _nameText: {fileID: 1852846992472215109}
   _scoreText: {fileID: 775410861232853996}
+  _blinkingSpeed: 0.3
 --- !u!1 &5519402596810778121
 GameObject:
   m_ObjectHideFlags: 0
