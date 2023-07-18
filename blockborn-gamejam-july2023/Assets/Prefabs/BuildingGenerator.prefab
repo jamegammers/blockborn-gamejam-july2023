@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1033580328233048785}
   - component: {fileID: 2470619463429698537}
   m_Layer: 0
-  m_Name: Generator
+  m_Name: BuildingGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

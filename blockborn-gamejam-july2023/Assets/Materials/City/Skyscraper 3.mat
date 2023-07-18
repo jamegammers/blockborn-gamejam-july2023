@@ -126,7 +126,7 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _color_lightness: 12.62
+    - _color_lightness: 4
     - _max_rotate_speed: 0
     - _scale: 625.5
     - _shape_sides: 1
