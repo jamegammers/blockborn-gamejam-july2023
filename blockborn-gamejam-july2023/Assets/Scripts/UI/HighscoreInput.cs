@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -7,6 +8,7 @@ namespace UI {
     public class HighscoreInput : MonoBehaviour {
 
         [Header("References")]
+        [SerializeField] private RectTransform _parent;
         [SerializeField] private TMP_Text _upArrow;
         [SerializeField] private TMP_Text _downArrow;
         [SerializeField] private TMP_Text _nameText;
@@ -16,6 +18,10 @@ namespace UI {
         [Space(15), Header("Settings")]
         [SerializeField] private float _blinkingSpeed = 0.3f;
 
+
+        public Action<string> OnSubmit;
+
+
         private int[] _name = {1, 1, 1};
         private int _charIndex;
         private PlayerInput _playerInput;
@@ -24,12 +30,14 @@ namespace UI {
         private IEnumerator _blinkArrowsCoroutine;
 
         private const string ALPHABET = " ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        private static readonly TextAlignmentOptions[] ALIGNMENT_OPTIONS = new TextAlignmentOptions[] {
+        private static readonly TextAlignmentOptions[] ALIGNMENT_OPTIONS = {
             TextAlignmentOptions.MidlineLeft, TextAlignmentOptions.Midline, TextAlignmentOptions.MidlineRight
         };
 
 
-        private void Awake() {
+        public void StartInput(int score) {
+            _scoreText.text = score.ToString();
+
             _playerInput = new PlayerInput();
             _playerInput.Enable();
 
@@ -42,10 +50,16 @@ namespace UI {
                     UpdateArrows(move.x);
             };
 
+            _playerInput.Player.Jump.performed += _ => {
+                OnSubmit?.Invoke(_nameText.text);
+                _parent.gameObject.SetActive(false);
+            };
+
             UpdateText();
 
             _blinkArrowsCoroutine = BlinkArrows();
             StartCoroutine(_blinkArrowsCoroutine);
+            _parent.gameObject.SetActive(true);
         }
 
 
@@ -55,8 +69,8 @@ namespace UI {
 
         private void UpdateChar(float y) {
             _name[_charIndex] = y switch {
-                > 0 => (_name[_charIndex] + 1) % 26,
-                < 0 => (_name[_charIndex] + 25) % 26,
+                > 0 => (_name[_charIndex] + 1) % ALPHABET.Length,
+                < 0 => (_name[_charIndex] + 25) % ALPHABET.Length,
                 _ => _name[_charIndex]
             };
 

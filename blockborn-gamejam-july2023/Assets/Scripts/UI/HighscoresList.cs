@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.Utilities;
+using UnityEngine.Serialization;
 using Util;
 
 namespace UI {
@@ -41,13 +42,22 @@ namespace UI {
 
     public class HighscoresList : MonoBehaviour {
 
-        [SerializeField] private Canvas _canvas;
+        [Header("Score list")]
         [SerializeField] private RectTransform _listParent;
+        [SerializeField] private RectTransform _listBox;
         [SerializeField] private GameObject _listItemPrefab;
+        [SerializeField] private RectTransform _inputParent;
+
+        [Space(15), Header("Input")]
+        [SerializeField] private HighscoreInput _highscoreInput;
 
 
         private void Awake() {
-            Show(4100);
+            _listParent.gameObject.SetActive(false);
+            _inputParent.gameObject.SetActive(false);
+
+            // only for testing
+            Show(0);
         }
 
         public void Show(int newScore) {
@@ -69,23 +79,30 @@ namespace UI {
             if (scores.Contains(newScoreObj)) {                              // check if list contains new score
                 // input name
                 // save
-            } else {
-
+                _highscoreInput.OnSubmit += OnInputEnded;
+                _highscoreInput.StartInput(newScore);
+                return;
             }
 
             FillList(scores.ToArray());
+            _listParent.gameObject.SetActive(true);
 
             // Debug.Log($"scores: { scores.ToArray().ToString<Highscore>() }");
+        }
 
-            _canvas.enabled = true;
+        private void OnInputEnded(string name) {
+
+
+            Debug.Log($"name: {name}");
+            _highscoreInput.OnSubmit -= OnInputEnded;
         }
 
         private void FillList(Highscore[] scores) {
-            _listParent.DestroyChildren();
+            _listBox.DestroyChildren();
 
             foreach (Highscore score in scores) {
                 // add new item to the list
-                GameObject listItem = Instantiate(_listItemPrefab, _listParent, true);
+                GameObject listItem = Instantiate(_listItemPrefab, _listBox, true);
                 listItem.GetComponent<HighscoreListItem>().Init(score.Name, score.Score);
 
                 // reset rotation and scale
