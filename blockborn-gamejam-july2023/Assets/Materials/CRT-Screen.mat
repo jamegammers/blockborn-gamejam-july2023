@@ -76,7 +76,7 @@ Material:
     - _EnableExternalAlpha: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Scanlines: 150
+    - _Scanlines: 200
     - _VignetteInside: 3.27
     - _VignetteOutside: -1.26
     m_Colors:
