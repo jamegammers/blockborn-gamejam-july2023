@@ -418,8 +418,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5588654892700506200}
   - component: {fileID: 5094289399218760948}
+  - component: {fileID: 190676111855955389}
   m_Layer: 0
-  m_Name: Score
+  m_Name: HighscoreListItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -474,3 +475,17 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &190676111855955389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7791935072390935671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5f93f3ab21647bbbf1f829ebcb389e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nameText: {fileID: 3780578176844928182}
+  _scoreText: {fileID: 867814739755718668}

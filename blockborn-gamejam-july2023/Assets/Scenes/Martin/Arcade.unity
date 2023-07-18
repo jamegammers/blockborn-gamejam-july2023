@@ -1429,6 +1429,7 @@ GameObject:
   m_Component:
   - component: {fileID: 993740605}
   - component: {fileID: 993740606}
+  - component: {fileID: 993740607}
   m_Layer: 0
   m_Name: Highscores
   m_TagString: Untagged
@@ -1484,6 +1485,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &993740607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993740604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b92dee6b2544e4683bb080765c494d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _listItemPrefab: {fileID: 0}
 --- !u!1 &1181261821
 GameObject:
   m_ObjectHideFlags: 0
