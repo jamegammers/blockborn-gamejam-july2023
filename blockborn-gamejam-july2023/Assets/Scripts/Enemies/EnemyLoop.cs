@@ -34,13 +34,11 @@ public class EnemyLoop : MonoBehaviour
     private void HandleLevelScaling(int level)
     {
         _enemyHealth = _levelPoolManager._globalEnemyHealth;
-        Debug.Log(_enemyHealth);
     }
     
     public void GetHit(int damage)
     {
         _enemyHealth -= damage;
-        Debug.Log(_enemyHealth);
         if (_enemyHealth <= 0) Death();
     }
 
