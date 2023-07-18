@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Skyscraper
+  m_Name: Skyscraper 2
   m_Shader: {fileID: -6465566751694194690, guid: a024c1a096ef8ba428062718c6a782ce,
     type: 3}
   m_Parent: {fileID: 0}
@@ -126,7 +126,7 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _color_lightness: 10
+    - _color_lightness: 12.62
     - _max_rotate_speed: 0
     - _scale: 625.5
     - _shape_sides: 1
@@ -136,10 +136,10 @@ Material:
     - _windows_settings_2: -48
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.4528302, g: 0, b: 0, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ScaleWindows: {r: -2.53, g: 75.7, b: -325.7, a: -65.8}
+    - _ScaleWindows: {r: -2.53, g: 75.7, b: -380.07, a: -13.27}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _colorwindows: {r: 0.122641504, g: 0.10306641, b: 0.081760995, a: 0}
-    - _width_n_height: {r: -60.4, g: -234.1, b: 0.36, a: 49.8}
+    - _colorwindows: {r: 0.2264151, g: 0.2249911, b: 0.2235671, a: 0}
+    - _width_n_height: {r: 1, g: 1, b: 1, a: 36.4}
   m_BuildTextureStacks: []
