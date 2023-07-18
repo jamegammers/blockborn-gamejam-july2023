@@ -1,19 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    private LevelPoolManager _levelPoolManager;
-    [SerializeField] private Enemy _enemy;
+    private EnemyLoop _enemyLoop;
+    [SerializeField] private GameObject _enemyPrefab;
+    private Enemy _enemyScriptableObject;
     
-    //[Header("Overrides")]
-
-
     private void Awake()
     {
-        _levelPoolManager = GameObject.Find("GameManager").GetComponent<LevelPoolManager>();
-        _enemy.HandleLevelScaling(_levelPoolManager.GetCounter());
-        _enemy.SpawnEnemy(transform.position);
+        _enemyLoop = _enemyPrefab.GetComponent<EnemyLoop>();
+        _enemyLoop.SpawnEnemy(transform.position);
     }
 }
