@@ -7,20 +7,14 @@ using Random = UnityEngine.Random;
 public class LevelPoolManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] _levelTiles;
-    private NewInputActionMap _inputActionMap;
-    
+
     private int counter = 1;
     
     private Transform _levelHolder;
     
     private void Awake()
     {
-        //Just tesing, delete later
-        /*
-        _inputActionMap = new NewInputActionMap();
-        _inputActionMap.PlayerTesting.Enable();
-        _inputActionMap.PlayerTesting.Test.performed += context =>  GenerateLevel();
-        */
+        
     }
 
     private void Start()
