@@ -155,6 +155,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1134409987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5550836068397862303, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6706969239108555924}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1210484924
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,6 +608,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 31.900002
       objectReference: {fileID: 0}
+    - target: {fileID: 3228689015960498126, guid: 586c149dfee3ce144a27011c266607e4,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 1134409987}
     - target: {fileID: 6437527110761740319, guid: 586c149dfee3ce144a27011c266607e4,
         type: 3}
       propertyPath: m_Name
@@ -759,6 +770,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719437140647137495, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
+        type: 3}
+      propertyPath: _levelTiles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719437140647137495, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
+        type: 3}
+      propertyPath: _levelTiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 6437527110761740319, guid: 586c149dfee3ce144a27011c266607e4,
+        type: 3}
+    - target: {fileID: 3719437140647137495, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
+        type: 3}
+      propertyPath: _levelTiles.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719437140647137495, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
+        type: 3}
+      propertyPath: _levelTiles.Array.data[2]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5550836068397862303, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
         type: 3}

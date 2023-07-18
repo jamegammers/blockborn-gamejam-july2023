@@ -23,10 +23,10 @@ public class LevelPoolManager : MonoBehaviour
     }
 
     // Spawns a tile at the end of the current last tile
-    public void GenerateLevel()
+    public void GenerateLevel(int levelLength)
     {
         //spawn a tile, use counter to determine position
-        Vector3 position = new Vector3(counter * 25, 0, 0);
+        Vector3 position = new Vector3(counter * levelLength, 0, 0);
         
         // Instaniate a random tile from the array of tiles using the RandomizeNumbers method from the Randomize class
         Instantiate(_levelTiles[GetComponent<Randomize>().RandomizeNumbers(0, _levelTiles.Length)], position, Quaternion.identity).transform.parent = _levelHolder;
