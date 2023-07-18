@@ -1,6 +1,7 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using Sirenix.Utilities;
 using Util;
 
 namespace UI {
@@ -17,6 +18,10 @@ namespace UI {
         public Highscore(string name, int score) {
             _name = name;
             _score = score;
+        }
+
+        public override string ToString() {
+            return $"{_name}:{_score}";
         }
 
     }
@@ -36,27 +41,49 @@ namespace UI {
 
     public class HighscoresList : MonoBehaviour {
 
+        [SerializeField] private Canvas _canvas;
         [SerializeField] private RectTransform _listParent;
         [SerializeField] private GameObject _listItemPrefab;
 
+
         private void Awake() {
-            Show(0);
+            Show(4100);
         }
 
         public void Show(int newScore) {
-            // load scores, fill list, make visible...
-            // check if new score is in list
-            // - true: name input + save
+            // load scores
+            // add new score
+            // sort
+            // check if list contains new score
+            // - true: input name, save, display list
+            // - false: display list
 
+            Highscore newScoreObj = new("abc", newScore);
             string json = PlayerPrefs.GetString("highscores");
-            HighscoreArray scores = JsonUtility.FromJson<HighscoreArray>(json);
-            FillList(scores);
+
+            List<Highscore> scores = new(JsonUtility.FromJson<HighscoreArray>(json).Scores);    // get scores from json
+            scores.Add(newScoreObj);                                                            // add new score
+            scores.Sort((a, b) => b.Score.CompareTo(a.Score));                                  // sort scores
+            scores.SetLength(10);                                                               // keep only top 10 scores
+
+            if (scores.Contains(newScoreObj)) {                              // check if list contains new score
+                // input name
+                // save
+            } else {
+
+            }
+
+            FillList(scores.ToArray());
+
+            // Debug.Log($"scores: { scores.ToArray().ToString<Highscore>() }");
+
+            _canvas.enabled = true;
         }
 
-        private void FillList(HighscoreArray scores) {
+        private void FillList(Highscore[] scores) {
             _listParent.DestroyChildren();
 
-            foreach (Highscore score in scores.Scores) {
+            foreach (Highscore score in scores) {
                 // add new item to the list
                 GameObject listItem = Instantiate(_listItemPrefab, _listParent, true);
                 listItem.GetComponent<HighscoreListItem>().Init(score.Name, score.Score);
@@ -76,9 +103,16 @@ namespace UI {
         [ContextMenu("WriteTestScores")]
         public void WriteTestScores() {
             HighscoreArray scores = new(new [] {
-                new Highscore("mer", 169),
-                new Highscore("ben", 128),
-                new Highscore("lil", 420)
+                new Highscore("lil", 10000),
+                new Highscore("mer", 9000),
+                new Highscore("ben", 8000),
+                new Highscore("lil", 7000),
+                new Highscore("mer", 6000),
+                new Highscore("ben", 5000),
+                new Highscore("lil", 4000),
+                new Highscore("mer", 3000),
+                new Highscore("ben", 2000),
+                new Highscore("ben", 1000),
             });
 
             string json = JsonUtility.ToJson(scores);
