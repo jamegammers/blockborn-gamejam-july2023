@@ -137,6 +137,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1086128446808238857, guid: c932bdc7f979b024194b8e40d82b4ced,
+        type: 3}
+      propertyPath: _jumpHeight
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086128446808238857, guid: c932bdc7f979b024194b8e40d82b4ced,
+        type: 3}
+      propertyPath: _playerSpeed
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 5187552047133379782, guid: c932bdc7f979b024194b8e40d82b4ced,
         type: 3}
       propertyPath: m_Name
@@ -238,12 +248,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1134409987 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5550836068397862303, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6706969239108555924}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1823060580
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,16 +511,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771838016}
     m_Modifications:
-    - target: {fileID: 532009457765938923, guid: 586c149dfee3ce144a27011c266607e4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 13.500001
-      objectReference: {fileID: 0}
-    - target: {fileID: 532009457765938923, guid: 586c149dfee3ce144a27011c266607e4,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.65
-      objectReference: {fileID: 0}
     - target: {fileID: 917454863137772575, guid: 586c149dfee3ce144a27011c266607e4,
         type: 3}
       propertyPath: m_RootOrder
@@ -572,61 +566,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1040592059211954671, guid: 586c149dfee3ce144a27011c266607e4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 31.900002
-      objectReference: {fileID: 0}
-    - target: {fileID: 1418457135594976234, guid: 586c149dfee3ce144a27011c266607e4,
-        type: 3}
-      propertyPath: _enemyPrefab
-      value: 
-      objectReference: {fileID: 4385038456256888170, guid: 95b4ed110dafd43418989734311858aa,
-        type: 3}
-    - target: {fileID: 3228689015960498126, guid: 586c149dfee3ce144a27011c266607e4,
-        type: 3}
-      propertyPath: _gameManager
-      value: 
-      objectReference: {fileID: 1134409987}
-    - target: {fileID: 3973520098884899770, guid: 586c149dfee3ce144a27011c266607e4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 3973520098884899770, guid: 586c149dfee3ce144a27011c266607e4,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.85
-      objectReference: {fileID: 0}
     - target: {fileID: 6437527110761740319, guid: 586c149dfee3ce144a27011c266607e4,
         type: 3}
       propertyPath: m_Name
       value: LevelTile_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652341800065021500, guid: 586c149dfee3ce144a27011c266607e4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652341800065021500, guid: 586c149dfee3ce144a27011c266607e4,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.8500001
-      objectReference: {fileID: 0}
-    - target: {fileID: 8617149085126725641, guid: 586c149dfee3ce144a27011c266607e4,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8617149085126725641, guid: 586c149dfee3ce144a27011c266607e4,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8617149085126725641, guid: 586c149dfee3ce144a27011c266607e4,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
