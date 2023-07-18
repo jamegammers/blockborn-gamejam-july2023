@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] private Rigidbody _rbody;
     [SerializeField, Range(0.1f, 5)] private float _playerSpeed = 0.3f;   
     [SerializeField, Range(0.1f, 20f)] private float _jumpHeight = 12f;
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private float _groundHeight;    
 
     //shooting variables
+    [Header("Shooting")]
     [SerializeField, Range(0, 3f)] private float _shootCD = 1f;
     [SerializeField, Range(1f, 10f)] private float _bulletSpeed = 3f;
     private bool _currentlyShooting = false;
@@ -28,10 +30,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject _weaponHolder;
 
     //transform variables
+    [Header("Tranform")]
     [SerializeField, Range(0.1f, 5)] private float _playerCarSpeed = 0.6f;
     private bool _carMode = false;
     [SerializeField, Range(0, 3f)] private float _transformationSpeed = 0.5f;
     private bool _transforming;
+    [SerializeField] private GameObject _robotSprite;
+    [SerializeField] private GameObject _carSprite;
 
     private void Awake()
     {
@@ -289,6 +294,8 @@ public class PlayerMovement : MonoBehaviour
         _carMode = !_carMode;
         _weaponHolder.SetActive(!_carMode);
         yield return new WaitForSeconds(_transformationSpeed);
+        _carSprite.SetActive(_carMode);
+        _robotSprite.SetActive(!_carMode);
         _transforming = false;
     }
 
