@@ -34,4 +34,17 @@ public class EnemyLoop : MonoBehaviour
             _enemy.damage *= 1.1f;
         }
     }
+    
+    public void GetHit(int damage)
+    {
+        _enemy.health -= damage;
+        if (_enemy.health <= 0) Death();
+    }
+
+    private void Death()
+    {
+        //TODO: drop items or stuff
+        //TODO: Death animation / sound?
+        Destroy(gameObject);
+    }
 }

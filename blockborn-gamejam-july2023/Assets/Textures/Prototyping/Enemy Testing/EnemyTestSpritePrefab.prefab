@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4124078424307725792}
   - component: {fileID: 4308467907681378243}
   - component: {fileID: -7718944368048777425}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyTestSpritePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
