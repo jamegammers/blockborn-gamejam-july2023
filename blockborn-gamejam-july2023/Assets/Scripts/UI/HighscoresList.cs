@@ -20,9 +20,7 @@ namespace UI {
             _score = score;
         }
 
-        public override string ToString() {
-            return $"{_name}:{_score}";
-        }
+        public override string ToString() => $"{_name}:{_score}";
 
     }
 
@@ -37,6 +35,7 @@ namespace UI {
             _scores = scores;
         }
 
+        public readonly string ToJson() => JsonUtility.ToJson(this);
     }
 
     public class HighscoresList : MonoBehaviour {
@@ -52,6 +51,14 @@ namespace UI {
 
         private List<Highscore> _scores = new();
         private Highscore _newScore;
+
+        private static readonly HighscoreArray DEFAULT_SCORES = new(new[] {
+            new Highscore("mer", 1337),
+            new Highscore("ben", 4242),
+            new Highscore("jan", 6969),
+            new Highscore("fan", 4200),
+            new Highscore("isa", 1690),
+        });
 
 
         private void Awake() {
@@ -71,7 +78,7 @@ namespace UI {
             // - false: display list
 
             _newScore = new Highscore("AAA", newScore);
-            string json = PlayerPrefs.GetString("highscores");
+            string json = PlayerPrefs.GetString("highscores", DEFAULT_SCORES.ToJson());
 
             _scores = new List<Highscore>(JsonUtility.FromJson<HighscoreArray>(json).Scores);   // get scores from json
             _scores.Add(_newScore);                                                             // add new score
@@ -128,7 +135,7 @@ namespace UI {
         }
 
         private static void SaveScores(Highscore[] scores) {
-            string json = JsonUtility.ToJson(new HighscoreArray(scores));
+            string json = new HighscoreArray(scores).ToJson();
             PlayerPrefs.SetString("highscores", json);
             PlayerPrefs.Save();
 
@@ -155,7 +162,7 @@ namespace UI {
         public void DeleteHighscores() {
             PlayerPrefs.DeleteKey("highscores");
             PlayerPrefs.Save();
-            Debug.Log($"deleted highscores - { PlayerPrefs.GetString("highscores") }");
+            Debug.Log($"deleted highscores { PlayerPrefs.GetString("highscores") }");
         }
 
     }
