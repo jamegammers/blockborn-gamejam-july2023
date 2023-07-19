@@ -11,10 +11,12 @@ namespace UI {
         [SerializeField] private RectTransform _textTransform;
         [SerializeField] private TMP_Text _text;
         [SerializeField] private int _coins = 3;
-        
+
         [Space(15), Header("Settings")]
+        [SerializeField] private Vector2 _displayVisibleOffset = new(0, -50);
         [SerializeField] private float _animationDuration = 1f;
         [SerializeField] private LeanTweenType _animationEasing = LeanTweenType.easeOutQuad;
+        [SerializeField] private float _displayDuration = 1f;
 
         private PlayerInput _playerInput;
 
@@ -39,7 +41,7 @@ namespace UI {
             _coins--;
             _text.text = _coins.ToString();
             OnCoinInserted?.Invoke();
-            HideDisplay(1f);
+            HideDisplay(_displayDuration);
 
             // unsubscribe all listeners
             OnCoinInserted = null;
@@ -50,13 +52,15 @@ namespace UI {
             ShowDisplay();
         }
 
-        private void ShowDisplay() => MoveDisplay(-_textTransform.rect.height);
-        private void HideDisplay(float delay = 0) => MoveDisplay(0, delay);
+        private void ShowDisplay() => MoveDisplay(_displayVisibleOffset);
+        private void HideDisplay(float delay = 0) => MoveDisplay(Vector3.zero, delay);
 
-        private void MoveDisplay(float newY, float delay = 0f) {
-            LeanTween.value(gameObject, value => {
-                    _textTransform.anchoredPosition = new Vector2(_textTransform.anchoredPosition.x, value);
-                }, _textTransform.anchoredPosition.y, newY, _animationDuration)
+        private void MoveDisplay(Vector2 offset, float delay = 0f) {
+            LeanTween.value(gameObject,
+                    value => _textTransform.anchoredPosition = value,
+                    (Vector3) _textTransform.anchoredPosition,
+                    (Vector3) offset,
+                    _animationDuration)
                 .setEase(_animationEasing)
                 .setDelay(delay);
         }
