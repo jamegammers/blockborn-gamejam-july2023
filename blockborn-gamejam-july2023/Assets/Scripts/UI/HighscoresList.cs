@@ -67,8 +67,7 @@ namespace UI {
 
             // only for testing
             // Show(4200);
-
-            CoinInserter.OnCoinInserted += () => Show(4200);
+            // CoinInserter.OnCoinInserted += () => Show(4200);
         }
 
         public void Show(int newScore) {
