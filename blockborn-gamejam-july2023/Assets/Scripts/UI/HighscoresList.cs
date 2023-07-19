@@ -66,7 +66,9 @@ namespace UI {
             _inputParent.gameObject.SetActive(false);
 
             // only for testing
-            Show(4200);
+            // Show(4200);
+
+            CoinInserter.OnCoinInserted += () => Show(4200);
         }
 
         public void Show(int newScore) {
@@ -109,7 +111,7 @@ namespace UI {
             FillList(_scores.ToArray());
             _listParent.gameObject.SetActive(true);
 
-            Debug.Log($"name: {name}");
+            // Debug.Log($"name: {name}");
             _highscoreInput.OnSubmit -= OnInputEnded;
         }
 
