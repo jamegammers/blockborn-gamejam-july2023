@@ -7,6 +7,23 @@ using UnityEngine.UIElements;
 public class EnemyLoop : MonoBehaviour
 {
     [SerializeField] private Enemy _enemy;
+    [SerializeField] private GameObject _bullet;
+    
+    public LayerMask layerMask;
+    [SerializeField] private float _detectRange = 5f;
+
+    private Vector3[] _shootDirections = 
+    { 
+        new Vector3(1, 0, 0), 
+        new Vector3(1, 1, 0),     
+        new Vector3(0, 1, 0), 
+        new Vector3(-1, 1, 0),
+        new Vector3(-1, 0, 0),
+        new Vector3(-1, -1, 0),
+        new Vector3(0, -1, 0),
+        new Vector3(1, -1, 0)
+    };
+
     private float _enemyHealth;
     private float _enemyDamage;
     
@@ -14,7 +31,6 @@ public class EnemyLoop : MonoBehaviour
     
     //TODO: define attack pattern
     //TODO: define drop on death
-    //TODO: Aufrufbare Methode die das Health updated und den Enemy zerstört wenn Health <= 0
 
     private void Awake()
     {
@@ -24,6 +40,32 @@ public class EnemyLoop : MonoBehaviour
         _enemyDamage = _enemy.damage;
         
         HandleLevelScaling(_levelPoolManager.GetCurrentLevel());
+    }
+
+    private void Update()
+    {
+        Attack();
+    }
+
+    private void Attack()
+    {
+        foreach (Vector3 direction in _shootDirections)
+        {
+            Ray ray = new Ray(transform.position, direction);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, _detectRange, layerMask))
+            {
+                if (hit.collider.transform.gameObject.layer == 6)
+                {
+                    Debug.Log("Player is hit!");
+                }
+            }
+            
+            //Debug 3D ray
+            Debug.DrawRay(transform.position, direction * _detectRange, Color.red);
+            
+        }
     }
 
     public void SpawnEnemy(Vector3 spawnPos)

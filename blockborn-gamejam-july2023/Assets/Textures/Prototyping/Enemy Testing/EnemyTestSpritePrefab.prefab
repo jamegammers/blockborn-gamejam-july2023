@@ -148,3 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 11400000, guid: b64261886692a8140adf6601f35e5c38, type: 2}
+  _bullet: {fileID: 0}
+  drawRays: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
