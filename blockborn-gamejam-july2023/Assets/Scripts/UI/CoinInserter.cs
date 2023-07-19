@@ -6,22 +6,20 @@ namespace UI {
 
     public class CoinInserter : MonoBehaviour {
 
-        // public static CoinInserter Instance { get; private set; }
         public static Action OnCoinInserted;
 
+        [SerializeField] private RectTransform _textTransform;
         [SerializeField] private TMP_Text _text;
         [SerializeField] private int _coins = 3;
+        
+        [Space(15), Header("Settings")]
+        [SerializeField] private float _animationDuration = 1f;
+        [SerializeField] private LeanTweenType _animationEasing = LeanTweenType.easeOutQuad;
 
         private PlayerInput _playerInput;
 
 
         private void Awake() {
-            // if (Instance != null) {
-            //     Destroy(gameObject);
-            //     return;
-            // }
-            //
-            // Instance = this;
 
             _playerInput = new PlayerInput();
             _playerInput.Enable();
@@ -39,12 +37,37 @@ namespace UI {
             }
 
             _coins--;
-            OnCoinInserted?.Invoke();
             _text.text = _coins.ToString();
+            OnCoinInserted?.Invoke();
+            HideDisplay(1f);
 
             // unsubscribe all listeners
             OnCoinInserted = null;
         }
+
+        private void WaitForCoin(Action callback) {
+            OnCoinInserted += callback;
+            ShowDisplay();
+        }
+
+        private void ShowDisplay() => MoveDisplay(-_textTransform.rect.height);
+        private void HideDisplay(float delay = 0) => MoveDisplay(0, delay);
+
+        private void MoveDisplay(float newY, float delay = 0f) {
+            LeanTween.value(gameObject, value => {
+                    _textTransform.anchoredPosition = new Vector2(_textTransform.anchoredPosition.x, value);
+                }, _textTransform.anchoredPosition.y, newY, _animationDuration)
+                .setEase(_animationEasing)
+                .setDelay(delay);
+        }
+
+
+        #if UNITY_EDITOR
+        [ContextMenu("TestCoin")]
+        private void TestCoin() {
+            WaitForCoin(() => Debug.Log("Coin inserted"));
+        }
+        #endif
 
     }
 
