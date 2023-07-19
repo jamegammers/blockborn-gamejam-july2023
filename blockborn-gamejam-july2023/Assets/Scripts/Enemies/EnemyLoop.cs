@@ -33,18 +33,12 @@ public class EnemyLoop : MonoBehaviour
     
     private void HandleLevelScaling(int level)
     {
-        //every 5 levels, increase health and damage by 10%
-        if (level > 5)
-        {
-            _enemyHealth *= 1.1f;
-            _enemyDamage *= 1.1f;
-        }
+        _enemyHealth = _levelPoolManager._globalEnemyHealth;
     }
     
     public void GetHit(int damage)
     {
         _enemyHealth -= damage;
-        Debug.Log(_enemyHealth);
         if (_enemyHealth <= 0) Death();
     }
 
