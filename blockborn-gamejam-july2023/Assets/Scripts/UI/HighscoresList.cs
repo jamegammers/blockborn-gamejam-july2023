@@ -143,6 +143,9 @@ namespace UI {
             Debug.Log($"saved highscores: { PlayerPrefs.GetString("highscores") }");
         }
 
+
+        #if UNITY_EDITOR
+
         [ContextMenu("WriteTestScores")]
         public void WriteTestScores() {
             SaveScores(new [] {
@@ -165,6 +168,15 @@ namespace UI {
             PlayerPrefs.Save();
             Debug.Log($"deleted highscores { PlayerPrefs.GetString("highscores") }");
         }
+
+        [ContextMenu("TestShowScores")]
+        public void TestShowScores() {
+            CoinInserter.WaitForCoin(() => {
+                Show(4200);
+            });
+        }
+
+        #endif
 
     }
 }

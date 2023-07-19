@@ -6,6 +6,7 @@ namespace UI {
 
     public class CoinInserter : MonoBehaviour {
 
+        public static CoinInserter Instance { get; private set; }
         public static Action OnCoinInserted;
 
         [SerializeField] private RectTransform _textTransform;
@@ -22,6 +23,13 @@ namespace UI {
 
 
         private void Awake() {
+            if (Instance != null) {
+                Destroy(gameObject);
+                return;
+            }
+            
+            Instance = this;
+            
             _playerInput = new PlayerInput();
             _playerInput.Enable();
             _playerInput.Player.InsertCoin.performed += _ => InsertCoin();
@@ -46,7 +54,9 @@ namespace UI {
             OnCoinInserted = null;
         }
 
-        private bool WaitForCoin(Action callback) {
+        public static bool WaitForCoin(Action callback) => Instance.WaitForCoinInstance(callback);
+
+        private bool WaitForCoinInstance(Action callback) {
             ShowDisplay();
             if (_coins <= 0) return false;
 
