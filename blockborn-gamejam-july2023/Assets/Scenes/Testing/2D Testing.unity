@@ -571,6 +571,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelTile_1
       objectReference: {fileID: 0}
+    - target: {fileID: 6437527110761740319, guid: 586c149dfee3ce144a27011c266607e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
