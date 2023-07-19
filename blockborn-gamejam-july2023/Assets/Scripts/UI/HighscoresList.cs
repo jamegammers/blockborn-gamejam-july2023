@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.Utilities;
-using UnityEngine.Serialization;
 using Util;
 
 namespace UI {
@@ -60,7 +59,7 @@ namespace UI {
             _inputParent.gameObject.SetActive(false);
 
             // only for testing
-            Show(0);
+            Show(4200);
         }
 
         public void Show(int newScore) {
@@ -94,10 +93,13 @@ namespace UI {
         }
 
         private void OnInputEnded(string name) {
+            // update name of new score and save scores
             int index = _scores.IndexOf(_newScore);
-            _scores[index] = new Highscore(name, _newScore.Score);
+            _newScore = new Highscore(name, _newScore.Score);
+            _scores[index] = _newScore;
             SaveScores(_scores.ToArray());
 
+            // show scores list
             FillList(_scores.ToArray());
             _listParent.gameObject.SetActive(true);
 
@@ -105,13 +107,15 @@ namespace UI {
             _highscoreInput.OnSubmit -= OnInputEnded;
         }
 
-        private void FillList(Highscore[] scores) {
+        private void FillList(IEnumerable<Highscore> scores) {
             _listBox.DestroyChildren();
 
             foreach (Highscore score in scores) {
                 // add new item to the list
                 GameObject listItem = Instantiate(_listItemPrefab, _listBox, true);
-                listItem.GetComponent<HighscoreListItem>().Init(score.Name, score.Score);
+                HighscoreListItem item = listItem.GetComponent<HighscoreListItem>();
+                item.Init(score.Name, score.Score, score.Equals(_newScore));
+                Debug.Log($"score: {score} | newScore: {_newScore} | equals: {score.Equals(_newScore)}");
 
                 // reset rotation and scale
                 RectTransform rect = (RectTransform) listItem.transform;
