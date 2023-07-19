@@ -20,6 +20,7 @@ public class FireBullets : MonoBehaviour
         Burst,
         Straight,
         Spiral,
+        DoubleSpiral,
         Random
     }
     
@@ -60,6 +61,10 @@ public class FireBullets : MonoBehaviour
             case BulletPatterns.Spiral:
                 bulletsAmount = 300;
                 InvokeRepeating("SpiralFire", 0f,0.1f);
+                break;
+            case BulletPatterns.DoubleSpiral:
+                bulletsAmount = 300;
+                InvokeRepeating("DoubleSpiralFire", 0f,0.1f);
                 break;
             case BulletPatterns.Random:
                 bulletsAmount = 10;
@@ -117,4 +122,26 @@ public class FireBullets : MonoBehaviour
             
         angle += 10f;
     }
+    
+    private void DoubleSpiralFire()
+        {
+            for (int i = 0; i <= 1; i++)
+            {
+                float bulDirX = transform.position.x + Mathf.Sin(((angle + 180f * i) * Mathf.PI) / 180f);
+                float bulDirY = transform.position.y + Mathf.Cos(((angle + 180f * i) * Mathf.PI) / 180f);
+                
+                Vector3 bulMoveVector = new Vector3(bulDirX, bulDirY, 0f);
+                Vector2 bulDir = (bulMoveVector - transform.position).normalized;
+                
+                GameObject bul = BulletPool.Instance.GetBullet();
+                bul.transform.position = transform.position;
+                bul.transform.rotation = transform.rotation;
+                bul.SetActive(true);
+                bul.GetComponent<Bullet>().SetDirection(bulDir);
+            }
+
+            angle += 10f;
+            
+            if(angle >= 360f) angle = 0f;
+        }
 }
