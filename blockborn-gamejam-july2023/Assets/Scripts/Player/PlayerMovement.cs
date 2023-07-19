@@ -82,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
         } else if (_movementPressed && _carMode && !_transforming)
         {
             CarMove();
+            CheckAimAngle();
+            if (_checkedAim != _currentAim) Aim();
         }
 
         if (!_grounded) CheckForGround();
@@ -207,12 +209,23 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, _groundHeight))
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, _groundHeight))
         {
-            //_rbody.velocity += _jumpHeight * Vector3.up;
-            _rbody.AddForce(Vector3.up * _jumpHeight, ForceMode.Impulse);
-            Crouch(false);
-            StartCoroutine(ChangeGroundedAfterSeconds(0.1f));
+            //check if on platform and crouching to pass throuhg
+            if (_currentAim == 10 && hit.transform.gameObject.layer == 11)
+            {
+                hit.transform.gameObject.GetComponentInChildren<PlatformEffector>().DisablePlatform();
+            } else if (_carMode && hit.transform.gameObject.layer == 11 && (_currentAim == 10 || _currentAim ==5 || _currentAim ==7)) //check same, but for car and down left or down right
+            {
+                hit.transform.gameObject.GetComponentInChildren<PlatformEffector>().DisablePlatform();
+            } else //jump normaly
+            {
+                _rbody.AddForce(Vector3.up * _jumpHeight, ForceMode.Impulse);
+                Crouch(false);
+                StartCoroutine(ChangeGroundedAfterSeconds(0.1f));
+            }
+            
         }
         
     }
@@ -301,13 +314,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckForGround()
     {
-        Debug.Log("looking for ground");
         if (Physics.Raycast(transform.position, Vector3.down, _groundHeight))
         {
             _grounded = true;
             _checkedAim = 0;
             Aim();
-            Debug.Log("found ground");
         }
     }
 
