@@ -20,8 +20,7 @@ public class EnemyPatternManager : MonoBehaviour
     private float lastShot; 
     private void StartPattern(FireBullets.BulletPatterns bulletPattern)
     {
-        if(Time.time - lastShot<Cooldown) return;
-        lastShot = Time.time;
+        //yield return new WaitForSeconds(Cooldown);
         
         fireBullets.SetActiveBulletPattern(bulletPattern);
         
@@ -29,7 +28,6 @@ public class EnemyPatternManager : MonoBehaviour
 
     private void Patterns()
     {
-        if(Time.time - lastShot<Cooldown) return;
-        lastShot = Time.time;
+      //  yield return new WaitForSeconds(Cooldown);
     }
 }

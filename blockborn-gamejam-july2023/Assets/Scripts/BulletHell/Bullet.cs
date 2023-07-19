@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -8,17 +9,14 @@ public class Bullet : MonoBehaviour
     private Vector2 direction;
     [SerializeField] private float speed = 30f;
 
+    [SerializeField] private ParticleSystem impactEffect;
+    
     private void OnEnable()
     {
         Invoke("Destroy", 3f);
+        impactEffect.Stop();
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -38,5 +36,19 @@ public class Bullet : MonoBehaviour
     private void OnDisable()
     {
         CancelInvoke();
+    }
+
+    public void OnCollisionEnter(Collision col)
+    {
+        Debug.Log("Bullet Collided");
+        impactEffect.Play();
+        StartCoroutine(WaitForParticleSystem());
+       
+    }
+    
+    private IEnumerator WaitForParticleSystem()
+    {
+        yield return new WaitForSeconds(impactEffect.main.duration);
+        Destroy();
     }
 }
