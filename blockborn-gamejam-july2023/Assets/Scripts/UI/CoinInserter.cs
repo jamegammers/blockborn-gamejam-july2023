@@ -22,7 +22,6 @@ namespace UI {
 
 
         private void Awake() {
-
             _playerInput = new PlayerInput();
             _playerInput.Enable();
             _playerInput.Player.InsertCoin.performed += _ => InsertCoin();
@@ -47,9 +46,12 @@ namespace UI {
             OnCoinInserted = null;
         }
 
-        private void WaitForCoin(Action callback) {
-            OnCoinInserted += callback;
+        private bool WaitForCoin(Action callback) {
             ShowDisplay();
+            if (_coins <= 0) return false;
+
+            OnCoinInserted += callback;
+            return true;
         }
 
         private void ShowDisplay() => MoveDisplay(_displayVisibleOffset);
@@ -69,7 +71,8 @@ namespace UI {
         #if UNITY_EDITOR
         [ContextMenu("TestCoin")]
         private void TestCoin() {
-            WaitForCoin(() => Debug.Log("Coin inserted"));
+            bool result = WaitForCoin(() => Debug.Log("Coin inserted"));
+            Debug.Log(result ? "Coin inserted" : "No coins left");
         }
         #endif
 
