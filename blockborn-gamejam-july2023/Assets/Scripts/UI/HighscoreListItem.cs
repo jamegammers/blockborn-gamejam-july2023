@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -23,7 +22,6 @@ namespace UI {
             _nameText.text = name;
             _scoreText.text = score.ToString();
 
-            Debug.Log($"new score: {newScore}");
             if (newScore) {
                 // _blinkCoroutine = Blink();
                 StartCoroutine(Blink());

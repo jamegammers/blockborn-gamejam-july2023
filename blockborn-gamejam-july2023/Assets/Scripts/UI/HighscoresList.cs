@@ -73,14 +73,13 @@ namespace UI {
             _newScore = new Highscore("AAA", newScore);
             string json = PlayerPrefs.GetString("highscores");
 
-            _scores = new(JsonUtility.FromJson<HighscoreArray>(json).Scores);    // get scores from json
-            _scores.Add(_newScore);                                                            // add new score
-            _scores.Sort((a, b) => b.Score.CompareTo(a.Score));                                  // sort scores
-            _scores.SetLength(10);                                                               // keep only top 10 scores
+            _scores = new List<Highscore>(JsonUtility.FromJson<HighscoreArray>(json).Scores);   // get scores from json
+            _scores.Add(_newScore);                                                             // add new score
+            _scores.Sort((a, b) => b.Score.CompareTo(a.Score));                                 // sort scores
+            if (_scores.Count > 10) _scores.SetLength(10);                                      // keep only top 10 scores
 
             if (_scores.Contains(_newScore)) {                              // check if list contains new score
-                // input name
-                // save
+                // input name, wait for submit
                 _highscoreInput.OnSubmit += OnInputEnded;
                 _highscoreInput.StartInput(newScore);
                 return;
@@ -115,7 +114,6 @@ namespace UI {
                 GameObject listItem = Instantiate(_listItemPrefab, _listBox, true);
                 HighscoreListItem item = listItem.GetComponent<HighscoreListItem>();
                 item.Init(score.Name, score.Score, score.Equals(_newScore));
-                Debug.Log($"score: {score} | newScore: {_newScore} | equals: {score.Equals(_newScore)}");
 
                 // reset rotation and scale
                 RectTransform rect = (RectTransform) listItem.transform;
@@ -143,14 +141,21 @@ namespace UI {
                 new Highscore("lil", 10000),
                 new Highscore("mer", 9000),
                 new Highscore("ben", 8000),
-                new Highscore("lil", 7000),
-                new Highscore("mer", 6000),
-                new Highscore("ben", 5000),
-                new Highscore("lil", 4000),
-                new Highscore("mer", 3000),
-                new Highscore("ben", 2000),
-                new Highscore("ben", 1000),
+                // new Highscore("lil", 7000),
+                // new Highscore("mer", 6000),
+                // new Highscore("ben", 5000),
+                // new Highscore("lil", 4000),
+                // new Highscore("mer", 3000),
+                // new Highscore("ben", 2000),
+                // new Highscore("ben", 1000),
             });
+        }
+
+        [ContextMenu("DeleteHighscores")]
+        public void DeleteHighscores() {
+            PlayerPrefs.DeleteKey("highscores");
+            PlayerPrefs.Save();
+            Debug.Log($"deleted highscores - { PlayerPrefs.GetString("highscores") }");
         }
 
     }
