@@ -61,10 +61,8 @@ public class EnemyLoop : MonoBehaviour
                     Debug.Log("Player is hit!");
                 }
             }
-            
             //Debug 3D ray
             Debug.DrawRay(transform.position, direction * _detectRange, Color.red);
-            
         }
     }
 
