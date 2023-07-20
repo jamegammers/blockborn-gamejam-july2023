@@ -40,8 +40,7 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Bullet Collided");
-            impactEffect.Play();
+        impactEffect.Play();
             StartCoroutine(WaitForParticleSystem());
     }
 

@@ -2,7 +2,9 @@ using System.Collections;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using BulletHell;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.ProBuilder.MeshOperations;
@@ -11,123 +13,112 @@ using Random = UnityEngine.Random;
 
 public class FireBullets : MonoBehaviour
 {
-    [SerializeField] private int bulletsAmount = 10;
-    [SerializeField] private float startAngle = 90f, endAngle = 270f;
-
+    private int bulletsAmount;
+    private float startAngle, endAngle;
+    private float patternDuration;
     private Vector2 bulletMoveDirection;
+    public BulletPatternEnum.BulletPatternsEnum activebulletPattern;
+    private BulletHell.BulletBehaviour.BulletBehaviours activebulletBehaviour;
+    private float fireRate;
+    private Vector2 bulDir;
+    
+    private float cooldown;
+    public bool debug = false;
 
-    [SerializeField] private BulletPatterns activebulletPattern;
+    private GameObject player;
+    public bool isAiming = false;
 
-    [SerializeField] public float Cooldown1 = 1f;
-    [SerializeField] public float Cooldown2 = 0.1f;
-    [SerializeField] public float Cooldown3 = 0.4f;
-    [SerializeField] public float Cooldown4 = 2f;
-    [SerializeField] public float Cooldown5 = 0.6f;
 
-    [SerializeField] private GameObject player;
-    [SerializeField] public bool isAiming = false;
-
-    public enum BulletPatterns
-    {
-        Circle,
-        Cone,
-        Burst,
-        Straight,
-        Spiral,
-        DoubleSpiral,
-        Pyramid,
-        WaveDecel,
-        WayAllRange,
-        Aimed
-    }
-
-    public void SetActiveBulletPattern(BulletPatterns bulletPattern, int bullets, float startAngle, float endAngle, bool Aiming)
+    public void SetBulletPattern(BulletPatternEnum.BulletPatternsEnum bulletPattern, BulletHell.BulletBehaviour.BulletBehaviours bulletBehaviour, 
+        int bullets, float startAngle, float endAngle, bool Aiming, float fireRate)
     {
         activebulletPattern = bulletPattern;
+        activebulletBehaviour = bulletBehaviour;
         bulletsAmount = bullets;
         this.startAngle = startAngle;
         this.endAngle = endAngle;
         isAiming = Aiming;
+        this.fireRate = fireRate;
         PatternSwitch();
     }
 
+    public void SetBulletPatternNone()
+    {
+        Debug.Log("Bullet Pattern is None");
+        CancelInvoke("CircleFire");
+        CancelInvoke("Cone");
+        CancelInvoke("Straight");
+        CancelInvoke("SpiralFire");
+        CancelInvoke("DoubleSpiralFire");
+        CancelInvoke("Pyramid");
+        CancelInvoke("WaveDecel");
+        CancelInvoke("WayAllRange");
+        activebulletPattern = BulletPatternEnum.BulletPatternsEnum.None;
+    }
+    
     private void PatternSwitch()
     {
         switch (activebulletPattern)
         {
-            case BulletPatterns.Circle:
-                //Can Aim
-                bulletsAmount = 10;
-                startAngle = 0f;
-                endAngle = 360f;
-                InvokeRepeating("CircleFire", 0f, Cooldown1);
+            case BulletPatternEnum.BulletPatternsEnum.None:
+                //Cooldown
+                bulletsAmount = 0;
+                fireRate = 0;
                 break;
-            case BulletPatterns.Cone:
+            case BulletPatternEnum.BulletPatternsEnum.Circle:
                 //Can Aim
-                bulletsAmount = 10;
-                startAngle = 90f;
-                endAngle = 270f;
-                InvokeRepeating("Cone", 0f, Cooldown1);
+                InvokeRepeating("CircleFire", 0f, fireRate);
                 break;
-            case BulletPatterns.Burst:
+            case BulletPatternEnum.BulletPatternsEnum.Cone:
+                //Can Aim
+                InvokeRepeating("Cone", 0f, fireRate);
+                break;
+            case BulletPatternEnum.BulletPatternsEnum.Burst:
                 // Not Implemented
-                bulletsAmount = 30;
-                startAngle = 0f;
-                endAngle = 360f;
-                InvokeRepeating("CircleFire", 0f, Cooldown1);
+                InvokeRepeating("CircleFire", 0f, fireRate);
                 break;
-            case BulletPatterns.Straight:
+            case BulletPatternEnum.BulletPatternsEnum.Straight:
                 //Can Aim
-                bulletsAmount = 10;
-                startAngle = 0f;
-                endAngle = 0f;
-                InvokeRepeating("CircleFire", 0f, Cooldown1);
+                InvokeRepeating("Straight", 0f, fireRate);
                 break;
-            case BulletPatterns.Spiral:
+            case BulletPatternEnum.BulletPatternsEnum.Spiral:
                 //Cannot Aim
-                bulletsAmount = 300;
-                InvokeRepeating("SpiralFire", 0f, Cooldown2);
+                InvokeRepeating("SpiralFire", 0f, fireRate);
                 break;
-            case BulletPatterns.DoubleSpiral:
+            case BulletPatternEnum.BulletPatternsEnum.DoubleSpiral:
                 //Cannot Aim
-                bulletsAmount = 300;
-                InvokeRepeating("DoubleSpiralFire", 0f, Cooldown2);
+                InvokeRepeating("DoubleSpiralFire", 0f, fireRate);
                 break;
-            case BulletPatterns.Pyramid:
+            case BulletPatternEnum.BulletPatternsEnum.Pyramid:
                 //Can Aim
-                bulletsAmount = 30;
-                InvokeRepeating("Pyramid", 0f, Cooldown3);
+                InvokeRepeating("Pyramid", 0f, fireRate);
                 break;
-            case BulletPatterns.WaveDecel:
-                bulletsAmount = 10;
-                startAngle = 0f;
-                endAngle = 40f;
-                InvokeRepeating("WaveDecel", 0f, Cooldown3);
+            case BulletPatternEnum.BulletPatternsEnum.WaveDecel:
+                InvokeRepeating("WaveDecel", 0f, fireRate);
                 break;
-            case BulletPatterns.WayAllRange:
-                bulletsAmount = 10;
-                startAngle = 0f;
-                endAngle = 360f;
-                InvokeRepeating("WayAllRange", 0f, Cooldown5);
+            case BulletPatternEnum.BulletPatternsEnum.WayAllRange:
+                InvokeRepeating("WayAllRange", 0f, fireRate);
                 break;
-            case BulletPatterns.Aimed:
+            /*case BulletPatterns.Aimed:
                 bulletsAmount = 10;
                 startAngle = 0f;
                 endAngle = 360f;
-                InvokeRepeating("Aimed", 0f, Cooldown5);
-                break;
+                InvokeRepeating("Aimed", 0f, fireRate);
+                break;*/
         }
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         player = GameObject.FindWithTag("Player");
-        PatternSwitch();
+        if (debug)
+        {
+            fireRate = 0.1f;
+            PatternSwitch();
+        }
     }
 
-    private Vector2 bulDir;
-    
     private void Cone()
     {
         float angleStep = (endAngle - startAngle) / bulletsAmount;
@@ -224,7 +215,7 @@ public class FireBullets : MonoBehaviour
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
             bul.GetComponent<Bullet>().SetDirection(bulDir);
-            bul.GetComponent<BulletHell.BulletBehaviour>().SetBehaviour(BulletHell.BulletBehaviour.BulletBehaviours.Follow, bulDir);
+            bul.GetComponent<BulletHell.BulletBehaviour>().SetBehaviour(activebulletBehaviour, bulDir);
             //bul.GetComponent<Bullet>().SetDirection(bulDir);
             
             angle += angleStep;
@@ -480,7 +471,7 @@ public class FireBullets : MonoBehaviour
         return bulDir;
     }
 
-    private void Aimed()
+    private void Straight()
     {
         float angle = (float)Math.Atan2(player.transform.position.y - transform.position.y,
             player.transform.position.x - transform.position.x);
