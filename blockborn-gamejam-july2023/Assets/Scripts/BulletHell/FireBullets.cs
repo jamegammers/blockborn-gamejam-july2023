@@ -70,14 +70,14 @@ public class FireBullets : MonoBehaviour
                 break;
             case BulletPatterns.Burst:
                 // Not Implemented
-                bulletsAmount = 10;
+                bulletsAmount = 30;
                 startAngle = 0f;
                 endAngle = 360f;
                 InvokeRepeating("CircleFire", 0f, Cooldown1);
                 break;
             case BulletPatterns.Straight:
                 //Can Aim
-                bulletsAmount = 1;
+                bulletsAmount = 10;
                 startAngle = 0f;
                 endAngle = 0f;
                 InvokeRepeating("CircleFire", 0f, Cooldown1);
@@ -160,6 +160,41 @@ public class FireBullets : MonoBehaviour
         }
     }
     
+    private void PwettyPattern()
+    {
+        float angleStep = (endAngle - startAngle) / bulletsAmount;
+        float angle = startAngle;
+
+        for (int i = 0; i < bulletsAmount + 1; i++)
+        {
+            // Calculate the direction towards the player using Aimed() method
+            Vector2 bulDir = isAiming ? (Aim()) : RandomAim();
+
+            // Rotate the bullet direction by the cone pattern angle
+            float rotatedAngle = angle * Mathf.Deg2Rad;
+            float cosAngle = Mathf.Cos(rotatedAngle);
+            float sinAngle = Mathf.Sin(rotatedAngle);
+
+            // Rotate the direction vector
+            float rotatedX = bulDir.x * cosAngle - bulDir.y * sinAngle;
+            float rotatedY = bulDir.x * sinAngle + bulDir.y * cosAngle;
+
+            // Create a new vector with the rotated direction
+            bulDir = new Vector2(rotatedX, rotatedY);
+
+            // Spawn and set direction for the bullet
+            GameObject bul = BulletPool.Instance.GetBullet();
+            bul.transform.position = transform.position;
+            bul.transform.rotation = transform.rotation;
+            bul.SetActive(true);
+            bul.GetComponent<Bullet>().SetDirection(bulDir);
+            bul.GetComponent<BulletHell.BulletBehaviour>().SetBehaviour(BulletHell.BulletBehaviour.BulletBehaviours.SineCurve, bulDir);
+            //bul.GetComponent<Bullet>().SetDirection(bulDir);
+            
+            angle += angleStep;
+        }
+    }
+    
     private void CircleFire()
     {
         float angleStep = (endAngle - startAngle) / bulletsAmount;
@@ -188,7 +223,9 @@ public class FireBullets : MonoBehaviour
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
             bul.GetComponent<Bullet>().SetDirection(bulDir);
-
+            bul.GetComponent<BulletHell.BulletBehaviour>().SetBehaviour(BulletHell.BulletBehaviour.BulletBehaviours.Follow, bulDir);
+            //bul.GetComponent<Bullet>().SetDirection(bulDir);
+            
             angle += angleStep;
         }
     }

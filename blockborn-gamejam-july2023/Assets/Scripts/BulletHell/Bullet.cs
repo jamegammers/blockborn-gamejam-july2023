@@ -7,7 +7,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Vector2 direction;
-    [SerializeField] private float speed = 30f;
+    [SerializeField] public float speed = 30f;
 
     [SerializeField] private ParticleSystem impactEffect;
     
@@ -38,14 +38,13 @@ public class Bullet : MonoBehaviour
         CancelInvoke();
     }
 
-    public void OnCollisionEnter(Collision col)
+    private void OnCollisionEnter(Collision other)
     {
         Debug.Log("Bullet Collided");
-        impactEffect.Play();
-        StartCoroutine(WaitForParticleSystem());
-       
+            impactEffect.Play();
+            StartCoroutine(WaitForParticleSystem());
     }
-    
+
     private IEnumerator WaitForParticleSystem()
     {
         yield return new WaitForSeconds(impactEffect.main.duration);
