@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
         if (_movementPressed && !_carMode && !_transforming)
         {
             Move();
-            _cController.Move(_velocity * Time.deltaTime);
+            //_cController.Move(_velocity * Time.deltaTime);
             CheckAimAngle();
             if (_checkedAim != _currentAim) Aim();
         }
@@ -93,18 +93,26 @@ public class PlayerMovement : MonoBehaviour
             CheckAimAngle();
             if (_checkedAim != _currentAim) Aim();
         }
-        else if (!_movementPressed && _velocity.x != 0) _velocity.x = 0;
+        if ((_moveInput.x < 0.3 && _moveInput.x > -0.3) && _velocity.x != 0) _velocity.x = 0;
+
+        Debug.Log("input: " + _moveInput);
+
+        //move character with velocity
         _cController.Move(_velocity * Time.deltaTime);
 
-        Debug.Log(" grounded: " + _cController.isGrounded);
-        if (!_cController.isGrounded) CheckForGround();
+        //move velocity down for gravity
         if (!_cController.isGrounded) _velocity.y -= _gravity;
+    }
+
+    private void FixedUpdate()
+    {
+        //scuffed. dont know how to fix. just use this if nothing else works
+        if (_moveInput == Vector2.zero) GroundAim();
     }
 
     //Checks in which direction the joystick is facing
     private void CheckAimAngle()
     {
-        //Debug.Log("Input:" + _moveInput);
         if (_moveInput.y >= -0.5 && _moveInput.y < 0.5)
         {
             if (_moveInput.x >= 0) //aiming right
@@ -155,8 +163,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //_aimDirections = (AimDirections)_checkedAim;
-        //Debug.Log("Aim: " + _aimDirections);
     }
 
     //placeholder until i do the shooting
@@ -205,14 +211,8 @@ public class PlayerMovement : MonoBehaviour
     {
         _moveInput = _playerInput.Player.Move.ReadValue<Vector2>();
         //check for crouching and grounded before moving
-        //old
-        //if (_moveInput.x > 0.3) transform.position = transform.position + new Vector3(1 * Time.deltaTime * _playerSpeed * 10, 0, 0);
-        //else if (_moveInput.x < -0.3) transform.position = transform.position + new Vector3(-1 * Time.deltaTime * _playerSpeed * 10, 0, 0);
-        //goes through walls, when to fast
-        //if (_moveInput.x > 0.3) _rbody.MovePosition(transform.position + new Vector3(1 * Time.deltaTime * _playerSpeed * 100, 0, 0));
-        //else if (_moveInput.x < -0.3) _rbody.MovePosition(transform.position + new Vector3(-1 * Time.deltaTime * _playerSpeed * 100, 0, 0));
-        if (_moveInput.x > 0.3) _velocity.x = 1 * _playerSpeed * 50;//_cController.Move(new Vector3(1 * Time.deltaTime * _playerSpeed * 50, 0, 0));
-        else if (_moveInput.x < -0.3) _velocity.x = -1 * _playerSpeed * 50; //_cController.Move(new Vector3(-1 * Time.deltaTime * _playerSpeed * 50, 0, 0));
+        if (_moveInput.x > 0.3) _velocity.x = 1 * _playerSpeed * 50;
+        else if (_moveInput.x < -0.3) _velocity.x = -1 * _playerSpeed * 50;
         Crouch(false);
     }
 
@@ -239,9 +239,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 //_rbody.AddForce(Vector3.up * _jumpHeight, ForceMode.Impulse);
                 _velocity.y = Mathf.Sqrt(_jumpHeight * -3f * -9.81f);
-                Debug.Log("jump");
                 Crouch(false);
-                //StartCoroutine(ChangeGroundedAfterSeconds(0.1f));
+                StartCoroutine(CheckGroundedAfterSeconds(0.1f));
             }
             
         }
@@ -330,7 +329,7 @@ public class PlayerMovement : MonoBehaviour
         _transforming = false;
     }
 
-    private void CheckForGround()
+    private void GroundAim()
     {
         if (_cController.isGrounded)
         {
@@ -340,10 +339,16 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private IEnumerator ChangeGroundedAfterSeconds(float time)
+    private IEnumerator CheckGroundedAfterSeconds(float time)
     {
+        Debug.Log("checking");
         yield return new WaitForSeconds(time);
-        _grounded = false;
+        if (_cController.isGrounded)
+        {
+            GroundAim();
+            Debug.Log("grounded");
+        }
+        else StartCoroutine(CheckGroundedAfterSeconds(0.1f));
     }
 
     private enum AimDirections

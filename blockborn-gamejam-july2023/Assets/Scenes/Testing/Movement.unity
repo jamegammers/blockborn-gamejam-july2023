@@ -809,6 +809,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1132600399}
     m_Modifications:
+    - target: {fileID: 889357871688535643, guid: 87ce0d31d2caec247b6875fd151955f4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5674163225813427437, guid: 87ce0d31d2caec247b6875fd151955f4,
         type: 3}
       propertyPath: m_Name
@@ -2410,51 +2415,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1136678170}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2087614318 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5187552047133379782, guid: c932bdc7f979b024194b8e40d82b4ced,
-    type: 3}
-  m_PrefabInstance: {fileID: 1777844717263862805}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2087614322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2087614318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 768dda048572459409844f81a5b05577, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerCamera: {fileID: 1769725498}
---- !u!143 &2087614323
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2087614318}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 64
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2.71
-  m_Radius: 0.65
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.19, z: 0}
 --- !u!1001 &2119026257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2614,31 +2574,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 892800490952865841, guid: c932bdc7f979b024194b8e40d82b4ced,
+    - target: {fileID: 3946084407514318756, guid: c932bdc7f979b024194b8e40d82b4ced,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086128446808238857, guid: c932bdc7f979b024194b8e40d82b4ced,
-        type: 3}
-      propertyPath: _rbody
+      propertyPath: _playerCamera
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086128446808238857, guid: c932bdc7f979b024194b8e40d82b4ced,
-        type: 3}
-      propertyPath: _gravity
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086128446808238857, guid: c932bdc7f979b024194b8e40d82b4ced,
-        type: 3}
-      propertyPath: _jumpHeight
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086128446808238857, guid: c932bdc7f979b024194b8e40d82b4ced,
-        type: 3}
-      propertyPath: _cController
-      value: 
-      objectReference: {fileID: 2087614323}
+      objectReference: {fileID: 1769725498}
     - target: {fileID: 5187552047133379782, guid: c932bdc7f979b024194b8e40d82b4ced,
         type: 3}
       propertyPath: m_Name
@@ -2699,17 +2639,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7937546174662437234, guid: c932bdc7f979b024194b8e40d82b4ced, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5187552047133379782, guid: c932bdc7f979b024194b8e40d82b4ced,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2087614322}
-    - targetCorrespondingSourceObject: {fileID: 5187552047133379782, guid: c932bdc7f979b024194b8e40d82b4ced,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2087614323}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c932bdc7f979b024194b8e40d82b4ced, type: 3}
