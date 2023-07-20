@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Range(1f, 50f)] private float _jumpHeight = 12f;
     [SerializeField, Range(0.1f, 2f)] private float _gravity = 0.1f;
     private Vector3 _velocity;
-    private bool _grounded;
+    //private bool _grounded;
     private Vector2 _moveInput;
     private PlayerInput _playerInput;
     private bool _movementPressed;
@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _crouching;
     private Vector3 _weaponHolderPosition;
 
-    private float _groundHeight;    
+    //private float _groundHeight;    
 
     //shooting variables
     [Header("Shooting")]
@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         //Raycast for later ground detection
-        RaycastHit _hit;
+        //RaycastHit _hit;
         //if (Physics.Raycast(transform.position, Vector3.down, out _hit)) transform.position = new Vector3(transform.position.x, transform.position.y - _hit.distance, transform.position.z);
         //if (Physics.Raycast(transform.position, Vector3.down, out _hit)) _groundHeight = _hit.distance;
         _weaponHolderPosition = _weaponHolder.transform.localPosition;
@@ -94,8 +94,6 @@ public class PlayerMovement : MonoBehaviour
             if (_checkedAim != _currentAim) Aim();
         }
         if ((_moveInput.x < 0.3 && _moveInput.x > -0.3) && _velocity.x != 0) _velocity.x = 0;
-
-        Debug.Log("input: " + _moveInput);
 
         //move character with velocity
         _cController.Move(_velocity * Time.deltaTime);
@@ -341,12 +339,10 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator CheckGroundedAfterSeconds(float time)
     {
-        Debug.Log("checking");
         yield return new WaitForSeconds(time);
         if (_cController.isGrounded)
         {
             GroundAim();
-            Debug.Log("grounded");
         }
         else StartCoroutine(CheckGroundedAfterSeconds(0.1f));
     }
