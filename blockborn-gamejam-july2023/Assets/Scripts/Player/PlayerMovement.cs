@@ -8,7 +8,9 @@ public class PlayerMovement : MonoBehaviour
     //[SerializeField] private Rigidbody _rbody;
     [SerializeField] private CharacterController _cController;
     [SerializeField, Range(0.1f, 5)] private float _playerSpeed = 0.3f;   
-    [SerializeField, Range(0.1f, 20f)] private float _jumpHeight = 12f;
+    [SerializeField, Range(1f, 50f)] private float _jumpHeight = 12f;
+    [SerializeField, Range(0.1f, 2f)] private float _gravity = 0.1f;
+    private Vector3 _velocity;
     private bool _grounded;
     private Vector2 _moveInput;
     private PlayerInput _playerInput;
@@ -71,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         //Raycast for later ground detection
         RaycastHit _hit;
         //if (Physics.Raycast(transform.position, Vector3.down, out _hit)) transform.position = new Vector3(transform.position.x, transform.position.y - _hit.distance, transform.position.z);
-        if (Physics.Raycast(transform.position, Vector3.down, out _hit)) _groundHeight = _hit.distance;
+        //if (Physics.Raycast(transform.position, Vector3.down, out _hit)) _groundHeight = _hit.distance;
         _weaponHolderPosition = _weaponHolder.transform.localPosition;
     }
 
@@ -81,18 +83,22 @@ public class PlayerMovement : MonoBehaviour
         if (_movementPressed && !_carMode && !_transforming)
         {
             Move();
+            _cController.Move(_velocity * Time.deltaTime);
             CheckAimAngle();
             if (_checkedAim != _currentAim) Aim();
-        } else if (_movementPressed && _carMode && !_transforming)
+        }
+        else if (_movementPressed && _carMode && !_transforming)
         {
             CarMove();
             CheckAimAngle();
             if (_checkedAim != _currentAim) Aim();
         }
+        else if (!_movementPressed && _velocity.x != 0) _velocity.x = 0;
+        _cController.Move(_velocity * Time.deltaTime);
 
-
-        if (!_grounded) CheckForGround();
-        if (!_cController.isGrounded) _cController.Move(Vector3.down * 9.81f * Time.deltaTime);
+        Debug.Log(" grounded: " + _cController.isGrounded);
+        if (!_cController.isGrounded) CheckForGround();
+        if (!_cController.isGrounded) _velocity.y -= _gravity;
     }
 
     //Checks in which direction the joystick is facing
@@ -178,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
                 _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 135));
                 break;
             case 6:
-                if (!_grounded)
+                if (!_cController.isGrounded)
                 {
                     _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 180));
                 } else
@@ -205,8 +211,8 @@ public class PlayerMovement : MonoBehaviour
         //goes through walls, when to fast
         //if (_moveInput.x > 0.3) _rbody.MovePosition(transform.position + new Vector3(1 * Time.deltaTime * _playerSpeed * 100, 0, 0));
         //else if (_moveInput.x < -0.3) _rbody.MovePosition(transform.position + new Vector3(-1 * Time.deltaTime * _playerSpeed * 100, 0, 0));
-        if (_moveInput.x > 0.3) _cController.Move(new Vector3(1 * Time.deltaTime * _playerSpeed * 50, 0, 0));
-        else if (_moveInput.x < -0.3) _cController.Move(new Vector3(-1 * Time.deltaTime * _playerSpeed * 50, 0, 0));
+        if (_moveInput.x > 0.3) _velocity.x = 1 * _playerSpeed * 50;//_cController.Move(new Vector3(1 * Time.deltaTime * _playerSpeed * 50, 0, 0));
+        else if (_moveInput.x < -0.3) _velocity.x = -1 * _playerSpeed * 50; //_cController.Move(new Vector3(-1 * Time.deltaTime * _playerSpeed * 50, 0, 0));
         Crouch(false);
     }
 
@@ -219,9 +225,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        RaycastHit hit;Debug.Log("jump");
-        Debug.DrawRay(transform.position, Vector3.down, Color.blue, _groundHeight);
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, _groundHeight))
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit) && _cController.isGrounded)
         {
             //check if on platform and crouching to pass throuhg
             if (_currentAim == 10 && hit.transform.gameObject.layer == 11)
@@ -233,10 +238,10 @@ public class PlayerMovement : MonoBehaviour
             } else //jump normaly
             {
                 //_rbody.AddForce(Vector3.up * _jumpHeight, ForceMode.Impulse);
-                _cController.Move(Vector3.up * Time.deltaTime * _jumpHeight * 100);
-                
+                _velocity.y = Mathf.Sqrt(_jumpHeight * -3f * -9.81f);
+                Debug.Log("jump");
                 Crouch(false);
-                StartCoroutine(ChangeGroundedAfterSeconds(0.1f));
+                //StartCoroutine(ChangeGroundedAfterSeconds(0.1f));
             }
             
         }
@@ -327,9 +332,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckForGround()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, _groundHeight))
+        if (_cController.isGrounded)
         {
-            _grounded = true;
+            //_grounded = true;
             _checkedAim = 0;
             Aim();
         }
