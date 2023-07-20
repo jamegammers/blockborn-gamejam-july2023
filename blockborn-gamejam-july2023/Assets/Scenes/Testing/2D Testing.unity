@@ -160,7 +160,7 @@ PrefabInstance:
     - target: {fileID: 7883049386471465116, guid: c932bdc7f979b024194b8e40d82b4ced,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.0682077
+      value: 19.818207
       objectReference: {fileID: 0}
     - target: {fileID: 7883049386471465116, guid: c932bdc7f979b024194b8e40d82b4ced,
         type: 3}
@@ -226,7 +226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 771838016}
   m_Layer: 0
-  m_Name: LevelHolder
+  m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,8 +459,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7007597196477920933, guid: 04100e2930021254baf7822ce98efc9f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9050379754061175463, guid: 04100e2930021254baf7822ce98efc9f,
+        type: 3}
+      propertyPath: _enemyPrefab
+      value: 
+      objectReference: {fileID: 7200750994580324393, guid: 8d2f2bd2b28a55d429cc54243b25fa89,
+        type: 3}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6682158952320786299, guid: 04100e2930021254baf7822ce98efc9f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04100e2930021254baf7822ce98efc9f, type: 3}
