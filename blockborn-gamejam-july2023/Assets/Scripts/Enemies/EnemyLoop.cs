@@ -29,7 +29,6 @@ public class EnemyLoop : MonoBehaviour
     
     private LevelPoolManager _levelPoolManager;
     
-    //TODO: define attack pattern
     //TODO: define drop on death
 
     private void Awake()
@@ -44,10 +43,24 @@ public class EnemyLoop : MonoBehaviour
 
     private void Update()
     {
-        Attack();
+        CheckForPlayerInRange();
+        UpdatePosition();
     }
 
-    private void Attack()
+    private void UpdatePosition()
+    {
+       // create a transform from the middle of the player transform, go 0.5f to the left
+       Vector3 playerLeft = new Vector3(transform.position.x - 0.75f, transform.position.y, transform.position.z);
+       Vector3 playerRight = new Vector3(transform.position.x + 0.75f, transform.position.y, transform.position.z);
+
+       
+       Debug.DrawRay(playerLeft, new Vector3(0, -2, 0), Color.red);
+       Debug.DrawRay(playerRight, new Vector3(0, -2, 0), Color.red);
+       
+       
+    }
+    
+    private void CheckForPlayerInRange()
     {
         foreach (Vector3 direction in _shootDirections)
         {
@@ -61,8 +74,11 @@ public class EnemyLoop : MonoBehaviour
                     Debug.Log("Player is hit!");
                 }
             }
+            
             //Debug 3D ray
-            Debug.DrawRay(transform.position, direction * _detectRange, Color.red);
+            //Debug.DrawRay(transform.position, direction * _detectRange, Color.red);
+            
+            //TODO: call function that activates pattern + attacks
         }
     }
 
