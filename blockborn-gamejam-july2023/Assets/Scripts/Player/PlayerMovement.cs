@@ -70,10 +70,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        //Raycast for later ground detection
-        //RaycastHit _hit;
-        //if (Physics.Raycast(transform.position, Vector3.down, out _hit)) transform.position = new Vector3(transform.position.x, transform.position.y - _hit.distance, transform.position.z);
-        //if (Physics.Raycast(transform.position, Vector3.down, out _hit)) _groundHeight = _hit.distance;
         _weaponHolderPosition = _weaponHolder.transform.localPosition;
     }
 
@@ -96,16 +92,22 @@ public class PlayerMovement : MonoBehaviour
         if ((_moveInput.x < 0.3 && _moveInput.x > -0.3) && _velocity.x != 0) _velocity.x = 0;
 
         //move character with velocity
-        _cController.Move(_velocity * Time.deltaTime);
+        
 
         //move velocity down for gravity
         if (!_cController.isGrounded) _velocity.y -= _gravity;
+        if (_velocity.y < -8) _velocity.y = -8;
+        //if (_cController.isGrounded && _velocity.y != 0) _velocity.y = 0;
+        Debug.Log("grounded: " + _cController.isGrounded + "  velocity y: " + _velocity.y);
+        
+        _cController.Move(_velocity * Time.deltaTime);
     }
 
     private void FixedUpdate()
     {
         //scuffed. dont know how to fix. just use this if nothing else works
         if (_moveInput == Vector2.zero) GroundAim();
+        //if (_currentAim == 6 && _cController.isGrounded) GroundAim();
     }
 
     //Checks in which direction the joystick is facing
@@ -217,8 +219,8 @@ public class PlayerMovement : MonoBehaviour
     private void CarMove()
     {
         _moveInput = _playerInput.Player.Move.ReadValue<Vector2>();
-        if (_moveInput.x > 0.3) _cController.Move(new Vector3(1 * Time.deltaTime * _playerCarSpeed * 50, 0, 0));
-        else if (_moveInput.x < -0.3) _cController.Move(new Vector3(-1 * Time.deltaTime * _playerCarSpeed * 50, 0, 0));
+        if (_moveInput.x > 0.3) _velocity.x = 1 * _playerCarSpeed * 50;
+        else if (_moveInput.x < -0.3) _velocity.x = -1 * _playerCarSpeed * 50;
     }
 
     private void Jump()
