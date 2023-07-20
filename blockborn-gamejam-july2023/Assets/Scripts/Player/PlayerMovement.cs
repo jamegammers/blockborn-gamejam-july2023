@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private Rigidbody _rbody;
+    //[SerializeField] private Rigidbody _rbody;
+    [SerializeField] private CharacterController _cController;
     [SerializeField, Range(0.1f, 5)] private float _playerSpeed = 0.3f;   
     [SerializeField, Range(0.1f, 20f)] private float _jumpHeight = 12f;
     private bool _grounded;
@@ -51,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
         _playerInput.Player.Jump.performed += ctx => Jump();
         _playerInput.Player.Shoot.performed += ctx => Shoot();
         _playerInput.Player.Transform.performed += ctx => Transform();
+
+        
     }
 
     private void OnEnable()
@@ -67,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Raycast for later ground detection
         RaycastHit _hit;
+        //if (Physics.Raycast(transform.position, Vector3.down, out _hit)) transform.position = new Vector3(transform.position.x, transform.position.y - _hit.distance, transform.position.z);
         if (Physics.Raycast(transform.position, Vector3.down, out _hit)) _groundHeight = _hit.distance;
         _weaponHolderPosition = _weaponHolder.transform.localPosition;
     }
@@ -86,9 +90,9 @@ public class PlayerMovement : MonoBehaviour
             if (_checkedAim != _currentAim) Aim();
         }
 
-        Debug.Log("velocity: " + _rbody.velocity);
 
         if (!_grounded) CheckForGround();
+        if (!_cController.isGrounded) _cController.Move(Vector3.down * 9.81f * Time.deltaTime);
     }
 
     //Checks in which direction the joystick is facing
@@ -198,21 +202,25 @@ public class PlayerMovement : MonoBehaviour
         //old
         //if (_moveInput.x > 0.3) transform.position = transform.position + new Vector3(1 * Time.deltaTime * _playerSpeed * 10, 0, 0);
         //else if (_moveInput.x < -0.3) transform.position = transform.position + new Vector3(-1 * Time.deltaTime * _playerSpeed * 10, 0, 0);
-        if (_moveInput.x > 0.3) _rbody.MovePosition(transform.position + new Vector3(1 * Time.deltaTime * _playerSpeed * 100, 0, 0));
-        else if (_moveInput.x < -0.3) _rbody.MovePosition(transform.position + new Vector3(-1 * Time.deltaTime * _playerSpeed * 100, 0, 0));
+        //goes through walls, when to fast
+        //if (_moveInput.x > 0.3) _rbody.MovePosition(transform.position + new Vector3(1 * Time.deltaTime * _playerSpeed * 100, 0, 0));
+        //else if (_moveInput.x < -0.3) _rbody.MovePosition(transform.position + new Vector3(-1 * Time.deltaTime * _playerSpeed * 100, 0, 0));
+        if (_moveInput.x > 0.3) _cController.Move(new Vector3(1 * Time.deltaTime * _playerSpeed * 50, 0, 0));
+        else if (_moveInput.x < -0.3) _cController.Move(new Vector3(-1 * Time.deltaTime * _playerSpeed * 50, 0, 0));
         Crouch(false);
     }
 
     private void CarMove()
     {
         _moveInput = _playerInput.Player.Move.ReadValue<Vector2>();
-        if (_moveInput.x > 0.3) _rbody.MovePosition(transform.position + new Vector3(1 * Time.deltaTime * _playerCarSpeed * 100, 0, 0));
-        else if (_moveInput.x < -0.3) _rbody.MovePosition(transform.position + new Vector3(-1 * Time.deltaTime * _playerCarSpeed * 100, 0, 0));
+        if (_moveInput.x > 0.3) _cController.Move(new Vector3(1 * Time.deltaTime * _playerCarSpeed * 50, 0, 0));
+        else if (_moveInput.x < -0.3) _cController.Move(new Vector3(-1 * Time.deltaTime * _playerCarSpeed * 50, 0, 0));
     }
 
     private void Jump()
     {
-        RaycastHit hit;
+        RaycastHit hit;Debug.Log("jump");
+        Debug.DrawRay(transform.position, Vector3.down, Color.blue, _groundHeight);
         if (Physics.Raycast(transform.position, Vector3.down, out hit, _groundHeight))
         {
             //check if on platform and crouching to pass throuhg
@@ -224,7 +232,9 @@ public class PlayerMovement : MonoBehaviour
                 hit.transform.gameObject.GetComponentInChildren<PlatformEffector>().DisablePlatform();
             } else //jump normaly
             {
-                _rbody.AddForce(Vector3.up * _jumpHeight, ForceMode.Impulse);
+                //_rbody.AddForce(Vector3.up * _jumpHeight, ForceMode.Impulse);
+                _cController.Move(Vector3.up * Time.deltaTime * _jumpHeight * 100);
+                
                 Crouch(false);
                 StartCoroutine(ChangeGroundedAfterSeconds(0.1f));
             }
