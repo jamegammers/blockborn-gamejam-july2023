@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+//TODO: define drop on death
+
 public class EnemyLoop : MonoBehaviour
 {
+    private LevelPoolManager _levelPoolManager;
     [SerializeField] private Enemy _enemy;
-    [SerializeField] private GameObject _bullet;
-    
+
     public LayerMask layerMask;
     [SerializeField] private float _detectRange = 5f;
 
@@ -27,39 +29,21 @@ public class EnemyLoop : MonoBehaviour
     private float _enemyHealth;
     private float _enemyDamage;
     
-    private LevelPoolManager _levelPoolManager;
     
-    //TODO: define drop on death
-
     private void Awake()
     {
         _levelPoolManager = GameObject.Find("GameManager").GetComponent<LevelPoolManager>();
 
         _enemyHealth = _enemy.health;
         _enemyDamage = _enemy.damage;
-        
         HandleLevelScaling(_levelPoolManager.GetCurrentLevel());
     }
 
     private void Update()
     {
         CheckForPlayerInRange();
-        UpdatePosition();
     }
 
-    private void UpdatePosition()
-    {
-       // create a transform from the middle of the player transform, go 0.5f to the left
-       Vector3 playerLeft = new Vector3(transform.position.x - 0.75f, transform.position.y, transform.position.z);
-       Vector3 playerRight = new Vector3(transform.position.x + 0.75f, transform.position.y, transform.position.z);
-
-       
-       Debug.DrawRay(playerLeft, new Vector3(0, -2, 0), Color.red);
-       Debug.DrawRay(playerRight, new Vector3(0, -2, 0), Color.red);
-       
-       
-    }
-    
     private void CheckForPlayerInRange()
     {
         foreach (Vector3 direction in _shootDirections)
@@ -82,9 +66,10 @@ public class EnemyLoop : MonoBehaviour
         }
     }
 
-    public void SpawnEnemy(Vector3 spawnPos)
+    public void SpawnEnemy(Vector3 spawnPos, GameObject enemyPrefab)
     {
-        Instantiate(_enemy.enemyPrefab, spawnPos, Quaternion.identity);
+        //Instantiate(_enemy.enemyPrefab, spawnPos, Quaternion.identity);
+        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
     }
     
     private void HandleLevelScaling(int level)
@@ -98,6 +83,11 @@ public class EnemyLoop : MonoBehaviour
         if (_enemyHealth <= 0) Death();
     }
 
+    public Enemy GetEnemy()
+    {
+        return _enemy;
+    }
+    
     private void Death()
     {
         //TODO: drop items or stuff
