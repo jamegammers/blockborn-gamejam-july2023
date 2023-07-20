@@ -61,7 +61,7 @@ namespace ArcadeMachine {
                     button.RotationOffsetPressed * inputDir.y
                 );
 
-                button.Object.localRotation = Quaternion.Euler(joystickRotation.y, 0, -joystickRotation.x);
+                button.Object.localRotation = Quaternion.Euler(-joystickRotation.y, 0, joystickRotation.x);
             }
         }
 

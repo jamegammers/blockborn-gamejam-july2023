@@ -502,6 +502,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -508327808626840961, guid: 1f92dc21a180ba0d69d93e384d28d589,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 13.011
+      objectReference: {fileID: 0}
+    - target: {fileID: -508327808626840961, guid: 1f92dc21a180ba0d69d93e384d28d589,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -508327808626840961, guid: 1f92dc21a180ba0d69d93e384d28d589,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -7633961050651049, guid: 1f92dc21a180ba0d69d93e384d28d589,
         type: 3}
       propertyPath: m_Layer
@@ -545,6 +560,12 @@ PrefabInstance:
 --- !u!4 &362494875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1f92dc21a180ba0d69d93e384d28d589,
+    type: 3}
+  m_PrefabInstance: {fileID: 362494874}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &362494876 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -508327808626840961, guid: 1f92dc21a180ba0d69d93e384d28d589,
     type: 3}
   m_PrefabInstance: {fileID: 362494874}
   m_PrefabAsset: {fileID: 0}
@@ -1073,11 +1094,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttons:
   - _name: Joystick
-    _object: {fileID: 0}
+    _object: {fileID: 362494876}
     _type: 1
     _inputAction: {fileID: 665090540312550538, guid: f2c7ca125d2525b4ca3b28b64a72cb9b,
       type: 3}
     _offsetPressed: 0
+    _rotationOffsetPressed: 10
+  - _name: Jump
+    _object: {fileID: 1842418361}
+    _type: 0
+    _inputAction: {fileID: -714849372403171171, guid: f2c7ca125d2525b4ca3b28b64a72cb9b,
+      type: 3}
+    _offsetPressed: 0.005
     _rotationOffsetPressed: 0
 --- !u!1 &826308677
 GameObject:
@@ -2132,6 +2160,12 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9148522999137583084, guid: a729725a97e6333abb0486c57afe1ac2,
     type: 3}
   m_PrefabInstance: {fileID: 382111281873836720}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1842418361 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5625986078764781923, guid: 1f92dc21a180ba0d69d93e384d28d589,
+    type: 3}
+  m_PrefabInstance: {fileID: 362494874}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1844766715
 PrefabInstance:
