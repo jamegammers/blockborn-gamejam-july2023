@@ -22,7 +22,7 @@ public class EnemyPatternManager : MonoBehaviour
     {
         //yield return new WaitForSeconds(Cooldown);
         
-        fireBullets.SetActiveBulletPattern(bulletPattern);
+        fireBullets.SetActiveBulletPattern(bulletPattern, 10, 0, 360, false);
         
     }
 
