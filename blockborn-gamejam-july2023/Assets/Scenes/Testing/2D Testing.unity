@@ -469,12 +469,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9050379754061175463, guid: 04100e2930021254baf7822ce98efc9f,
-        type: 3}
-      propertyPath: _enemyPrefab
-      value: 
-      objectReference: {fileID: 8387749216581757621, guid: 1504da56be6e0014781d8f33a5b2bfc0,
-        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6682158952320786299, guid: 04100e2930021254baf7822ce98efc9f, type: 3}

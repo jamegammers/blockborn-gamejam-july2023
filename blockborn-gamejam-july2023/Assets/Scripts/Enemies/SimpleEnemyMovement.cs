@@ -7,7 +7,7 @@ public class SimpleEnemyMovement : MonoBehaviour
 {
     private Enemy _enemy;
 
-    [SerializeField] private float _walkingSpeed = 1;
+    [SerializeField, Range(0, 0.2f)] private float _walkingSpeed = 0.05f;
     
     private enum WalkDirection
     {
@@ -17,7 +17,7 @@ public class SimpleEnemyMovement : MonoBehaviour
     }
     
     [SerializeField] private WalkDirection walkDirection = WalkDirection.Left;
-    private bool currentlyWalking;
+    public bool isShooting = false;
 
     private void Awake()
     {
@@ -46,68 +46,75 @@ public class SimpleEnemyMovement : MonoBehaviour
         Ray rayRight = new Ray(playerRight, new Vector3(0, -2, 0));
         RaycastHit hitRight;
 
-        // if player is walking to left
-        if (walkDirection == WalkDirection.Left)
+        if (!isShooting)
         {
-            // if ground is on left
-            if (Physics.Raycast(playerLeft, new Vector3(0, -2, 0), out hitLeft, 2f))
+            // if player is walking to left
+            if (walkDirection == WalkDirection.Left)
             {
-                if (hitLeft.collider.gameObject.layer == 9)
+                // if ground is on left
+                if (Physics.Raycast(playerLeft, new Vector3(0, -2, 0), out hitLeft, 2f))
                 {
-                    // walk left
-                    transform.Translate(Vector3.left * _walkingSpeed);
-                    walkDirection = WalkDirection.Left;
+                    if (hitLeft.collider.gameObject.layer == 9)
+                    {
+                        // walk left
+                        transform.Translate(Vector3.left * _walkingSpeed);
+                        walkDirection = WalkDirection.Left;
+                    }
+                    
+                    // if there is no ground on left side
+                    else
+                    {
+                        //walk right
+                        transform.Translate(Vector3.right * _walkingSpeed);
+                        walkDirection = WalkDirection.Right;
+                    }
                 }
-                
                 // if there is no ground on left side
                 else
                 {
-                    //walk right
-                    transform.Translate(Vector3.right * _walkingSpeed);
-                    walkDirection = WalkDirection.Right;
-                }
-            }
-            // if there is no ground on left side
-            else
-            {
-                // if there is ground on right side
-                if (Physics.Raycast(playerRight, new Vector3(0, -2, 0), out hitLeft, 2f))
-                {
-                    //walk right
-                    transform.Translate(Vector3.right * _walkingSpeed);
-                    walkDirection = WalkDirection.Right;
-                }
-            }
-        }
-        
-        // if player is walking to right
-        else
-        {
-            //if ground is on right
-            if (Physics.Raycast(playerRight, new Vector3(0, -2, 0), out hitLeft, 2f))
-            {
-                if (hitLeft.collider.gameObject.layer == 9)
-                {
-                    // walk right
-                    transform.Translate(Vector3.right * _walkingSpeed);
-                    walkDirection = WalkDirection.Right;
+                    // if there is ground on right side
+                    if (Physics.Raycast(playerRight, new Vector3(0, -1.5f, 0), out hitLeft, 2f))
+                    {
+                        //walk right
+                        transform.Translate(Vector3.right * _walkingSpeed);
+                        walkDirection = WalkDirection.Right;
+                    }
                 }
             }
             
-            // if there is no ground on right side
+            // if player is walking to right
             else
             {
-                // if there is ground on left side
-                if (Physics.Raycast(playerLeft, new Vector3(0, -2, 0), out hitLeft, 2f))
+                //if ground is on right
+                if (Physics.Raycast(playerRight, new Vector3(0, -1.5f, 0), out hitLeft, 2f))
                 {
-                    //walk left
-                    transform.Translate(Vector3.left * _walkingSpeed);
-                    walkDirection = WalkDirection.Left;
+                    if (hitLeft.collider.gameObject.layer == 9)
+                    {
+                        // walk right
+                        transform.Translate(Vector3.right * _walkingSpeed);
+                        walkDirection = WalkDirection.Right;
+                    }
+                }
+                
+                // if there is no ground on right side
+                else
+                {
+                    // if there is ground on left side
+                    if (Physics.Raycast(playerLeft, new Vector3(0, -2, 0), out hitLeft, 2f))
+                    {
+                        //walk left
+                        transform.Translate(Vector3.left * _walkingSpeed);
+                        walkDirection = WalkDirection.Left;
+                    }
                 }
             }
         }
     }
+        
+        
     
     // if this doesnt work Ill seriously cry
     
+    // it works so I dont need to cry 
+    //
 }
