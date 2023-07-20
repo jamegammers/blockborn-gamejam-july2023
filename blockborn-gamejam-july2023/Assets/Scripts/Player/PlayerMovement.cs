@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             if (_checkedAim != _currentAim) Aim();
         }
 
-        //if (!_movementPressed && _rbody.velocity != new Vector3(0, 0, 0) && _grounded) _rbody.velocity = Vector3.zero;
+        Debug.Log("velocity: " + _rbody.velocity);
 
         if (!_grounded) CheckForGround();
     }
