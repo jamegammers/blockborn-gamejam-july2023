@@ -230,4 +230,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _walkingSpeed: 0.05
+  _raycastDistance: 2
   walkDirection: 0
+  isShooting: 0

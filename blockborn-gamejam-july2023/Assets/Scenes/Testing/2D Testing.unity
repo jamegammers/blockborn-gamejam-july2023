@@ -459,15 +459,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2681728124332327797, guid: 04100e2930021254baf7822ce98efc9f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999146188409553357, guid: 04100e2930021254baf7822ce98efc9f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810872394683934115, guid: 04100e2930021254baf7822ce98efc9f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150185258029278466, guid: 04100e2930021254baf7822ce98efc9f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6325316686310042453, guid: 04100e2930021254baf7822ce98efc9f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 6325316686310042453, guid: 04100e2930021254baf7822ce98efc9f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.1000001
+      value: 2.6000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788421647071194148, guid: 04100e2930021254baf7822ce98efc9f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7007597196477920933, guid: 04100e2930021254baf7822ce98efc9f,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713959181516593142, guid: 04100e2930021254baf7822ce98efc9f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
