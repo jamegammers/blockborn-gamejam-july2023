@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5438578725419359035}
   - component: {fileID: 2921110440564255604}
   - component: {fileID: 670853773115776034}
+  - component: {fileID: 4569433377400882457}
   m_Layer: 0
   m_Name: Continue
   m_TagString: Untagged
@@ -136,6 +137,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!111 &4569433377400882457
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194560780790571655}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 4969dd7e7721663d189baff0b2c7903b, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 4969dd7e7721663d189baff0b2c7903b, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &347779854828074346
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,6 +504,7 @@ GameObject:
   - component: {fileID: 7012399750268563400}
   - component: {fileID: 5212062457985302730}
   - component: {fileID: 3604706671571972601}
+  - component: {fileID: 4242846898532155628}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -612,6 +630,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!111 &4242846898532155628
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046810346433201300}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 4969dd7e7721663d189baff0b2c7903b, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 4969dd7e7721663d189baff0b2c7903b, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &3919518467104356562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,6 +1044,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countdownText: {fileID: 4025701065783832337}
+  _onContinue:
+    m_PersistentCalls:
+      m_Calls: []
+  _onReturnToStart:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5298115324171391211
 GameObject:
   m_ObjectHideFlags: 0
