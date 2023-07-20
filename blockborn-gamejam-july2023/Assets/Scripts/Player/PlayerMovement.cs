@@ -86,6 +86,8 @@ public class PlayerMovement : MonoBehaviour
             if (_checkedAim != _currentAim) Aim();
         }
 
+        //if (!_movementPressed && _rbody.velocity != new Vector3(0, 0, 0) && _grounded) _rbody.velocity = Vector3.zero;
+
         if (!_grounded) CheckForGround();
     }
 
@@ -193,18 +195,19 @@ public class PlayerMovement : MonoBehaviour
     {
         _moveInput = _playerInput.Player.Move.ReadValue<Vector2>();
         //check for crouching and grounded before moving
-        //if (!_crouching)
-        if (_moveInput.x > 0.3) transform.position = transform.position + new Vector3(1 * Time.deltaTime * _playerSpeed * 10, 0, 0);
-        else if (_moveInput.x < -0.3) transform.position = transform.position + new Vector3(-1 * Time.deltaTime * _playerSpeed * 10, 0, 0);
+        //old
+        //if (_moveInput.x > 0.3) transform.position = transform.position + new Vector3(1 * Time.deltaTime * _playerSpeed * 10, 0, 0);
+        //else if (_moveInput.x < -0.3) transform.position = transform.position + new Vector3(-1 * Time.deltaTime * _playerSpeed * 10, 0, 0);
+        if (_moveInput.x > 0.3) _rbody.MovePosition(transform.position + new Vector3(1 * Time.deltaTime * _playerSpeed * 100, 0, 0));
+        else if (_moveInput.x < -0.3) _rbody.MovePosition(transform.position + new Vector3(-1 * Time.deltaTime * _playerSpeed * 100, 0, 0));
         Crouch(false);
-        //else if (_crouching && !Physics.Raycast(transform.position, Vector3.down, _groundHeight)) transform.position = transform.position + new Vector3(_moveInput.x * Time.deltaTime * _playerSpeed * 10, 0, 0);
     }
 
     private void CarMove()
     {
         _moveInput = _playerInput.Player.Move.ReadValue<Vector2>();
-        if (_moveInput.x > 0.3) transform.position = transform.position + new Vector3(1 * Time.deltaTime * _playerCarSpeed * 10, 0, 0);
-        else if (_moveInput.x < -0.3) transform.position = transform.position + new Vector3(-1 * Time.deltaTime * _playerCarSpeed * 10, 0, 0);
+        if (_moveInput.x > 0.3) _rbody.MovePosition(transform.position + new Vector3(1 * Time.deltaTime * _playerCarSpeed * 100, 0, 0));
+        else if (_moveInput.x < -0.3) _rbody.MovePosition(transform.position + new Vector3(-1 * Time.deltaTime * _playerCarSpeed * 100, 0, 0));
     }
 
     private void Jump()
