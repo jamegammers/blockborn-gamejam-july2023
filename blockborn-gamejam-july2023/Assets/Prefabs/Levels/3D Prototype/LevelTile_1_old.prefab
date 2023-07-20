@@ -268,7 +268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 917454863137772575}
   m_Layer: 0
-  m_Name: LevelTile_1
+  m_Name: LevelTile_1_old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
