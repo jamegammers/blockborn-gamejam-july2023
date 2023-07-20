@@ -6,9 +6,6 @@ namespace UI {
 
     public class CoinInserter : MonoBehaviour {
 
-        public static CoinInserter Instance { get; private set; }
-        public static Action OnCoinInserted;
-
         [SerializeField] private RectTransform _textTransform;
         [SerializeField] private TMP_Text _text;
         [SerializeField] private int _coins = 3;
@@ -18,6 +15,9 @@ namespace UI {
         [SerializeField] private float _animationDuration = 1f;
         [SerializeField] private LeanTweenType _animationEasing = LeanTweenType.easeOutQuad;
         [SerializeField] private float _displayDuration = 1f;
+
+        private static CoinInserter Instance { get; set; }
+        private static Action OnCoinInserted;
 
         private PlayerInput _playerInput;
 
@@ -63,6 +63,14 @@ namespace UI {
             OnCoinInserted += callback;
             return true;
         }
+        
+        public static void CancelCoin() => Instance.CancelCoinInstance();
+        
+        private void CancelCoinInstance() {
+            OnCoinInserted = null;
+            HideDisplay();
+        }
+
 
         private void ShowDisplay() => MoveDisplay(_displayVisibleOffset);
         private void HideDisplay(float delay = 0) => MoveDisplay(Vector3.zero, delay);
