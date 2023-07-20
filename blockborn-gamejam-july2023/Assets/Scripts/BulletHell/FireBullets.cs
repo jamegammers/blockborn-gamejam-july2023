@@ -8,6 +8,7 @@ using UnityEngine.Animations;
 using UnityEngine.ProBuilder.MeshOperations;
 using Random = UnityEngine.Random;
 
+
 public class FireBullets : MonoBehaviour
 {
     [SerializeField] private int bulletsAmount = 10;
