@@ -9,10 +9,12 @@ namespace BulletHell
     {
         public static BulletPool Instance { get; private set; }
 
-        [SerializeField] private GameObject pooledBullet;
+        [SerializeField] private GameObject pooledBulletEnemy;
+        [SerializeField] private GameObject pooledBulletPlayer;
         private bool notEnoughBulletsInPool = true;
         
-        private List<GameObject> bullets;
+        private List<GameObject> bulletsEnemy;
+        private List<GameObject> bulletsPlayer;
 
         private void Awake()
         {
@@ -21,27 +23,50 @@ namespace BulletHell
 
         void Start()
         {
-            bullets = new List<GameObject>();
+            bulletsEnemy = new List<GameObject>();
+            bulletsPlayer = new List<GameObject>();
         }
         
-        public GameObject GetBullet()
+        public GameObject GetBulletEnemy()
         {
-            if (bullets.Count > 0)
+            if (bulletsEnemy.Count > 0)
             {
-                for (int i = 0; i < bullets.Count; i++)
+                for (int i = 0; i < bulletsEnemy.Count; i++)
                 {
-                    if (!bullets[i].activeInHierarchy)
+                    if (!bulletsEnemy[i].activeInHierarchy)
                     {
-                        return bullets[i];
+                        return bulletsEnemy[i];
                     }
                 }
             }
             if (notEnoughBulletsInPool)
             {
-                GameObject bullet = Instantiate(pooledBullet);
+                GameObject bullet = Instantiate(pooledBulletEnemy);
                 bullet.SetActive(false);
-                bullets.Add(bullet);
+                bulletsEnemy.Add(bullet);
                 return bullet;
+            }
+            return null;
+        }
+        
+        public GameObject GetBulletPlayer()
+        {
+            if (bulletsPlayer.Count > 0)
+            {
+                for (int i = 0; i < bulletsPlayer.Count; i++)
+                {
+                    if (!bulletsPlayer[i].activeInHierarchy)
+                    {
+                        return bulletsPlayer[i];
+                    }
+                }
+            }
+            if (notEnoughBulletsInPool)
+            {
+                GameObject bulletplayer = Instantiate(pooledBulletPlayer);
+                bulletplayer.SetActive(false);
+                bulletsPlayer.Add(bulletplayer);
+                return bulletplayer;
             }
             return null;
         }
