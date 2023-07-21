@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5938159075825378470}
   - component: {fileID: 5057255952942349943}
+  - component: {fileID: 4352153000811704407}
   m_Layer: 10
   m_Name: PlayerFoot
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2782031709398262551}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.042, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -53,6 +54,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0888228, y: 0.3679893, z: 1}
   m_Center: {x: -0.0170815, y: 0.02903831, z: 0}
+--- !u!54 &4352153000811704407
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2782031709398262551}
+  serializedVersion: 4
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 2048
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 2047
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &3429816529742987385
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +183,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.15548566, y: 0.14767765, z: 0.096390456}
   m_Center: {x: -0.00070347916, y: 0.0001806267, z: -0.002053365}
@@ -168,8 +196,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7883049386471465116}
+  - component: {fileID: 1214765902923099509}
   - component: {fileID: 1086128446808238857}
-  - component: {fileID: 7937546174662437234}
+  - component: {fileID: 3946084407514318756}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -194,8 +223,34 @@ Transform:
   - {fileID: 2534536213780534438}
   - {fileID: 5938159075825378470}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!143 &1214765902923099509
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5187552047133379782}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2.71
+  m_Radius: 0.65
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1.19, z: 0}
 --- !u!114 &1086128446808238857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,9 +263,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7109c0b112471a8499b568dfbdbeff72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rbody: {fileID: 7937546174662437234}
+  _cController: {fileID: 1214765902923099509}
   _playerSpeed: 0.3
-  _jumpHeight: 12
+  _jumpHeight: 18
+  _gravity: 0.2
   _shootCD: 1
   _bulletSpeed: 3
   _bullet: {fileID: 6381419228182649146, guid: 55c6df75418895c42848f5fd35217f3c, type: 3}
@@ -219,33 +275,19 @@ MonoBehaviour:
   _transformationSpeed: 0.5
   _robotSprite: {fileID: 3429816529742987385}
   _carSprite: {fileID: 5418808677382990185}
---- !u!54 &7937546174662437234
-Rigidbody:
+--- !u!114 &3946084407514318756
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5187552047133379782}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 120
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 768dda048572459409844f81a5b05577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCamera: {fileID: 0}
 --- !u!1 &5418808677382990185
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,7 +390,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.15548566, y: 0.14767765, z: 0.096390456}
   m_Center: {x: -0.00070347916, y: 0.0001806267, z: -0.002053365}
