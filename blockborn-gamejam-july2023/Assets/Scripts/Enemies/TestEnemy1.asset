@@ -20,3 +20,4 @@ MonoBehaviour:
   vfx: {fileID: 0}
   cooldown: 0
   damage: 0
+  walkSpeed: 0.05

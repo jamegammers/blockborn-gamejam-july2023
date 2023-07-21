@@ -22,7 +22,7 @@ public class LevelPoolManager : MonoBehaviour
 
     private void Start()
     {
-        _levelHolder = GameObject.Find("LevelHolder").transform;
+        _levelHolder = GameObject.Find("Level").transform;
     }
 
     // Spawns a tile at the end of the current last tile
