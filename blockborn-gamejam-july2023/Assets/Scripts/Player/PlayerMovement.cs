@@ -355,7 +355,10 @@ public class PlayerMovement : MonoBehaviour
         else StartCoroutine(CheckGroundedAfterSeconds(0.1f));
     }
 
-    private enum AimDirections
+    
+}
+
+public enum AimDirections
     {
         right = 0,
         upRight = 1,
@@ -366,6 +369,3 @@ public class PlayerMovement : MonoBehaviour
         down = 6,
         downRight = 7,
     }
-}
-
-
