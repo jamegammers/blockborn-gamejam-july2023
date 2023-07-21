@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _moveInput;
     private PlayerInput _playerInput;
     private bool _movementPressed;
-    private int _currentAim = 0; //0..right, 1..up-right, 2..up,..., 7..down-right
+    [HideInInspector]public int _currentAim = 0; //0..right, 1..up-right, 2..up,..., 7..down-right
     private int _checkedAim = 0;
     //private AimDirections _aimDirections;
     private bool _crouching;
@@ -24,11 +24,11 @@ public class PlayerMovement : MonoBehaviour
     //private float _groundHeight;    
 
     //shooting variables
-    [Header("Shooting")]
+    /*[Header("Shooting")]
     [SerializeField, Range(0, 3f)] private float _shootCD = 1f;
     [SerializeField, Range(1f, 10f)] private float _bulletSpeed = 3f;
     private bool _currentlyShooting = false;
-    [SerializeField] private GameObject _bullet;
+    [SerializeField] private GameObject _bullet; */
     private bool _checkingGround;
 
     [SerializeField] private GameObject _weaponHolder;
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     //transform variables
     [Header("Tranform")]
     [SerializeField, Range(0.1f, 5)] private float _playerCarSpeed = 0.6f;
-    private bool _carMode = false;
+    [HideInInspector] public bool _carMode = false;
     [SerializeField, Range(0, 3f)] private float _transformationSpeed = 0.5f;
     private bool _transforming;
     [SerializeField] private GameObject _robotSprite;
@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
             Crouch(false);
         };
         _playerInput.Player.Jump.performed += ctx => Jump();
-        _playerInput.Player.Shoot.performed += ctx => Shoot();
+        //_playerInput.Player.Shoot.performed += ctx => Shoot();
         _playerInput.Player.Transform.performed += ctx => Transform();
 
         
@@ -251,14 +251,14 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    private void Shoot()
+    /*private void Shoot()
     {
         if (!_currentlyShooting && !_carMode)
         {
             _currentlyShooting = true;
             StartCoroutine(ShootBullet());
         }
-    }
+    } */
 
     private void Crouch(bool crouch)
     {
@@ -275,7 +275,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    private IEnumerator ShootBullet()
+    /*private IEnumerator ShootBullet()
     {
         GameObject _newBullet = Instantiate(_bullet, _weaponHolder.transform.position, Quaternion.Euler(Vector3.zero));
         Rigidbody _bulletRb = _newBullet.GetComponent<Rigidbody>();
@@ -310,7 +310,7 @@ public class PlayerMovement : MonoBehaviour
         _bulletRb.AddForce(direction * 10 * _bulletSpeed, ForceMode.Impulse);
         yield return new WaitForSeconds(_shootCD);
         _currentlyShooting = false;
-    }
+    } */
 
     //used to transform
     private void Transform()
@@ -338,7 +338,6 @@ public class PlayerMovement : MonoBehaviour
         if (_cController.isGrounded)
         {
             //_grounded = true;
-            Debug.Log("groundAim()");
             _checkedAim = 0;
             Aim();
         }
@@ -346,7 +345,6 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator CheckGroundedAfterSeconds(float time)
     {
-        Debug.Log("checking ground");
         _checkingGround = true;
         yield return new WaitForSeconds(time);
         if (_cController.isGrounded)
