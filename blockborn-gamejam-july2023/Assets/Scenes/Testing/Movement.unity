@@ -749,7 +749,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shootCD: 1
   _bulletSpeed: 3
-  _bullet: {fileID: 0}
   _playerMovement: {fileID: 661048936}
 --- !u!4 &676792599 stripped
 Transform:
@@ -2746,6 +2745,11 @@ PrefabInstance:
       propertyPath: m_MinMoveDistance
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3429816529742987385, guid: c932bdc7f979b024194b8e40d82b4ced,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3946084407514318756, guid: c932bdc7f979b024194b8e40d82b4ced,
         type: 3}
       propertyPath: _playerCamera
@@ -2756,10 +2760,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5418808677382990185, guid: c932bdc7f979b024194b8e40d82b4ced,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5938159075825378470, guid: c932bdc7f979b024194b8e40d82b4ced,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 6491670437317315721, guid: c932bdc7f979b024194b8e40d82b4ced,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7883049386471465116, guid: c932bdc7f979b024194b8e40d82b4ced,
         type: 3}
@@ -2815,6 +2829,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164860175485283125, guid: c932bdc7f979b024194b8e40d82b4ced,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

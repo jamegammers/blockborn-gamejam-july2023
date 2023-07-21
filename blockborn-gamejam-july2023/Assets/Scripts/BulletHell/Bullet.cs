@@ -38,8 +38,15 @@ public class Bullet : MonoBehaviour
         CancelInvoke();
     }
 
-    private void OnCollisionEnter(Collision other)
+    /*private void OnCollisionEnter(Collision other)
     {
+        impactEffect.Play();
+        StartCoroutine(WaitForParticleSystem());
+    } */
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("hit with layer: " + other.gameObject.layer);
         impactEffect.Play();
         StartCoroutine(WaitForParticleSystem());
     }

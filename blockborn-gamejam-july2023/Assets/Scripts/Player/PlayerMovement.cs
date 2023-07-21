@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject _bullet; */
     private bool _checkingGround;
 
-    [SerializeField] private GameObject _weaponHolder;
+    public GameObject _weaponHolder;
 
     //transform variables
     [Header("Tranform")]

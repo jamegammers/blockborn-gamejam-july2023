@@ -1,3 +1,4 @@
+using BulletHell;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,7 @@ public class PlayerShoot : MonoBehaviour
     //shooting variables
     [Header("Shooting")]
     [SerializeField, Range(0, 3f)] private float _shootCD = 1f;
-    [SerializeField, Range(1f, 10f)] private float _bulletSpeed = 3f;
     private bool _currentlyShooting = false;
-    [SerializeField] private GameObject _bullet;
     [SerializeField] private PlayerMovement _playerMovement;
 
     private PlayerInput _playerInput;
@@ -42,14 +41,11 @@ public class PlayerShoot : MonoBehaviour
 
     private IEnumerator ShootBullet()
     {
-        //GameObject _newBullet = Instantiate(_bullet, _weaponHolder.transform.position, Quaternion.Euler(Vector3.zero));
-        //Rigidbody _bulletRb = _newBullet.GetComponent<Rigidbody>();
-        Debug.Log("shoot");
         Vector3 direction = new Vector3();
         switch (_playerMovement._currentAim)
         {
             case 0:
-            case 10: //shoot right
+            case 10://shoot right
                 direction = Vector3.right;
                 break;
             case 1: //shoot up right
@@ -74,7 +70,12 @@ public class PlayerShoot : MonoBehaviour
                 direction = new Vector3(0.71f, -0.71f, 0);
                 break;
         }
-        //_bulletRb.AddForce(direction * 10 * _bulletSpeed, ForceMode.Impulse);
+        GameObject bul = BulletPool.Instance.GetBulletPlayer();
+        bul.transform.position = _playerMovement._weaponHolder.transform.position;
+        bul.transform.rotation = transform.rotation;
+        bul.SetActive(true);
+        bul.GetComponent<Bullet>().SetDirection(direction);
+
         yield return new WaitForSeconds(_shootCD);
         _currentlyShooting = false;
     }
