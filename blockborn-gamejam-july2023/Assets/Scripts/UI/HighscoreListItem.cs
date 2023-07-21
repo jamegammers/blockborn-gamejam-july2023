@@ -10,35 +10,23 @@ namespace UI {
         [SerializeField] private RectTransform _parent;
         [SerializeField] private TMP_Text _nameText;
         [SerializeField] private TMP_Text _scoreText;
+        [SerializeField] private Animation _animation;
 
         [Space(15), Header("Settings")]
         [SerializeField] private float _blinkingSpeed = 0.3f;
 
-        private bool _blink = true;
-        private IEnumerator _blinkCoroutine;
 
 
         public void Init(string name, int score, bool newScore = false) {
             _nameText.text = name;
             _scoreText.text = score.ToString();
 
-            if (newScore) {
-                // _blinkCoroutine = Blink();
-                StartCoroutine(Blink());
-            }
-        }
-
-        private IEnumerator Blink() {
-            while (_blink) {
-                _parent.gameObject.SetActive(!_parent.gameObject.activeSelf);
-                // Debug.Log($"Blinking {_parent.gameObject.activeSelf}");
-                yield return new WaitForSeconds(_blinkingSpeed);
-            }
+            if (newScore)
+                _animation.Play();
         }
 
         private void OnDisable() {
-            _blink = false;
-            // StopCoroutine(_blinkCoroutine);
+            _animation.Stop();
         }
     }
 
