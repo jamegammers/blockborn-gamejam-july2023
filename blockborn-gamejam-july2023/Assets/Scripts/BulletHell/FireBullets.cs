@@ -142,7 +142,7 @@ public class FireBullets : MonoBehaviour
             bulDir = new Vector2(rotatedX, rotatedY);
 
             // Spawn and set direction for the bullet
-            GameObject bul = BulletPool.Instance.GetBullet();
+            GameObject bul = BulletPool.Instance.GetBulletEnemy();
             bul.transform.position = transform.position;
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
@@ -175,7 +175,7 @@ public class FireBullets : MonoBehaviour
             bulDir = new Vector2(rotatedX, rotatedY);
 
             // Spawn and set direction for the bullet
-            GameObject bul = BulletPool.Instance.GetBullet();
+            GameObject bul = BulletPool.Instance.GetBulletEnemy();
             bul.transform.position = transform.position;
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
@@ -210,7 +210,7 @@ public class FireBullets : MonoBehaviour
             bulDir = new Vector2(rotatedX, rotatedY);
 
             // Spawn and set direction for the bullet
-            GameObject bul = BulletPool.Instance.GetBullet();
+            GameObject bul = BulletPool.Instance.GetBulletEnemy();
             bul.transform.position = transform.position;
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
@@ -232,7 +232,7 @@ public class FireBullets : MonoBehaviour
         Vector3 bulMoveVector = new Vector3(bulDirX, bulDirY, 0f);
         bulDir = (bulMoveVector - transform.position).normalized;
 
-        GameObject bul = BulletPool.Instance.GetBullet();
+        GameObject bul = BulletPool.Instance.GetBulletEnemy();
         bul.transform.position = transform.position;
         bul.transform.rotation = transform.rotation;
         bul.SetActive(true);
@@ -251,7 +251,7 @@ public class FireBullets : MonoBehaviour
             Vector3 bulMoveVector = new Vector3(bulDirX, bulDirY, 0f);
              bulDir = (bulMoveVector - transform.position).normalized;
 
-             GameObject bul = BulletPool.Instance.GetBullet();
+             GameObject bul = BulletPool.Instance.GetBulletEnemy();
             bul.transform.position = transform.position;
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
@@ -301,7 +301,7 @@ public class FireBullets : MonoBehaviour
 
                 Vector3 position = rotation * new Vector3(xPosition, yPosition, 0f) + transform.position; ;
                 
-                GameObject bul = BulletPool.Instance.GetBullet();
+                GameObject bul = BulletPool.Instance.GetBulletEnemy();
                 bul.transform.position = position;
                 bul.transform.rotation = transform.rotation;
                 bul.SetActive(true);
@@ -343,7 +343,7 @@ public class FireBullets : MonoBehaviour
                 Quaternion rotation = Quaternion.Euler(0f, 0f, rotationAngle);
                 Vector3 position = rotation * new Vector3(xPosition, yPosition, 0f) + transform.position;
 
-                GameObject bul = BulletPool.Instance.GetBullet();
+                GameObject bul = BulletPool.Instance.GetBulletEnemy();
                 bul.transform.position = position;
                 bul.transform.rotation = transform.rotation;
                 bul.SetActive(true);
@@ -390,7 +390,7 @@ public class FireBullets : MonoBehaviour
             Vector3 bulMoveVector = new Vector3(bulDirX, bulDirY, 0f);
             bulDir = (bulMoveVector - transform.position).normalized;*/
 
-            GameObject bul = BulletPool.Instance.GetBullet();
+            GameObject bul = BulletPool.Instance.GetBulletEnemy();
             bul.transform.position = transform.position;
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
@@ -420,7 +420,7 @@ public class FireBullets : MonoBehaviour
             Vector3 bulMoveVector = new Vector3(bulDirX, bulDirY, 0f);
             Vector2 bulDir = (bulMoveVector - transform.position).normalized;
 
-            GameObject bul = BulletPool.Instance.GetBullet();
+            GameObject bul = BulletPool.Instance.GetBulletEnemy();
             bul.transform.position = transform.position;
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
@@ -440,7 +440,7 @@ public class FireBullets : MonoBehaviour
             Vector3 bulMoveVector = new Vector3(bulDirX, bulDirY, 0f);
             bulDir = (bulMoveVector - transform.position).normalized;
 
-            GameObject bul = BulletPool.Instance.GetBullet();
+            GameObject bul = BulletPool.Instance.GetBulletEnemy();
             bul.transform.position = transform.position;
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
@@ -481,7 +481,7 @@ public class FireBullets : MonoBehaviour
             float bulDirY = transform.position.y + Mathf.Sin(angle) * 10;
             Vector3 bulMoveVector = new Vector3(bulDirX, bulDirY, 0f);
             Vector2 bulDir = (bulMoveVector - transform.position).normalized;
-            GameObject bul = BulletPool.Instance.GetBullet();
+            GameObject bul = BulletPool.Instance.GetBulletEnemy();
             bul.transform.position = transform.position;
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);

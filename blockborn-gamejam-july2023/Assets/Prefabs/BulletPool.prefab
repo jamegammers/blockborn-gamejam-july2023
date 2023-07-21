@@ -44,5 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c827bdfad0144632902a695baaef9e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledBullet: {fileID: 7606748710511201057, guid: e47dfe86225d7b74f8ece6413e0466ee,
+  pooledBulletEnemy: {fileID: 7606748710511201057, guid: 0f2787be836f3124d9634ee20959346e,
+    type: 3}
+  pooledBulletPlayer: {fileID: 7606748710511201057, guid: 5ac42611105a9b94689a896d9172b7aa,
     type: 3}

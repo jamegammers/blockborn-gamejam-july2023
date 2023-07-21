@@ -10,10 +10,10 @@ public class Bullet : MonoBehaviour
     [SerializeField] public float speed = 30f;
 
     [SerializeField] private ParticleSystem impactEffect;
-    
+
     private void OnEnable()
     {
-        Invoke("Destroy", 3f);
+        Invoke("Destroy", 5f);
         impactEffect.Stop();
     }
     
@@ -41,7 +41,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         impactEffect.Play();
-            StartCoroutine(WaitForParticleSystem());
+        StartCoroutine(WaitForParticleSystem());
     }
 
     private IEnumerator WaitForParticleSystem()
