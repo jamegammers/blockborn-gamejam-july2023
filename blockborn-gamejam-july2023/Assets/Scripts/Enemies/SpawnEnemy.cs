@@ -12,6 +12,6 @@ public class SpawnEnemy : MonoBehaviour
     private void Awake()
     {
         _enemyLoop = _enemyPrefab.GetComponent<EnemyLoop>();
-        _enemyLoop.SpawnEnemy(transform.position);
+        _enemyLoop.SpawnEnemy(transform.position, _enemyPrefab);
     }
 }

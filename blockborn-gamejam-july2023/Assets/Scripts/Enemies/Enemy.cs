@@ -14,4 +14,5 @@ public class Enemy : ScriptableObject
     public GameObject vfx;
     public float cooldown;
     public float damage;
+    public float walkSpeed;
 }
