@@ -77,11 +77,11 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scanlines: 200
-    - _VignetteInside: 3.27
-    - _VignetteOutside: -1.26
+    - _VignetteInside: 2.66
+    - _VignetteOutside: -0.49
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Vignette: {r: 0.7, g: 0.7, b: 0, a: 0}
+    - _Vignette: {r: 0.16, g: 0.16, b: 0, a: 0}
   m_BuildTextureStacks: []
