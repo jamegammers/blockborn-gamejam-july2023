@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Range(1f, 10f)] private float _bulletSpeed = 3f;
     private bool _currentlyShooting = false;
     [SerializeField] private GameObject _bullet;
+    private bool _checkingGround;
 
     [SerializeField] private GameObject _weaponHolder;
 
@@ -98,16 +99,16 @@ public class PlayerMovement : MonoBehaviour
         if (!_cController.isGrounded) _velocity.y -= _gravity;
         if (_velocity.y < -8) _velocity.y = -8;
         //if (_cController.isGrounded && _velocity.y != 0) _velocity.y = 0;
-        Debug.Log("grounded: " + _cController.isGrounded + "  velocity y: " + _velocity.y);
         
-        _cController.Move(_velocity * Time.deltaTime);
+        //_cController.Move(_velocity * Time.deltaTime);
     }
 
     private void FixedUpdate()
     {
         //scuffed. dont know how to fix. just use this if nothing else works
-        if (_moveInput == Vector2.zero) GroundAim();
+        if (_moveInput == Vector2.zero && _currentAim == 6) GroundAim();
         //if (_currentAim == 6 && _cController.isGrounded) GroundAim();
+        _cController.Move(_velocity * Time.deltaTime);
     }
 
     //Checks in which direction the joystick is facing
@@ -214,6 +215,7 @@ public class PlayerMovement : MonoBehaviour
         if (_moveInput.x > 0.3) _velocity.x = 1 * _playerSpeed * 50;
         else if (_moveInput.x < -0.3) _velocity.x = -1 * _playerSpeed * 50;
         Crouch(false);
+        if (!_checkingGround && _moveInput.x != 0) StartCoroutine(CheckGroundedAfterSeconds(0.5f));
     }
 
     private void CarMove()
@@ -232,15 +234,17 @@ public class PlayerMovement : MonoBehaviour
             if (_currentAim == 10 && hit.transform.gameObject.layer == 11)
             {
                 hit.transform.gameObject.GetComponentInChildren<PlatformEffector>().DisablePlatform();
+                if (!_checkingGround) StartCoroutine(CheckGroundedAfterSeconds(0.1f));
             } else if (_carMode && hit.transform.gameObject.layer == 11 && (_currentAim == 10 || _currentAim ==5 || _currentAim ==7)) //check same, but for car and down left or down right
             {
                 hit.transform.gameObject.GetComponentInChildren<PlatformEffector>().DisablePlatform();
+                if (!_checkingGround) StartCoroutine(CheckGroundedAfterSeconds(0.1f));
             } else //jump normaly
             {
                 //_rbody.AddForce(Vector3.up * _jumpHeight, ForceMode.Impulse);
                 _velocity.y = Mathf.Sqrt(_jumpHeight * -3f * -9.81f);
                 Crouch(false);
-                StartCoroutine(CheckGroundedAfterSeconds(0.1f));
+                if (!_checkingGround) StartCoroutine(CheckGroundedAfterSeconds(0.1f));
             }
             
         }
@@ -334,6 +338,7 @@ public class PlayerMovement : MonoBehaviour
         if (_cController.isGrounded)
         {
             //_grounded = true;
+            Debug.Log("groundAim()");
             _checkedAim = 0;
             Aim();
         }
@@ -341,10 +346,13 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator CheckGroundedAfterSeconds(float time)
     {
+        Debug.Log("checking ground");
+        _checkingGround = true;
         yield return new WaitForSeconds(time);
         if (_cController.isGrounded)
         {
             GroundAim();
+            _checkingGround = false;
         }
         else StartCoroutine(CheckGroundedAfterSeconds(0.1f));
     }
