@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     //[SerializeField] private Rigidbody _rbody;
+    [SerializeField] private PlayerAnimation _playerAnimation;
     [SerializeField] private CharacterController _cController;
     [SerializeField, Range(0.1f, 5)] private float _playerSpeed = 0.3f;   
     [SerializeField, Range(1f, 50f)] private float _jumpHeight = 12f;
@@ -107,8 +108,10 @@ public class PlayerMovement : MonoBehaviour
     {
         //scuffed. dont know how to fix. just use this if nothing else works
         if (_moveInput == Vector2.zero && _currentAim == 6) GroundAim();
-        //if (_currentAim == 6 && _cController.isGrounded) GroundAim();
+       //if (_currentAim == 6 && _cController.isGrounded) GroundAim();
         _cController.Move(_velocity * Time.deltaTime);
+        _playerAnimation.SetWalkAnimation(_velocity.x != 0);
+        if (!_movementPressed && _currentAim != 4) _playerAnimation.SetFacingDirection(true);
     }
 
     //Checks in which direction the joystick is facing
@@ -170,7 +173,10 @@ public class PlayerMovement : MonoBehaviour
     private void Aim()
     { 
         _currentAim = _checkedAim;
-        switch (_currentAim)
+
+        if (_currentAim == 6 && _cController.isGrounded) _currentAim = 10;
+
+        /*switch (_currentAim)
         {
             case 0: 
                 _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3( 0, 0, -90));
@@ -193,7 +199,7 @@ public class PlayerMovement : MonoBehaviour
             case 6:
                 if (!_cController.isGrounded)
                 {
-                    _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 180));
+                    //_weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 180));
                 } else
                 {
                     //crouch and aim forward
@@ -203,7 +209,7 @@ public class PlayerMovement : MonoBehaviour
             case 7:
                 _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 225));
                 break;
-        }
+        } */
        
         
     }
@@ -212,8 +218,16 @@ public class PlayerMovement : MonoBehaviour
     {
         _moveInput = _playerInput.Player.Move.ReadValue<Vector2>();
         //check for crouching and grounded before moving
-        if (_moveInput.x > 0.3) _velocity.x = 1 * _playerSpeed * 50;
-        else if (_moveInput.x < -0.3) _velocity.x = -1 * _playerSpeed * 50;
+        if (_moveInput.x > 0.3)
+        {
+            _velocity.x = 1 * _playerSpeed * 50;
+            _playerAnimation.SetFacingDirection(true);
+        }
+        else if (_moveInput.x < -0.3)
+        {
+            _velocity.x = -1 * _playerSpeed * 50;
+            _playerAnimation.SetFacingDirection(false);
+        }
         Crouch(false);
         if (!_checkingGround && _moveInput.x != 0) StartCoroutine(CheckGroundedAfterSeconds(0.5f));
     }
@@ -244,6 +258,7 @@ public class PlayerMovement : MonoBehaviour
                 //_rbody.AddForce(Vector3.up * _jumpHeight, ForceMode.Impulse);
                 _velocity.y = Mathf.Sqrt(_jumpHeight * -3f * -9.81f);
                 Crouch(false);
+                _playerAnimation.PlayJumpAnimation();
                 if (!_checkingGround) StartCoroutine(CheckGroundedAfterSeconds(0.1f));
             }
             
@@ -275,42 +290,6 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    /*private IEnumerator ShootBullet()
-    {
-        GameObject _newBullet = Instantiate(_bullet, _weaponHolder.transform.position, Quaternion.Euler(Vector3.zero));
-        Rigidbody _bulletRb = _newBullet.GetComponent<Rigidbody>();
-        Vector3 direction = new Vector3();
-        switch (_currentAim)
-        {
-            case 0: case 10: //shoot right
-                direction = Vector3.right;
-                break;
-            case 1: //shoot up right
-                direction = new Vector3(0.71f, 0.71f, 0);
-                break;
-            case 2: //shoot up
-                direction = Vector3.up;
-                break;
-            case 3: //shoot up left
-                direction = new Vector3(-0.71f, 0.71f, 0);
-                break;
-            case 4: //shoot left
-                direction = Vector3.left;
-                break;
-            case 5: //shoot down left
-                direction = new Vector3(-0.71f, -0.71f, 0);
-                break;
-            case 6: //shoot down
-                direction = Vector3.down;
-                break;
-            case 7: //shoot down right
-                direction = new Vector3(0.71f, -0.71f, 0);
-                break;
-        }
-        _bulletRb.AddForce(direction * 10 * _bulletSpeed, ForceMode.Impulse);
-        yield return new WaitForSeconds(_shootCD);
-        _currentlyShooting = false;
-    } */
 
     //used to transform
     private void Transform()

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
+    [SerializeField] private GameObject _playerSprite;
 
     private int _walkHash = Animator.StringToHash("walking");
     private int _jumpHash = Animator.StringToHash("jump");
@@ -15,6 +16,29 @@ public class PlayerAnimation : MonoBehaviour
     private int _attackHoldHash = Animator.StringToHash("AttackHold");
     private int _damageHash = Animator.StringToHash("Damage");
     private int _fallingHash = Animator.StringToHash("Falling");
+
+    private Vector3 _startScale;
+    private bool _facingRight;
+
+
+    private void Awake()
+    {
+        _startScale = _playerSprite.transform.localScale;
+    }
+
+    public void SetFacingDirection(bool facingRight)
+    {
+        if (facingRight && facingRight != _facingRight)
+        {
+            _playerSprite.transform.localScale = _startScale;
+            _facingRight = true;
+        }
+        else if (!facingRight && facingRight != _facingRight)
+        {
+            _playerSprite.transform.localScale = new Vector3(-_startScale.x, _startScale.y, _startScale.z);
+            _facingRight = false;
+        }
+    }
 
     public void SetWalkAnimation(bool walk)
     {

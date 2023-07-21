@@ -46,7 +46,6 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("hit with layer: " + other.gameObject.layer);
         impactEffect.Play();
         StartCoroutine(WaitForParticleSystem());
     }

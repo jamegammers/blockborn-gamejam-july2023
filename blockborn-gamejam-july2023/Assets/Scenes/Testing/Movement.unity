@@ -437,13 +437,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129644633}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.7, y: 3.4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.038, y: -0.127, z: 0.738}
+  m_LocalScale: {x: 6.0367203, y: 6.0367203, z: 6.0367203}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 661048938}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &196137904 stripped
 Transform:
@@ -841,6 +841,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7109c0b112471a8499b568dfbdbeff72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &661048938 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7883049386471465116, guid: c932bdc7f979b024194b8e40d82b4ced,
+    type: 3}
+  m_PrefabInstance: {fileID: 1777844717263862805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &661048939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,6 +861,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shootCD: 1
   _playerMovement: {fileID: 661048936}
+  _playerAnimation: {fileID: 661048940}
+--- !u!114 &661048940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661048934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e777798e26604149912c11a0e1645a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 129644634}
+  _playerSprite: {fileID: 129644633}
 --- !u!4 &676792599 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6808679190092648979, guid: 87ce0d31d2caec247b6875fd151955f4,
@@ -2845,15 +2866,30 @@ PrefabInstance:
       propertyPath: _jumpHeight
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1086128446808238857, guid: c932bdc7f979b024194b8e40d82b4ced,
+        type: 3}
+      propertyPath: _playerAnimation
+      value: 
+      objectReference: {fileID: 661048940}
     - target: {fileID: 1214765902923099509, guid: c932bdc7f979b024194b8e40d82b4ced,
         type: 3}
       propertyPath: m_MinMoveDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2439126844817994413, guid: c932bdc7f979b024194b8e40d82b4ced,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3429816529742987385, guid: c932bdc7f979b024194b8e40d82b4ced,
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3429816529742987385, guid: c932bdc7f979b024194b8e40d82b4ced,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3946084407514318756, guid: c932bdc7f979b024194b8e40d82b4ced,
         type: 3}
@@ -2879,6 +2915,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6491670437317315721, guid: c932bdc7f979b024194b8e40d82b4ced,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7883049386471465116, guid: c932bdc7f979b024194b8e40d82b4ced,
         type: 3}
@@ -2942,10 +2983,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7883049386471465116, guid: c932bdc7f979b024194b8e40d82b4ced,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 129644636}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5187552047133379782, guid: c932bdc7f979b024194b8e40d82b4ced,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 661048939}
+    - targetCorrespondingSourceObject: {fileID: 5187552047133379782, guid: c932bdc7f979b024194b8e40d82b4ced,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 661048940}
   m_SourcePrefab: {fileID: 100100000, guid: c932bdc7f979b024194b8e40d82b4ced, type: 3}

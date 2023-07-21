@@ -10,14 +10,20 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField, Range(0, 3f)] private float _shootCD = 1f;
     private bool _currentlyShooting = false;
     [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private PlayerAnimation _playerAnimation;
 
     private PlayerInput _playerInput;
+    private bool _shoot = false;
 
     private void Awake()
     {
         _playerInput = new PlayerInput();
 
-        _playerInput.Player.Shoot.performed += ctx => Shoot();
+        _playerInput.Player.Shoot.performed += ctx =>
+        {
+            _shoot = !_shoot;
+            _playerAnimation.SetAttackHoldAnimation(_shoot);
+        };
     }
 
     private void OnEnable()
@@ -28,6 +34,11 @@ public class PlayerShoot : MonoBehaviour
     private void OnDisable()
     {
         _playerInput.Player.Disable();
+    }
+
+    private void Update()
+    {
+        if (_shoot) Shoot();
     }
 
     private void Shoot()
@@ -75,6 +86,8 @@ public class PlayerShoot : MonoBehaviour
         bul.transform.rotation = transform.rotation;
         bul.SetActive(true);
         bul.GetComponent<Bullet>().SetDirection(direction);
+
+        _playerAnimation.PlayAttackAnimation((AimDirections)_playerMovement._currentAim);
 
         yield return new WaitForSeconds(_shootCD);
         _currentlyShooting = false;
