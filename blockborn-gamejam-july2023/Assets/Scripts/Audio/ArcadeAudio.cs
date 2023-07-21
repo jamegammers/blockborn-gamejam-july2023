@@ -24,13 +24,13 @@ namespace Audio {
             Instance = this;
         }
 
-        public void PlayAudio(AudioClip clip) {
+        public void PlayAudio(AudioClip clip, float volume = 1f) {
             if (Instance == null) {
                 Debug.LogError("Audio instance is null");
                 return;
             }
 
-            Audio.PlayAudio(clip, transform.position, _mixer);
+            Audio.PlayAudio(clip, transform.position, volume, _mixer);
         }
 
         #if UNITY_EDITOR

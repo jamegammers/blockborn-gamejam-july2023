@@ -23,16 +23,16 @@ namespace Audio {
             Instance = this;
         }
 
-        public static void PlayAudio(AudioClip clip, Vector3 position, AudioMixerGroup mixer = null) {
+        public static void PlayAudio(AudioClip clip, Vector3 position, float volume = 1f, AudioMixerGroup mixer = null) {
             if (Instance == null) {
                 Debug.LogError("Audio instance is null");
                 return;
             }
 
-            Instance.PlayAudioInstance(clip, position, mixer);
+            Instance.PlayAudioInstance(clip, position, volume, mixer);
         }
 
-        private void PlayAudioInstance(AudioClip clip, Vector3 position, AudioMixerGroup mixer = null) {
+        private void PlayAudioInstance(AudioClip clip, Vector3 position, float volume = 1f, AudioMixerGroup mixer = null) {
             GameObject audioInstance = new() {
                 transform = { position = position },
                 name = $"AudioInstance ({clip.name})"
@@ -40,6 +40,7 @@ namespace Audio {
 
             AudioSource audioSource = audioInstance.AddComponent<AudioSource>();
             audioSource.clip = clip;
+            audioSource.volume = volume;
             audioSource.outputAudioMixerGroup = mixer;
             audioSource.spatialBlend = 1f;
             audioSource.Play();
