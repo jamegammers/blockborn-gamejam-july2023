@@ -889,8 +889,8 @@ MonoBehaviour:
       type: 3}
     _offsetPressed: 0.005
     _rotationOffsetPressed: 0
-    _audioDown: {fileID: 8300000, guid: fbc67a48cc5fbf24c872ad02121186a9, type: 3}
-    _audioUp: {fileID: 8300000, guid: b7e7b1f83721b8f4db07b5139cf84044, type: 3}
+    _audioDown: {fileID: 8300000, guid: f8ad52359b886d34c847c172eee96336, type: 3}
+    _audioUp: {fileID: 8300000, guid: f314a2973f4a8c04c9d6b45fed4e4b56, type: 3}
     currentDirection: {x: 0, y: 0}
 --- !u!114 &814090882
 MonoBehaviour:

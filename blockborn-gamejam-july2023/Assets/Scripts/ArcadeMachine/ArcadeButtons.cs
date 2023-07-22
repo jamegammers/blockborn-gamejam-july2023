@@ -12,7 +12,8 @@ namespace ArcadeMachine {
     public class ArcadeButton {
         
         // references
-        [FoldoutGroup("Setup"), SerializeField] private string _name;
+        // ReSharper disable once NotAccessedField.Local
+        [SerializeField] private string _name;
         [FoldoutGroup("Setup"), SerializeField] private Transform _object;
         [FoldoutGroup("Setup"), SerializeField, EnumToggleButtons] private ArcadeButtonType _type;
         [FoldoutGroup("Setup"), SerializeField] private InputActionReference _inputAction;
@@ -36,6 +37,7 @@ namespace ArcadeMachine {
         public AudioClip AudioDown => _audioDown;
         public AudioClip AudioUp => _audioUp;
 
+        // ReSharper disable once InconsistentNaming
         [HideInInspector] public Vector2 currentDirection;
 
     }
