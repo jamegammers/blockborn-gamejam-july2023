@@ -30,7 +30,7 @@ namespace Audio {
                 return;
             }
 
-            Audio.PlayAudio(clip, transform.position, volume, _mixer);
+            AudioManager.PlayAudio(clip, transform.position, volume, _mixer);
         }
 
         #if UNITY_EDITOR

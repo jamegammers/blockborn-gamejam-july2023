@@ -1,4 +1,5 @@
 using System;
+using Audio;
 using TMPro;
 using UnityEngine;
 
@@ -15,8 +16,10 @@ namespace UI {
         [SerializeField] private float _animationDuration = 1f;
         [SerializeField] private LeanTweenType _animationEasing = LeanTweenType.easeOutQuad;
         [SerializeField] private float _displayDuration = 1f;
+        [SerializeField] private AudioClip _coinSound;
 
         private static CoinInserter Instance { get; set; }
+        // ReSharper disable once InconsistentNaming
         private static Action OnCoinInserted;
 
         private PlayerInput _playerInput;
@@ -47,6 +50,8 @@ namespace UI {
 
             _coins--;
             _text.text = _coins.ToString();
+            AudioManager.PlayAudio(_coinSound, transform.position);
+
             OnCoinInserted?.Invoke();
             HideDisplay(_displayDuration);
 

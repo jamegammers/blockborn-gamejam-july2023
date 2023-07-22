@@ -5,13 +5,13 @@ using UnityEngine.Audio;
 namespace Audio {
 
     [ExecuteAlways]
-    public class Audio : MonoBehaviour {
+    public class AudioManager : MonoBehaviour {
 
         #if UNITY_EDITOR
         [SerializeField] private AudioClip _testClip;
         #endif
 
-        private static Audio Instance { get; set; }
+        private static AudioManager Instance { get; set; }
 
 
         private void Awake() {
