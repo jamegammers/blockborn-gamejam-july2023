@@ -1,5 +1,6 @@
 using System;
 using Audio;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
@@ -7,12 +8,15 @@ namespace UI {
 
     public class CoinInserter : MonoBehaviour {
 
-        [SerializeField] private RectTransform _textTransform;
-        [SerializeField] private TMP_Text _text;
+        [SerializeField, Required] private RectTransform _coinDisplay;
+        [SerializeField, Required] private TMP_Text _text;
+        [SerializeField, Required] private RectTransform _hintDisplay;
         [SerializeField] private int _coins = 3;
 
         [Space(15), Header("Settings")]
         [SerializeField] private Vector2 _displayVisibleOffset = new(0, -50);
+        [SerializeField] private Vector2 _hintVisibleOffset = new(0, 50);
+
         [SerializeField] private float _animationDuration = 1f;
         [SerializeField] private LeanTweenType _animationEasing = LeanTweenType.easeOutQuad;
         [SerializeField] private float _displayDuration = 1f;
@@ -77,13 +81,19 @@ namespace UI {
         }
 
 
-        private void ShowDisplay() => MoveDisplay(_displayVisibleOffset);
-        private void HideDisplay(float delay = 0) => MoveDisplay(Vector3.zero, delay);
+        private void ShowDisplay() {
+            MoveDisplay(_coinDisplay, _displayVisibleOffset);
+            MoveDisplay(_hintDisplay, _hintVisibleOffset);
+        }
+        private void HideDisplay(float delay = 0) {
+            MoveDisplay(_coinDisplay, Vector3.zero, delay);
+            MoveDisplay(_hintDisplay, Vector3.zero);
+        }
 
-        private void MoveDisplay(Vector2 offset, float delay = 0f) {
+        private void MoveDisplay(RectTransform rectTransform, Vector2 offset, float delay = 0f) {
             LeanTween.value(gameObject,
-                    value => _textTransform.anchoredPosition = value,
-                    (Vector3) _textTransform.anchoredPosition,
+                    value => rectTransform.anchoredPosition = value,
+                    (Vector3) rectTransform.anchoredPosition,
                     (Vector3) offset,
                     _animationDuration)
                 .setEase(_animationEasing)
