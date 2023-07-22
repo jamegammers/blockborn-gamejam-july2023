@@ -25,8 +25,8 @@ namespace ArcadeMachine {
         private float _rotationOffsetPressed;
 
         // audio
-        [FoldoutGroup("Audio"), SerializeField] private AudioClip _audioDown;
-        [FoldoutGroup("Audio"), SerializeField] private AudioClip _audioUp;
+        [FoldoutGroup("Audio"), SerializeField] private AudioSample _audioDown;
+        [FoldoutGroup("Audio"), SerializeField] private AudioSample _audioUp;
 
         // property getters
         public Transform Object => _object;
@@ -34,8 +34,8 @@ namespace ArcadeMachine {
         public InputActionReference InputAction => _inputAction;
         public float OffsetPressed => _offsetPressed;
         public float RotationOffsetPressed => _rotationOffsetPressed;
-        public AudioClip AudioDown => _audioDown;
-        public AudioClip AudioUp => _audioUp;
+        public AudioSample AudioDown => _audioDown;
+        public AudioSample AudioUp => _audioUp;
 
         // ReSharper disable once InconsistentNaming
         [HideInInspector] public Vector2 currentDirection;

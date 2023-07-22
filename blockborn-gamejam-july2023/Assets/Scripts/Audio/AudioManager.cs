@@ -29,23 +29,37 @@ namespace Audio {
                 return;
             }
 
-            Instance.PlayAudioInstance(clip, position, volume, mixer);
+            AudioSample sample = ScriptableObject.CreateInstance<AudioSample>();
+            sample.SetClip(clip);
+            sample.SetVolume(volume);
+
+            Instance.PlayAudioInstance(sample, position, volume, mixer);
         }
 
-        private void PlayAudioInstance(AudioClip clip, Vector3 position, float volume = 1f, AudioMixerGroup mixer = null) {
+        public static void PlayAudio(AudioSample sample, Vector3 position) {
+            if (Instance == null) {
+                Debug.LogError("Audio instance is null");
+                return;
+            }
+
+            Instance.PlayAudioInstance(sample, Instance.transform.position);
+        }
+
+        private void PlayAudioInstance(AudioSample sample, Vector3 position, float volume = 1f, AudioMixerGroup mixer = null) {
             GameObject audioInstance = new() {
                 transform = { position = position },
-                name = $"AudioInstance ({clip.name})"
+                name = $"AudioInstance ({sample.clip.name})"
             };
 
             AudioSource audioSource = audioInstance.AddComponent<AudioSource>();
-            audioSource.clip = clip;
-            audioSource.volume = volume;
+            audioSource.clip = sample.clip;
+            audioSource.volume = sample.volume;
+            audioSource.pitch = sample.pitch;
             audioSource.outputAudioMixerGroup = mixer;
             audioSource.spatialBlend = 1f;
             audioSource.Play();
 
-            StartCoroutine(DestroyAudioInstance(audioInstance, clip.length));
+            StartCoroutine(DestroyAudioInstance(audioInstance, sample.clip.length));
         }
 
         private static IEnumerator DestroyAudioInstance(Object instance, float duration) {
