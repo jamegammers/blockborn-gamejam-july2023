@@ -39,7 +39,7 @@ public class SimpleEnemyMovement : MonoBehaviour
     private void UpdatePosition()
     {
         
-        CheckForGroundOnSide();
+        
         
         //Vector3 playerLeft = new Vector3(transform.position.x - 0.75f, transform.position.y, transform.position.z);
         //Vector3 playerRight = new Vector3(transform.position.x + 0.75f, transform.position.y, transform.position.z);
@@ -54,6 +54,7 @@ public class SimpleEnemyMovement : MonoBehaviour
     
         if (!isShooting)
         {
+            CheckForGroundOnSide();
             // if player is walking to left
             if (walkDirection == WalkDirection.Left)
             {

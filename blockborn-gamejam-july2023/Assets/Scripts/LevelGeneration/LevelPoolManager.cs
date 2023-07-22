@@ -11,7 +11,7 @@ public class LevelPoolManager : MonoBehaviour
 
     private int level = 1;
     
-    public float _globalEnemyHealth = 3;
+    [HideInInspector] public float _globalEnemyHealth = 3;
 
     private Transform _levelHolder;
     
