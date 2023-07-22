@@ -9,7 +9,7 @@ namespace ArcadeMachine {
     public enum ArcadeButtonType { Button, Joystick }
 
     [Serializable]
-    public struct ArcadeButton {
+    public class ArcadeButton {
         
         // references
         [FoldoutGroup("Setup"), SerializeField] private string _name;
@@ -35,7 +35,9 @@ namespace ArcadeMachine {
         public float RotationOffsetPressed => _rotationOffsetPressed;
         public AudioClip AudioDown => _audioDown;
         public AudioClip AudioUp => _audioUp;
-        
+
+        [HideInInspector] public Vector2 currentDirection;
+
     }
 
     public class ArcadeButtons : MonoBehaviour {
@@ -74,7 +76,21 @@ namespace ArcadeMachine {
                     button.RotationOffsetPressed * inputDir.y
                 );
 
+                Debug.Log($"button dir: {button.currentDirection}");
+                if (
+                    (button.currentDirection.x == 0 && inputDir.x != 0) ||
+                    (button.currentDirection.y == 0 && inputDir.y != 0)
+                )
+                    AudioManager.PlayAudio(button.AudioDown, button.Object.position);
+
+                else if (
+                    (button.currentDirection.x != 0 && inputDir.x == 0) ||
+                    (button.currentDirection.y != 0 && inputDir.y == 0)
+                )
+                    AudioManager.PlayAudio(button.AudioUp, button.Object.position);
+
                 button.Object.localRotation = Quaternion.Euler(-joystickRotation.y, 0, joystickRotation.x);
+                button.currentDirection = inputDir;
             }
         }
 

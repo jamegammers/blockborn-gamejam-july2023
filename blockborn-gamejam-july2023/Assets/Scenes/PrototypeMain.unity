@@ -879,8 +879,9 @@ MonoBehaviour:
       type: 3}
     _offsetPressed: 0
     _rotationOffsetPressed: 10
-    _audioDown: {fileID: 0}
-    _audioUp: {fileID: 0}
+    _audioDown: {fileID: 8300000, guid: fbc67a48cc5fbf24c872ad02121186a9, type: 3}
+    _audioUp: {fileID: 8300000, guid: b7e7b1f83721b8f4db07b5139cf84044, type: 3}
+    currentDirection: {x: 0, y: 0}
   - _name: Jump
     _object: {fileID: 1842418361}
     _type: 0
@@ -890,6 +891,7 @@ MonoBehaviour:
     _rotationOffsetPressed: 0
     _audioDown: {fileID: 8300000, guid: fbc67a48cc5fbf24c872ad02121186a9, type: 3}
     _audioUp: {fileID: 8300000, guid: b7e7b1f83721b8f4db07b5139cf84044, type: 3}
+    currentDirection: {x: 0, y: 0}
 --- !u!114 &814090882
 MonoBehaviour:
   m_ObjectHideFlags: 0
