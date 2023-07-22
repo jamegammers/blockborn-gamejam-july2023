@@ -314,6 +314,11 @@ PrefabInstance:
       propertyPath: _transformationSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2751850930576709115, guid: c932bdc7f979b024194b8e40d82b4ced,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.68
+      objectReference: {fileID: 0}
     - target: {fileID: 3946084407514318756, guid: c932bdc7f979b024194b8e40d82b4ced,
         type: 3}
       propertyPath: _playerCamera
