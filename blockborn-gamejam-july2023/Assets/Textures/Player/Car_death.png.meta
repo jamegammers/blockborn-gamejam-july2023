@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8715fb1e4aec37a47b5d3ab08eff463a
+guid: 58640f75f37fdc440a5b70c8a0686c6e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Death_1
+      name: Car_death_0
       rect:
         serializedVersion: 2
         x: 12
-        y: 1985
-        width: 24
-        height: 51
+        y: 2012
+        width: 44
+        height: 24
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 319d53a12206b774b8ff1a1f7b8db12a
-      internalID: -1518723803
+      spriteID: 91c827c977bb0c2488847a98dfecf016
+      internalID: 653707367
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_3
+      name: Car_death_1
       rect:
         serializedVersion: 2
-        x: 12
-        y: 1910
-        width: 24
-        height: 51
+        x: 80
+        y: 2017
+        width: 44
+        height: 24
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e62e46a54c9a80245972deb973af8b6d
-      internalID: 236687620
+      spriteID: 01291c2f835901547895ad9f55f2adc9
+      internalID: -1940592938
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_4
+      name: Car_death_2
       rect:
         serializedVersion: 2
-        x: 12
-        y: 1839
-        width: 24
-        height: 47
+        x: 147
+        y: 2021
+        width: 44
+        height: 24
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5eeb1e96ae4a1b4c971b85221f1cb2d
-      internalID: -1807043401
+      spriteID: f415bb66422d23c46b42e72dbd26ae61
+      internalID: 2050494642
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_5
+      name: Car_death_3
       rect:
         serializedVersion: 2
-        x: 12
-        y: 1768
-        width: 24
-        height: 47
+        x: 212
+        y: 2018
+        width: 44
+        height: 24
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29669ee06f80e804ab8a3c1c438ef73f
-      internalID: -44533142
+      spriteID: be925c9d9c661b248a223470e396a1c0
+      internalID: 2030063664
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_6
+      name: Car_death_4
       rect:
         serializedVersion: 2
-        x: 12
-        y: 1700
-        width: 24
-        height: 44
+        x: 273
+        y: 2021
+        width: 44
+        height: 24
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e8e153c79d6ddb408452d3dcd10e533
-      internalID: 1968072524
+      spriteID: b05846874eb61fb48ad6cba6401f3d08
+      internalID: -76336737
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_7
+      name: Car_death_5
       rect:
         serializedVersion: 2
         x: 12
-        y: 1637
-        width: 24
-        height: 39
+        y: 1973
+        width: 44
+        height: 24
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 256dcbfc6e069834e9bdd03ea000828e
-      internalID: -671358256
+      spriteID: 1b3b3e6189ef22c45ba5a852aa80b9e2
+      internalID: -1878531794
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_8
+      name: Car_death_6
       rect:
         serializedVersion: 2
-        x: 12
-        y: 1576
-        width: 24
-        height: 37
+        x: 80
+        y: 1978
+        width: 44
+        height: 24
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7851bb0dec721741827126a31b39779
-      internalID: 230706632
+      spriteID: 03222356492d3b244ac9fa66ddbc23fa
+      internalID: 767154861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_9
+      name: Car_death_7
       rect:
         serializedVersion: 2
-        x: 12
-        y: 1520
-        width: 33
-        height: 32
+        x: 147
+        y: 1982
+        width: 44
+        height: 24
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,8 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0cc56684e07b0c346bbe90d5cadeae4f
-      internalID: -219201940
+      spriteID: 20793047080b97d47b50cd7e4fea01c0
+      internalID: -1158416555
       vertices: []
       indices: 
       edges: []
@@ -280,7 +280,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 2165650a1d9bef24786fd215ef4e430c
+    spriteID: ffd1a2b1781a5c24ea8dd9a5545a8543
     internalID: 0
     vertices: []
     indices: 
@@ -288,16 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Death_0: 1220903536
-      Death_1: -1518723803
-      Death_2: -170170017
-      Death_3: 236687620
-      Death_4: -1807043401
-      Death_5: -44533142
-      Death_6: 1968072524
-      Death_7: -671358256
-      Death_8: 230706632
-      Death_9: -219201940
+      Car_death_0: 653707367
+      Car_death_1: -1940592938
+      Car_death_2: 2050494642
+      Car_death_3: 2030063664
+      Car_death_4: -76336737
+      Car_death_5: -1878531794
+      Car_death_6: 767154861
+      Car_death_7: -1158416555
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

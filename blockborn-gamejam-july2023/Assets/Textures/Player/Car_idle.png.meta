@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d221df2ab513864419c4ee97ec4625e0
+guid: d4b38517cfbaba04db339607f679e001
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -53,7 +53,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_0
+      name: Car_idle_0
       rect:
         serializedVersion: 2
         x: 12
-        y: 1991
-        width: 24
-        height: 45
+        y: 2018
+        width: 37
+        height: 18
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 598f40a04a3d6e246b75458587f15e1f
-      internalID: -1601425757
+      spriteID: bc123d2a58445b14f97d0d3d7461f305
+      internalID: -1973931906
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_1
+      name: Car_idle_1
       rect:
         serializedVersion: 2
-        x: 12
-        y: 1923
-        width: 24
-        height: 44
+        x: 73
+        y: 2019
+        width: 37
+        height: 18
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c05fa8dcbad13e04c86fee439034e09d
-      internalID: 1433779858
+      spriteID: 6275de08da7ae6648bfb1131e18d0113
+      internalID: -1606098611
       vertices: []
       indices: 
       edges: []
@@ -154,16 +154,16 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    spriteID: 07466552cd7515244aefd6d250d3ba7e
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle_0: -1601425757
-      Idle_1: 1433779858
+      Car_idle_0: -1973931906
+      Car_idle_1: -1606098611
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

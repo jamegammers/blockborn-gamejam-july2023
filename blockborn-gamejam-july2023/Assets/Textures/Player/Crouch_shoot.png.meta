@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8715fb1e4aec37a47b5d3ab08eff463a
+guid: 1b418570501a31a4e8573bbd1ffd7289
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,159 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Death_1
+      name: Crouch_shoot_0
       rect:
         serializedVersion: 2
         x: 12
-        y: 1985
-        width: 24
-        height: 51
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 319d53a12206b774b8ff1a1f7b8db12a
-      internalID: -1518723803
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Death_3
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 1910
-        width: 24
-        height: 51
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e62e46a54c9a80245972deb973af8b6d
-      internalID: 236687620
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Death_4
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 1839
-        width: 24
-        height: 47
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b5eeb1e96ae4a1b4c971b85221f1cb2d
-      internalID: -1807043401
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Death_5
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 1768
-        width: 24
-        height: 47
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 29669ee06f80e804ab8a3c1c438ef73f
-      internalID: -44533142
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Death_6
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 1700
-        width: 24
-        height: 44
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3e8e153c79d6ddb408452d3dcd10e533
-      internalID: 1968072524
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Death_7
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 1637
-        width: 24
-        height: 39
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 256dcbfc6e069834e9bdd03ea000828e
-      internalID: -671358256
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Death_8
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 1576
-        width: 24
-        height: 37
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f7851bb0dec721741827126a31b39779
-      internalID: 230706632
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Death_9
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 1520
-        width: 33
+        y: 2004
+        width: 36
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -271,8 +124,176 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0cc56684e07b0c346bbe90d5cadeae4f
-      internalID: -219201940
+      spriteID: 2579940c940b48a46b28f1176992ac98
+      internalID: 412158315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crouch_shoot_1
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 2004
+        width: 36
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ded3556c50924ac4d95d277845b14e5b
+      internalID: 1299637337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crouch_shoot_2
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 2004
+        width: 36
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1da21e9439c7ca14da9c4e25ac8dd24c
+      internalID: -324602987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crouch_shoot_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 2004
+        width: 36
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 146de37efe8acc24a9aaf0085c3446a8
+      internalID: -808583579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crouch_shoot_4
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 2004
+        width: 36
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cee9fbe6bb1b77b4c959acb323339d27
+      internalID: 811972969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crouch_shoot_5
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 2004
+        width: 36
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bc297452eb7b3043ab808007f710279
+      internalID: -1801851454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crouch_shoot_6
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 2004
+        width: 36
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af6931f00b8046f46832e992e822306b
+      internalID: 925618786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crouch_shoot_7
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 2004
+        width: 36
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c407e9b07afbc244baf1eff48b3856d
+      internalID: -1041367731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crouch_shoot_8
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 2004
+        width: 36
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd543ef8e4960694f84c579e913b4260
+      internalID: -1346611096
       vertices: []
       indices: 
       edges: []
@@ -280,7 +301,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 2165650a1d9bef24786fd215ef4e430c
+    spriteID: 53de834ffcd717c43b227d60c79abb6c
     internalID: 0
     vertices: []
     indices: 
@@ -288,16 +309,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Death_0: 1220903536
-      Death_1: -1518723803
-      Death_2: -170170017
-      Death_3: 236687620
-      Death_4: -1807043401
-      Death_5: -44533142
-      Death_6: 1968072524
-      Death_7: -671358256
-      Death_8: 230706632
-      Death_9: -219201940
+      Crouch_shoot_0: 412158315
+      Crouch_shoot_1: 1299637337
+      Crouch_shoot_2: -324602987
+      Crouch_shoot_3: -808583579
+      Crouch_shoot_4: 811972969
+      Crouch_shoot_5: -1801851454
+      Crouch_shoot_6: 925618786
+      Crouch_shoot_7: -1041367731
+      Crouch_shoot_8: -1346611096
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d221df2ab513864419c4ee97ec4625e0
+guid: 2bab3910f09d06a49a0fec92ad396266
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -53,7 +53,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_0
+      name: Car_drive_0
       rect:
         serializedVersion: 2
         x: 12
-        y: 1991
-        width: 24
-        height: 45
+        y: 2018
+        width: 37
+        height: 18
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 598f40a04a3d6e246b75458587f15e1f
-      internalID: -1601425757
+      spriteID: 4884da91c57f3054f8f9ec07b5b77bab
+      internalID: 2147332160
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_1
+      name: Car_drive_1
       rect:
         serializedVersion: 2
-        x: 12
-        y: 1923
-        width: 24
-        height: 44
+        x: 73
+        y: 2018
+        width: 37
+        height: 18
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +145,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c05fa8dcbad13e04c86fee439034e09d
-      internalID: 1433779858
+      spriteID: 4069162516c399049946f663bd54d575
+      internalID: -564951181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Car_drive_2
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 2018
+        width: 37
+        height: 18
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38f2d05735249b44294dcfd9fd3f85de
+      internalID: -581663199
       vertices: []
       indices: 
       edges: []
@@ -154,16 +175,17 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    spriteID: f35116f5761a4bd44ad80e0727a0c523
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle_0: -1601425757
-      Idle_1: 1433779858
+      Car_drive_0: 2147332160
+      Car_drive_1: -564951181
+      Car_drive_2: -581663199
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
