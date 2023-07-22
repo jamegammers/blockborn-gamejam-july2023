@@ -679,6 +679,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Brown Bricks 5x11
       objectReference: {fileID: 0}
+    - target: {fileID: 3417910418404025583, guid: a2968c61c2fe292438af8e181592d4b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -714,6 +719,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: House Purple Balcony 3x11
+      objectReference: {fileID: 0}
+    - target: {fileID: 361656656306411027, guid: 2155ca0f7161bdb4eb62863b39acf677,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2928788918917361030, guid: 2155ca0f7161bdb4eb62863b39acf677,
         type: 3}
@@ -917,6 +927,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: House Yellow Bricks 3x11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447538195656115330, guid: 9a62537c548906f40a1130f0afd57053,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8067622407049120369, guid: 9a62537c548906f40a1130f0afd57053,
         type: 3}
