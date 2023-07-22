@@ -12,18 +12,20 @@ namespace ArcadeMachine {
     public struct ArcadeButton {
         
         // references
-        [SerializeField] private string _name;
-        [SerializeField] private Transform _object;
-        [SerializeField, EnumToggleButtons] private ArcadeButtonType _type;
-        [SerializeField] private InputActionReference _inputAction;
+        [FoldoutGroup("Setup"), SerializeField] private string _name;
+        [FoldoutGroup("Setup"), SerializeField] private Transform _object;
+        [FoldoutGroup("Setup"), SerializeField, EnumToggleButtons] private ArcadeButtonType _type;
+        [FoldoutGroup("Setup"), SerializeField] private InputActionReference _inputAction;
         
         // settings
-        [SerializeField, ShowIf("_type", ArcadeButtonType.Button)] private float _offsetPressed;
-        [SerializeField, ShowIf("_type", ArcadeButtonType.Joystick)] private float _rotationOffsetPressed;
+        [FoldoutGroup("Settings"), SerializeField, ShowIf("_type", ArcadeButtonType.Button)]
+        private float _offsetPressed;
+        [FoldoutGroup("Settings"), SerializeField, ShowIf("_type", ArcadeButtonType.Joystick)]
+        private float _rotationOffsetPressed;
 
         // audio
-        [SerializeField] private AudioClip _audioDown;
-        [SerializeField] private AudioClip _audioUp;
+        [FoldoutGroup("Audio"), SerializeField] private AudioClip _audioDown;
+        [FoldoutGroup("Audio"), SerializeField] private AudioClip _audioUp;
 
         // property getters
         public Transform Object => _object;

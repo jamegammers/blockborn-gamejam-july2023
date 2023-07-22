@@ -888,8 +888,8 @@ MonoBehaviour:
       type: 3}
     _offsetPressed: 0.005
     _rotationOffsetPressed: 0
-    _audioDown: {fileID: 0}
-    _audioUp: {fileID: 0}
+    _audioDown: {fileID: 8300000, guid: fbc67a48cc5fbf24c872ad02121186a9, type: 3}
+    _audioUp: {fileID: 8300000, guid: b7e7b1f83721b8f4db07b5139cf84044, type: 3}
 --- !u!114 &814090882
 MonoBehaviour:
   m_ObjectHideFlags: 0
