@@ -309,6 +309,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7853513000839958513}
     m_Modifications:
+    - target: {fileID: 1086128446808238857, guid: c932bdc7f979b024194b8e40d82b4ced,
+        type: 3}
+      propertyPath: _transformationSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3946084407514318756, guid: c932bdc7f979b024194b8e40d82b4ced,
         type: 3}
       propertyPath: _playerCamera
@@ -375,7 +380,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6491670437317315721, guid: c932bdc7f979b024194b8e40d82b4ced, type: 3}
+    - {fileID: 3429816529742987385, guid: c932bdc7f979b024194b8e40d82b4ced, type: 3}
+    - {fileID: 5418808677382990185, guid: c932bdc7f979b024194b8e40d82b4ced, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c932bdc7f979b024194b8e40d82b4ced, type: 3}

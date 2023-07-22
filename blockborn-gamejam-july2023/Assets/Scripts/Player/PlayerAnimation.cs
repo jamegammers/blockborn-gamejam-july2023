@@ -16,6 +16,10 @@ public class PlayerAnimation : MonoBehaviour
     private int _attackHoldHash = Animator.StringToHash("AttackHold");
     private int _damageHash = Animator.StringToHash("Damage");
     private int _fallingHash = Animator.StringToHash("Falling");
+    private int _crouchHash = Animator.StringToHash("Crouch");
+    private int _carHash = Animator.StringToHash("Car");
+    private int _carTransformHash = Animator.StringToHash("CarTransform");
+    private int _transformingHash = Animator.StringToHash("Transforming");
 
     private Vector3 _startScale;
     private bool _facingRight;
@@ -82,6 +86,22 @@ public class PlayerAnimation : MonoBehaviour
     public void SetAttackHoldAnimation(bool hold)
     {
         _animator.SetBool(_attackHoldHash, hold);
+    }
+
+    public void SetCrouchAnimation(bool crouch)
+    {
+        _animator.SetBool(_crouchHash, crouch);
+    }
+
+    public void SetCarTransformAnimation(bool isCar)
+    {
+        _animator.SetBool(_carHash, isCar);
+        _animator.SetTrigger(_carTransformHash);
+    }
+
+    public void SetTransformingAnimation(bool transforming)
+    {
+        _animator.SetBool(_transformingHash, transforming);
     }
 
     private IEnumerator ResetTriggerAfter(int hash, float sec)

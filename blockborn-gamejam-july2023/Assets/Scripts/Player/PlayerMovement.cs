@@ -40,8 +40,8 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public bool _carMode = false;
     [SerializeField, Range(0, 3f)] private float _transformationSpeed = 0.5f;
     private bool _transforming;
-    [SerializeField] private GameObject _robotSprite;
-    [SerializeField] private GameObject _carSprite;
+    //[SerializeField] private GameObject _robotSprite;
+    //[SerializeField] private GameObject _carSprite;
 
     private void Awake()
     {
@@ -111,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
        //if (_currentAim == 6 && _cController.isGrounded) GroundAim();
         _cController.Move(_velocity * Time.deltaTime);
         _playerAnimation.SetWalkAnimation(_velocity.x != 0);
+        _playerAnimation.SetMidAirAnimation(!_cController.isGrounded);
         if (!_movementPressed && _currentAim != 4) _playerAnimation.SetFacingDirection(true);
     }
 
@@ -235,8 +236,16 @@ public class PlayerMovement : MonoBehaviour
     private void CarMove()
     {
         _moveInput = _playerInput.Player.Move.ReadValue<Vector2>();
-        if (_moveInput.x > 0.3) _velocity.x = 1 * _playerCarSpeed * 50;
-        else if (_moveInput.x < -0.3) _velocity.x = -1 * _playerCarSpeed * 50;
+        if (_moveInput.x > 0.3)
+        {
+            _velocity.x = 1 * _playerCarSpeed * 50;
+            _playerAnimation.SetFacingDirection(true);
+        }
+        else if (_moveInput.x < -0.3)
+        {
+            _velocity.x = -1 * _playerCarSpeed * 50;
+            _playerAnimation.SetFacingDirection(false);
+        }
     }
 
     private void Jump()
@@ -282,11 +291,11 @@ public class PlayerMovement : MonoBehaviour
             if (crouch && _currentAim == 10)
             {
                 _weaponHolder.transform.localPosition = new Vector3(_weaponHolderPosition.x, _weaponHolderPosition.y - 0.5f, _weaponHolderPosition.z);
-                _weaponHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -90));
             }
             else _weaponHolder.transform.localPosition = _weaponHolderPosition;
             _crouching = crouch;
         }
+        _playerAnimation.SetCrouchAnimation(_crouching);
         
     }
 
@@ -303,13 +312,16 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator TransformCar()
     {
+        _playerAnimation.SetTransformingAnimation(true);
         _transforming = true;
         _carMode = !_carMode;
         _weaponHolder.SetActive(!_carMode);
+        _playerAnimation.SetCarTransformAnimation(_carMode);
         yield return new WaitForSeconds(_transformationSpeed);
-        _carSprite.SetActive(_carMode);
-        _robotSprite.SetActive(!_carMode);
+        //_carSprite.SetActive(_carMode);
+        //_robotSprite.SetActive(!_carMode);
         _transforming = false;
+        _playerAnimation.SetTransformingAnimation(false);
     }
 
     private void GroundAim()
@@ -347,4 +359,5 @@ public enum AimDirections
         downLeft = 5,
         down = 6,
         downRight = 7,
+        crouch = 10,
     }
