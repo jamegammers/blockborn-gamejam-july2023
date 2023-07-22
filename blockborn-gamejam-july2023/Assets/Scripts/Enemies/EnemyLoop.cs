@@ -55,7 +55,7 @@ public class EnemyLoop : MonoBehaviour
             {
                 if (hit.collider.transform.gameObject.layer == 6)
                 {
-                    Debug.Log("Player is hit!");
+                    //Debug.Log("Player is hit!");
                 }
             }
             

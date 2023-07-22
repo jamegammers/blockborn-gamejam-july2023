@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3294542685631721582}
   - component: {fileID: -5397796299036881601}
   - component: {fileID: 3090119425549493995}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BulletPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,8 +183,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2832894974339451746, guid: 4c92db98faec29e4ea12a7d2a9f01986,
         type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832894974339451746, guid: 4c92db98faec29e4ea12a7d2a9f01986,
+        type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581443173689673819, guid: 4c92db98faec29e4ea12a7d2a9f01986,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6885466145966724802, guid: 4c92db98faec29e4ea12a7d2a9f01986,
         type: 3}
