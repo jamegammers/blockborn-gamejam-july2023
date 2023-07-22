@@ -16,7 +16,6 @@ public class PlatformEffector : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        //_collider.enabled = false;
         _collider.excludeLayers = _noPlayerLayer;
     }
 
