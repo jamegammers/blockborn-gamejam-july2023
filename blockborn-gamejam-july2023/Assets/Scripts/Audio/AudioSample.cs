@@ -20,14 +20,9 @@ namespace Audio {
         internal void SetVolume(float newVolume) => _volume = newVolume;
 
 
-        [PropertySpace(100), Button(ButtonSizes.Gigantic)]
+        [PropertySpace(100), Button(ButtonSizes.Gigantic), HideInEditorMode]
         #if UNITY_EDITOR
         public void TestPlay() {
-            if (!Application.isPlaying) {
-                Debug.LogWarning("AudioSample can only be played in play mode");
-                return;
-            }
-
             AudioManager.PlayAudio(this, Camera.main.transform.position);
         }
         #endif
