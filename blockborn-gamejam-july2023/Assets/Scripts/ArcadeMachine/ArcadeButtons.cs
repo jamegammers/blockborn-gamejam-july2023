@@ -38,6 +38,8 @@ namespace ArcadeMachine {
         public AudioSample AudioUp => _audioUp;
 
         // ReSharper disable once InconsistentNaming
+        [HideInInspector] public Vector3 initialPosition;
+        // ReSharper disable once InconsistentNaming
         [HideInInspector] public Vector2 currentDirection;
 
     }
@@ -57,13 +59,15 @@ namespace ArcadeMachine {
         }
 
         private static void RegisterButton(ArcadeButton button) {
+            button.initialPosition = button.Object.localPosition;
+
             button.InputAction.action.started += _ => {
-                button.Object.localPosition = new Vector3(0, -button.OffsetPressed, 0);
+                button.Object.localPosition = button.initialPosition + new Vector3(0, -button.OffsetPressed, 0);
                 AudioManager.PlayAudio(button.AudioDown, button.Object.position);
             };
 
             button.InputAction.action.canceled += _ => {
-                button.Object.localPosition = Vector3.zero;
+                button.Object.localPosition = button.initialPosition;
                 AudioManager.PlayAudio(button.AudioUp, button.Object.position);
             };
         }
