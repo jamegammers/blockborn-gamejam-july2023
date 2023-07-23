@@ -33,6 +33,11 @@ public class Abilities : MonoBehaviour
         Instance = this;
     }
 
+    public void SetTarget(GameObject target)
+    {
+        this.target = target.transform;
+    }
+
     public void SetAbility(Ability setability)
     {
         ability = setability;
@@ -72,6 +77,7 @@ public class Abilities : MonoBehaviour
             rb.velocity = transform.up * speed;
             yield return new WaitForSeconds(abilityDuration);
         Destroy(missile);
+        MissileCollider.SetActive(false);
         abilityActive = false;
     }
     
