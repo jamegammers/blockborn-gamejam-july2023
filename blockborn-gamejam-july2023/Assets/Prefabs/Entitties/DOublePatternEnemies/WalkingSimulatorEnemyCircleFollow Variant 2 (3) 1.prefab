@@ -271,6 +271,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 33fab7a7ccdaf6a40a008fba398e67be, type: 2}
   - {fileID: 11400000, guid: 7d325cc2975e00d46b45d35f64f8cbf4, type: 2}
   - {fileID: 11400000, guid: 60702f486b7890144bbad2202b18e3f7, type: 2}
+  - {fileID: 11400000, guid: 7d325cc2975e00d46b45d35f64f8cbf4, type: 2}
   patternDurations:
   - 4
   - 2

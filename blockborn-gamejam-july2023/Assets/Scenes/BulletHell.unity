@@ -1391,6 +1391,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WalkingSimulatorEnemyWayAllRange Variant 2 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 7279107273226977062, guid: e950765d4840c5c4bbce9e972dfb187e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1692,6 +1697,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WalkingSimulatorEnemyCircleFollow Variant 2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1777857276930464414, guid: e75bb4b9a92354941b8f5be795643d83,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1867,6 +1877,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WalkingSimulatorEnemyDoubleSpiral Variant 2 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 9039345154047237053, guid: c2ad9059c1a6da74c90c43a5d516edd0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1934,6 +1949,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WalkingSimulatorEnemyWayAllRangeFollow Variant 2 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3751607228933307375, guid: a470adadac0096a4d9dd9c056ce3b597,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7679004764445514088, guid: a470adadac0096a4d9dd9c056ce3b597,
         type: 3}
@@ -2151,6 +2171,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WalkingSimulatorEnemySpiral Variant 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6012206615868338420, guid: 73568b249300fa64eb0f8cc1c7ecc89f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2394,6 +2419,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2569785645699171030, guid: a8b6ccba2dde9384e9331ac2ab8c2713,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4863122771251267491, guid: a8b6ccba2dde9384e9331ac2ab8c2713,
         type: 3}
       propertyPath: m_Name
@@ -2472,6 +2502,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WalkingSimulatorEnemyWayAllRangeSine Variant 2 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6931434957042063544, guid: c9dadfa840a2e214e90906184e2f925a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2544,6 +2579,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WalkingSimulatorEnemyPyramid Variant 2 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026626792199055826, guid: f461ba03cb9a03341bf5209fd256339b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2618,6 +2658,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WalkingSimulatorEnemyConeAim Variant 2 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 8507892284274674781, guid: 023a9b29da8be404193d0098fd428a84,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2690,6 +2735,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WalkingSimulatorEnemyTrackSpiralFollow Variant 2 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8919220097217334477, guid: e377b64be0c40a14cb0e39ac3498809e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2851,6 +2901,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WalkingSimulatorEnemyCircle Variant 2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4880314837842269941, guid: e4c3d66f04beaab4680dc63cdad260c4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2899,6 +2954,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WalkingSimulatorEnemyCircleSine Variant 2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113552572056084960, guid: 36ebb52a6356c584eb6fa6eaa03d8d58,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5331335654698189161, guid: 36ebb52a6356c584eb6fa6eaa03d8d58,
         type: 3}

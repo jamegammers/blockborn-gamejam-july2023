@@ -87,6 +87,7 @@ public class EnemyPatternManager : MonoBehaviour
         }
             Debug.Log("End of Patterns reached");
             isFiring = false;
+            StopCoroutine(ReadBulletPatterns());
             StartFiringPatterns();
         }
         
