@@ -7,7 +7,7 @@ public class SpawnEnemy : MonoBehaviour
 {
     private EnemyLoop _enemyLoop;
     [SerializeField] private GameObject _enemyPrefab;
-    private GameObject _enemySpawnLocation;
+    [SerializeField] GameObject _enemySpawnLocation;
     private Enemy _enemyScriptableObject;
     
     private void Awake()

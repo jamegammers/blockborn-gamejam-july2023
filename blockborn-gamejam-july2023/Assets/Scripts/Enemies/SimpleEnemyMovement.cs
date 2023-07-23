@@ -23,13 +23,16 @@ public class SimpleEnemyMovement : MonoBehaviour
     [SerializeField] private GameObject playerLeft;
     [SerializeField] private GameObject playerRight;
 
+    [SerializeField] private PlayerAnimation _playerAnimation;
+
     private void Awake()
     {
         _enemy = GetComponent<EnemyLoop>().GetEnemy();
         _walkingSpeed = _enemy.walkSpeed;
-        
+
         
     }
+
 
     private void FixedUpdate()
     {
@@ -54,6 +57,7 @@ public class SimpleEnemyMovement : MonoBehaviour
     
         if (!isShooting)
         {
+            _playerAnimation.SetWalkAnimation(true);
             CheckForGroundOnSide();
             // if player is walking to left
             if (walkDirection == WalkDirection.Left)
@@ -66,6 +70,7 @@ public class SimpleEnemyMovement : MonoBehaviour
                         // walk left
                         transform.Translate(Vector3.left * _walkingSpeed);
                         walkDirection = WalkDirection.Left;
+                        _playerAnimation.SetFacingDirection(!false);
                     }
                     
                     // if there is no ground on left side
@@ -74,6 +79,7 @@ public class SimpleEnemyMovement : MonoBehaviour
                         //walk right
                         transform.Translate(Vector3.right * _walkingSpeed);
                         walkDirection = WalkDirection.Right;
+                        _playerAnimation.SetFacingDirection(!true);
                     }
                 }
                 // if there is no ground on left side
@@ -85,6 +91,7 @@ public class SimpleEnemyMovement : MonoBehaviour
                         //walk right
                         transform.Translate(Vector3.right * _walkingSpeed);
                         walkDirection = WalkDirection.Right;
+                        _playerAnimation.SetFacingDirection(!true);
                     }
                 }
             }
@@ -100,6 +107,7 @@ public class SimpleEnemyMovement : MonoBehaviour
                         // walk right
                         transform.Translate(Vector3.right * _walkingSpeed);
                         walkDirection = WalkDirection.Right;
+                        _playerAnimation.SetFacingDirection(!true);
                     }
                 }
                 
@@ -112,6 +120,7 @@ public class SimpleEnemyMovement : MonoBehaviour
                         //walk left
                         transform.Translate(Vector3.left * _walkingSpeed);
                         walkDirection = WalkDirection.Left;
+                        _playerAnimation.SetFacingDirection(!false);
                     }
                 }
             }
