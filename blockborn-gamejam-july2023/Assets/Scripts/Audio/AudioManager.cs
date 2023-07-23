@@ -42,7 +42,7 @@ namespace Audio {
                 return;
             }
 
-            Instance.PlayAudioInstance(sample, Instance.transform.position);
+            Instance.PlayAudioInstance(sample, position);
         }
 
         private void PlayAudioInstance(AudioSample sample, Vector3 position, float volume = 1f, AudioMixerGroup mixer = null) {
@@ -54,7 +54,7 @@ namespace Audio {
             AudioSource audioSource = audioInstance.AddComponent<AudioSource>();
             audioSource.clip = sample.clip;
             audioSource.volume = sample.volume;
-            audioSource.pitch = sample.pitch;
+            audioSource.pitch = sample.randomizePitch ? Random.Range(sample.pitchMin, sample.pitchMax) : sample.pitch;
             audioSource.outputAudioMixerGroup = mixer;
             audioSource.spatialBlend = 1f;
             audioSource.Play();
