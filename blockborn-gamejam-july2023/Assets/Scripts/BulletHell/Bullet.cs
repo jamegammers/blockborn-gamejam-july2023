@@ -8,13 +8,22 @@ public class Bullet : MonoBehaviour
 {
     private Vector2 direction;
     [SerializeField] public float speed = 30f;
+    private float savedSpeed;
 
     [SerializeField] private ParticleSystem impactEffect;
+    [SerializeField] private SpriteRenderer renderer;
     
     [SerializeField, Range(1, 5)] private int _damage = 1;
 
+    private void Awake()
+    {
+        savedSpeed = speed;
+    }
+
     private void OnEnable()
     {
+        renderer.enabled = true;
+        speed = savedSpeed;
         Invoke("Destroy", 5f);
         impactEffect.Stop();
     }
@@ -48,12 +57,20 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        impactEffect.Play();
-        StartCoroutine(WaitForParticleSystem());
+        //impactEffect.Play();
+        //StartCoroutine(WaitForParticleSystem());
 
         if (other.gameObject.layer == 8)
         { 
             other.gameObject.GetComponent<EnemyLoop>().GetHit(_damage);
+            impactEffect.Play();
+            StartCoroutine(WaitForParticleSystem());
+            speed = 0f;
+        } else if (other.gameObject.layer == 9)
+        {
+            impactEffect.Play();
+            StartCoroutine(WaitForParticleSystem());
+            speed = 0f;
         }
 
 
@@ -61,6 +78,7 @@ public class Bullet : MonoBehaviour
 
     private IEnumerator WaitForParticleSystem()
     {
+        renderer.enabled = false;
         yield return new WaitForSeconds(impactEffect.main.duration);
         Destroy();
     }
