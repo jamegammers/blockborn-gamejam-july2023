@@ -25,6 +25,7 @@ public class LevelPoolManager : MonoBehaviour
     private void Start()
     {
         _levelHolder = GameObject.Find("Level").transform;
+        GenerateLevel(45);
     }
 
     // Spawns a tile at the end of the current last tile
