@@ -3622,6 +3622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2487393288988306548}
   - component: {fileID: 6784478922128330484}
+  - component: {fileID: -8082623632343554836}
   m_Layer: 9
   m_Name: House Brown Smooth 5x11
   m_TagString: Untagged
@@ -3731,6 +3732,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5, y: 11, z: 1}
   m_Center: {x: 2, y: -5, z: 0}
+--- !u!114 &-8082623632343554836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4536528954990966711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9880881ceea02d44bc27ad0f2b50872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildHeight: 11
+  buildWidth: 5
 --- !u!1 &4910761010418411834
 GameObject:
   m_ObjectHideFlags: 0
