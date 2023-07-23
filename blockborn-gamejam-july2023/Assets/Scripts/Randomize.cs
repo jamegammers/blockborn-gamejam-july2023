@@ -15,4 +15,10 @@ public class Randomize : MonoBehaviour
     {
         return Random.Range(min, max);
     }
+    
+    // seriously, setting the seed in the main menu is the shittiest idea I've ever heard
+    public void SetLevelSeed(int seed)
+    {
+        levelSeed = seed;
+    }
 }
