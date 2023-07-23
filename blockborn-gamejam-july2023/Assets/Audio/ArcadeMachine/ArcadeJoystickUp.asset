@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185dd61d99ad46a1874b36d58586730e, type: 3}
   m_Name: ArcadeJoystickUp
   m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: fbc67a48cc5fbf24c872ad02121186a9, type: 3}
+  _clips:
+  - {fileID: 8300000, guid: fbc67a48cc5fbf24c872ad02121186a9, type: 3}
   _volume: 1
   _pitch: 1
+  _randomizePitch: 0
+  _pitchMin: 0.9
+  _pitchMax: 1.1

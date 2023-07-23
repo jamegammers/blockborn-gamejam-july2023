@@ -20,7 +20,7 @@ namespace UI {
         [SerializeField] private float _animationDuration = 1f;
         [SerializeField] private LeanTweenType _animationEasing = LeanTweenType.easeOutQuad;
         [SerializeField] private float _displayDuration = 1f;
-        [SerializeField] private AudioClip _coinSound;
+        [SerializeField] private AudioSample _coinSound;
 
         private static CoinInserter Instance { get; set; }
         // ReSharper disable once InconsistentNaming
