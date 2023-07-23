@@ -836,7 +836,7 @@ MonoBehaviour:
   _animationDuration: 0.3
   _animationEasing: 2
   _displayDuration: 1
-  _coinSound: {fileID: 8300000, guid: d76b6ea164e03db4abcb9ce5ff5c1e8a, type: 3}
+  _coinSound: {fileID: 11400000, guid: 745946aa4be083844b6909e8a4a9b0d8, type: 2}
 --- !u!1 &873595090
 GameObject:
   m_ObjectHideFlags: 0
@@ -3607,6 +3607,36 @@ PrefabInstance:
     - target: {fileID: 3514302457569696333, guid: a729725a97e6333abb0486c57afe1ac2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3600352599189809932, guid: a729725a97e6333abb0486c57afe1ac2,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3600352599189809932, guid: a729725a97e6333abb0486c57afe1ac2,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3600352599189809932, guid: a729725a97e6333abb0486c57afe1ac2,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3600352599189809932, guid: a729725a97e6333abb0486c57afe1ac2,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3600352599189809932, guid: a729725a97e6333abb0486c57afe1ac2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3600352599189809932, guid: a729725a97e6333abb0486c57afe1ac2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3730675339011684875, guid: a729725a97e6333abb0486c57afe1ac2,
