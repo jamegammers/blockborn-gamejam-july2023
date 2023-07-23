@@ -836,7 +836,7 @@ MonoBehaviour:
   _animationDuration: 0.3
   _animationEasing: 2
   _displayDuration: 1
-  _coinSound: {fileID: 8300000, guid: d76b6ea164e03db4abcb9ce5ff5c1e8a, type: 3}
+  _coinSound: {fileID: 11400000, guid: 745946aa4be083844b6909e8a4a9b0d8, type: 2}
 --- !u!1 &873595090
 GameObject:
   m_ObjectHideFlags: 0

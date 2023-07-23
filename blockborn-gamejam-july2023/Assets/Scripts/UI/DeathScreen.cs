@@ -9,13 +9,12 @@ namespace UI {
     public class DeathScreen : MonoBehaviour {
 
         public Action OnContinue;
-        public Action OnReturnToStart;
 
         [SerializeField] private TMP_Text _countdownText;
+        [SerializeField] private HighscoresList _highscoresList;
 
         [Space(15)]
         [SerializeField] private UnityEvent _onContinue;
-        [SerializeField] private UnityEvent _onReturnToStart;
 
         private int _countdown = 15;
 
@@ -26,8 +25,12 @@ namespace UI {
 
         #if UNITY_EDITOR
         [ContextMenu("Show")]
-        #endif
         public void Show() {
+            Show(6900);
+        }
+        #endif
+
+        public void Show(int score) {
             gameObject.SetActive(true);
 
             CoinInserter.WaitForCoin(() => {
@@ -36,10 +39,10 @@ namespace UI {
                 OnContinue?.Invoke();
             });
 
-            StartCoroutine(Countdown());
+            StartCoroutine(Countdown(score));
         }
 
-        private IEnumerator Countdown() {
+        private IEnumerator Countdown(int score) {
             while (_countdown > 0) {
                 _countdownText.text = _countdown.ToString();
                 yield return new WaitForSeconds(1f);
@@ -48,7 +51,7 @@ namespace UI {
 
             CoinInserter.CancelCoin();
             gameObject.SetActive(false);
-            _onReturnToStart.Invoke();
+            _highscoresList.Show(score);
         }
 
     }

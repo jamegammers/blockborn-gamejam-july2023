@@ -1044,10 +1044,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countdownText: {fileID: 4025701065783832337}
+  _highscoresList: {fileID: 3557590490651874716}
   _onContinue:
-    m_PersistentCalls:
-      m_Calls: []
-  _onReturnToStart:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &5298115324171391211
