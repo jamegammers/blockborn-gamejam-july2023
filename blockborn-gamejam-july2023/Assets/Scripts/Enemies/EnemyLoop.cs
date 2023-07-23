@@ -66,10 +66,10 @@ public class EnemyLoop : MonoBehaviour
         }
     }
 
-    public void SpawnEnemy(Vector3 spawnPos, GameObject enemyPrefab)
+    public void SpawnEnemy(Vector3 spawnPos, GameObject enemyPrefab, GameObject enemySpawnLocation)
     {
         //Instantiate(_enemy.enemyPrefab, spawnPos, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        Instantiate(enemyPrefab, spawnPos, Quaternion.identity).transform.parent = enemySpawnLocation.transform;
     }
     
     private void HandleLevelScaling(int level)
