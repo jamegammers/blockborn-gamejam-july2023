@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7749983928736280924}
   - component: {fileID: 7978344428509770306}
   - component: {fileID: 4757841638367109261}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Homing Missile PickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

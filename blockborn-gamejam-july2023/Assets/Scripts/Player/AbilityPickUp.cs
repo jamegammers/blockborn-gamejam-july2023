@@ -9,11 +9,11 @@ public class AbilityPickUp : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.layer == 6)
         {
             Debug.Log("Player found pickUp");
             other.GetComponent<Abilities>().SetAbility(ability);
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }
