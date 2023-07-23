@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpawnNextTile : MonoBehaviour
 {
     private GameObject _gameManager;
-    private int levelLength;
+    private float levelLength;
 
     private void Awake()
     {
@@ -22,12 +22,8 @@ public class SpawnNextTile : MonoBehaviour
         Destroy(GetComponent<BoxCollider>());
     }
     
-    public void SetLevelLength(int length)
+    public void SetLevelLength(float length)
     {
         levelLength = length;
     }
-    
-    
-    //TODO: spawn enemies using gameManager
-    
 }
