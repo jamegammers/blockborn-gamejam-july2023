@@ -155,7 +155,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _randomize: {fileID: 633036810}
   _powerUpList:
-  - {fileID: 1164448178955352268, guid: c22572d280f783e418d404320e7ce2c6, type: 3}
+  - {fileID: 4861936271990270187, guid: 0251b94eb9b22fc42ad13f17f7df5910, type: 3}
+  - {fileID: 2023147038250171122, guid: d48e0fe8fcdabb843b6e872f59b5b44e, type: 3}
+  - {fileID: 7412276646961214156, guid: 15a2e20ed395bcf468fc211b2ed27634, type: 3}
+  - {fileID: 6210369901315325787, guid: 63bd0c90a9fab7c46a1d35319b2a5962, type: 3}
+  - {fileID: 2263864331320892971, guid: 3ca81944a8d3b8a4b9fc6ead8d0be0fb, type: 3}
 --- !u!114 &633036814
 MonoBehaviour:
   m_ObjectHideFlags: 0
