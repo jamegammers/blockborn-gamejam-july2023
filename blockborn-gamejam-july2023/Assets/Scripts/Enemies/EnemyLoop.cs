@@ -8,7 +8,11 @@ using UnityEngine.UIElements;
 
 public class EnemyLoop : MonoBehaviour
 {
+    private GameObject _gameManager;
     private LevelPoolManager _levelPoolManager;
+    private Randomize _randomize;
+    private EnemyPoolManager _enemyPoolManager;
+    
     [SerializeField] private Enemy _enemy;
 
     public LayerMask layerMask;
@@ -32,7 +36,12 @@ public class EnemyLoop : MonoBehaviour
     
     private void Awake()
     {
-        _levelPoolManager = GameObject.Find("GameManager").GetComponent<LevelPoolManager>();
+        _gameManager = GameObject.Find("GameManager");
+        _randomize = _gameManager.GetComponent<Randomize>();
+        
+        _levelPoolManager = _gameManager.GetComponent<LevelPoolManager>();
+        _enemyPoolManager = _gameManager.GetComponent<EnemyPoolManager>();
+        
 
         _enemyHealth = _enemy.health;
         _enemyDamage = _enemy.damage;
@@ -66,12 +75,6 @@ public class EnemyLoop : MonoBehaviour
         }
     }
 
-    public void SpawnEnemy(Vector3 spawnPos, GameObject enemyPrefab, GameObject enemySpawnLocation)
-    {
-        //Instantiate(_enemy.enemyPrefab, spawnPos, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPos, Quaternion.identity).transform.parent = enemySpawnLocation.transform;
-    }
-    
     private void HandleLevelScaling(int level)
     {
         _enemyHealth = _levelPoolManager._globalEnemyHealth;
