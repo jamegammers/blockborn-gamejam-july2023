@@ -20,10 +20,15 @@ public class SimpleEnemyMovement : MonoBehaviour
     [SerializeField] private WalkDirection walkDirection = WalkDirection.Left;
     [HideInInspector] public bool isShooting = false;
 
+    [SerializeField] private GameObject playerLeft;
+    [SerializeField] private GameObject playerRight;
+
     private void Awake()
     {
         _enemy = GetComponent<EnemyLoop>().GetEnemy();
         _walkingSpeed = _enemy.walkSpeed;
+        
+        
     }
 
     private void FixedUpdate()
@@ -33,8 +38,11 @@ public class SimpleEnemyMovement : MonoBehaviour
 
     private void UpdatePosition()
     {
-        Vector3 playerLeft = new Vector3(transform.position.x - 0.75f, transform.position.y, transform.position.z);
-        Vector3 playerRight = new Vector3(transform.position.x + 0.75f, transform.position.y, transform.position.z);
+        
+        
+        
+        //Vector3 playerLeft = new Vector3(transform.position.x - 0.75f, transform.position.y, transform.position.z);
+        //Vector3 playerRight = new Vector3(transform.position.x + 0.75f, transform.position.y, transform.position.z);
 
         //--------------------------------------------------------------------------------------------------------------
         
@@ -43,14 +51,15 @@ public class SimpleEnemyMovement : MonoBehaviour
    
         //Ray rayRight = new Ray(playerRight, new Vector3(0, -_raycastDistance, 0));
         RaycastHit hitRight;
-
+    
         if (!isShooting)
         {
+            CheckForGroundOnSide();
             // if player is walking to left
             if (walkDirection == WalkDirection.Left)
             {
                 // if ground is on left
-                if (Physics.Raycast(playerLeft, new Vector3(0, -1, 0), out raycastHit, _raycastDistance))
+                if (Physics.Raycast(playerLeft.transform.position, new Vector3(0, -1, 0), out raycastHit, _raycastDistance))
                 {
                     if (raycastHit.collider.gameObject.layer == 9)
                     {
@@ -71,7 +80,7 @@ public class SimpleEnemyMovement : MonoBehaviour
                 else
                 {
                     // if there is ground on right side
-                    if (Physics.Raycast(playerRight, new Vector3(0, -1, 0), out raycastHit, _raycastDistance))
+                    if (Physics.Raycast(playerRight.transform.position, new Vector3(0, -1, 0), out raycastHit, _raycastDistance))
                     {
                         //walk right
                         transform.Translate(Vector3.right * _walkingSpeed);
@@ -84,7 +93,7 @@ public class SimpleEnemyMovement : MonoBehaviour
             else
             {
                 //if ground is on right
-                if (Physics.Raycast(playerRight, new Vector3(0, -1, 0), out raycastHit, _raycastDistance))
+                if (Physics.Raycast(playerRight.transform.position, new Vector3(0, -1, 0), out raycastHit, _raycastDistance))
                 {
                     if (raycastHit.collider.gameObject.layer == 9)
                     {
@@ -98,7 +107,7 @@ public class SimpleEnemyMovement : MonoBehaviour
                 else
                 {
                     // if there is ground on left side
-                    if (Physics.Raycast(playerLeft, new Vector3(0, -1, 0), out raycastHit, _raycastDistance))
+                    if (Physics.Raycast(playerLeft.transform.position, new Vector3(0, -1, 0), out raycastHit, _raycastDistance))
                     {
                         //walk left
                         transform.Translate(Vector3.left * _walkingSpeed);
@@ -108,13 +117,41 @@ public class SimpleEnemyMovement : MonoBehaviour
             }
         }
         
-        Debug.DrawRay(playerLeft, new Vector3(0, -1 * _raycastDistance, 0), Color.red);
-        Debug.DrawRay(playerRight, new Vector3(0, -1 * _raycastDistance, 0), Color.red);
+        //Debug.DrawRay(playerLeft.transform.position, new Vector3(0, -1 * _raycastDistance, 0), Color.red);
+        //Debug.DrawRay(playerRight.transform.position, new Vector3(0, -1 * _raycastDistance, 0), Color.red);
         
     }
+
+    private void CheckForGroundOnSide()
+    {
+        //Debug.DrawRay(new Vector3(transform.position.x - 0.5f, transform.position.y, transform.position.z), new Vector3(-0.5f, 0, 0), Color.green);
+        //Debug.DrawRay(new Vector3(transform.position.x + 0.5f, transform.position.y, transform.position.z), new Vector3(0.5f, 0, 0), Color.green);
+
+        RaycastHit raycastHit;
         
+        //check for ground on left side
+        if (Physics.Raycast(new Vector3(transform.position.x - 0.5f, transform.position.y, transform.position.z),
+                new Vector3(-0.5f, 0, 0), out raycastHit, 0.75f))
+        {
+            if (raycastHit.collider.gameObject.layer == 8 || raycastHit.collider.gameObject.layer == 9)
+            {
+                walkDirection = WalkDirection.Right;
+            }
+            
+        } 
         
-    
+        else if (Physics.Raycast(new Vector3(transform.position.x + 0.5f, transform.position.y, transform.position.z),
+                      new Vector3(0.5f, 0, 0), out raycastHit, 0.75f))
+        {
+            if (raycastHit.collider.gameObject.layer == 8 || raycastHit.collider.gameObject.layer == 9)
+            {
+                walkDirection = WalkDirection.Left;
+            }
+        }
+        
+    }
+
+
     // if this doesnt work Ill seriously cry
     
     // it works so I dont need to cry 

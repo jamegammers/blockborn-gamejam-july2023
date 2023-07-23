@@ -6,23 +6,30 @@ namespace UI {
 
     public class CoinInserter : MonoBehaviour {
 
-        // public static CoinInserter Instance { get; private set; }
-        public static Action OnCoinInserted;
-
+        [SerializeField] private RectTransform _textTransform;
         [SerializeField] private TMP_Text _text;
         [SerializeField] private int _coins = 3;
+
+        [Space(15), Header("Settings")]
+        [SerializeField] private Vector2 _displayVisibleOffset = new(0, -50);
+        [SerializeField] private float _animationDuration = 1f;
+        [SerializeField] private LeanTweenType _animationEasing = LeanTweenType.easeOutQuad;
+        [SerializeField] private float _displayDuration = 1f;
+
+        private static CoinInserter Instance { get; set; }
+        private static Action OnCoinInserted;
 
         private PlayerInput _playerInput;
 
 
         private void Awake() {
-            // if (Instance != null) {
-            //     Destroy(gameObject);
-            //     return;
-            // }
-            //
-            // Instance = this;
-
+            if (Instance != null) {
+                Destroy(gameObject);
+                return;
+            }
+            
+            Instance = this;
+            
             _playerInput = new PlayerInput();
             _playerInput.Enable();
             _playerInput.Player.InsertCoin.performed += _ => InsertCoin();
@@ -39,12 +46,53 @@ namespace UI {
             }
 
             _coins--;
-            OnCoinInserted?.Invoke();
             _text.text = _coins.ToString();
+            OnCoinInserted?.Invoke();
+            HideDisplay(_displayDuration);
 
             // unsubscribe all listeners
             OnCoinInserted = null;
         }
+
+        public static bool WaitForCoin(Action callback) => Instance.WaitForCoinInstance(callback);
+
+        private bool WaitForCoinInstance(Action callback) {
+            ShowDisplay();
+            if (_coins <= 0) return false;
+
+            OnCoinInserted += callback;
+            return true;
+        }
+        
+        public static void CancelCoin() => Instance.CancelCoinInstance();
+        
+        private void CancelCoinInstance() {
+            OnCoinInserted = null;
+            HideDisplay();
+        }
+
+
+        private void ShowDisplay() => MoveDisplay(_displayVisibleOffset);
+        private void HideDisplay(float delay = 0) => MoveDisplay(Vector3.zero, delay);
+
+        private void MoveDisplay(Vector2 offset, float delay = 0f) {
+            LeanTween.value(gameObject,
+                    value => _textTransform.anchoredPosition = value,
+                    (Vector3) _textTransform.anchoredPosition,
+                    (Vector3) offset,
+                    _animationDuration)
+                .setEase(_animationEasing)
+                .setDelay(delay);
+        }
+
+
+        #if UNITY_EDITOR
+        [ContextMenu("TestCoin")]
+        private void TestCoin() {
+            bool result = WaitForCoin(() => Debug.Log("Coin inserted"));
+            Debug.Log(result ? "Coin inserted" : "No coins left");
+        }
+        #endif
 
     }
 

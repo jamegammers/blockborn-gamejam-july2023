@@ -35,18 +35,12 @@ namespace ArcadeMachine {
 
         private void Awake() {
             // register events for all buttons in the list
-            foreach (ArcadeButton button in _buttons)
-                switch (button.Type) {
-                    case ArcadeButtonType.Button:
-                        RegisterButton(button);
-                        break;
-                    case ArcadeButtonType.Joystick:
-                        RegisterJoystick(button);
-                        break;
+            foreach (ArcadeButton button in _buttons) {
+                if (button.Type == ArcadeButtonType.Button)
+                    RegisterButton(button);
 
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+                button.InputAction.action.Enable();
+            }
         }
 
         private static void RegisterButton(ArcadeButton button) {
@@ -55,26 +49,20 @@ namespace ArcadeMachine {
                 
             button.InputAction.action.canceled += _ =>
                 button.Object.localPosition = Vector3.zero;
-                    
-            button.InputAction.action.Enable();
         }
 
-        private static void RegisterJoystick(ArcadeButton button) {
-            button.InputAction.action.started += ctx => {
-                Vector2 inputDir = ctx.ReadValue<Vector2>();
+        private void Update() {
+            foreach (ArcadeButton button in _buttons) {
+                if (button.Type == ArcadeButtonType.Button) continue;
+
+                Vector2 inputDir = button.InputAction.action.ReadValue<Vector2>();
                 Vector2 joystickRotation = new (
                     button.RotationOffsetPressed * inputDir.x,
                     button.RotationOffsetPressed * inputDir.y
                 );
 
-                // z = x; x = y
-                button.Object.localRotation = Quaternion.Euler(joystickRotation.y, 0, -joystickRotation.x);
-            };
-            
-            button.InputAction.action.canceled += _ =>
-                button.Object.localRotation = Quaternion.identity;
-                    
-            button.InputAction.action.Enable();
+                button.Object.localRotation = Quaternion.Euler(-joystickRotation.y, 0, joystickRotation.x);
+            }
         }
 
         private void OnDisable() {

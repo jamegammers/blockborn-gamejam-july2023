@@ -15,9 +15,6 @@ namespace UI {
 
         [SerializeField] private TMP_Text _scoreText;
 
-        [Space(15), Header("Settings")]
-        [SerializeField] private float _blinkingSpeed = 0.3f;
-
 
         public Action<string> OnSubmit;
 
@@ -26,8 +23,6 @@ namespace UI {
         private int _charIndex;
         private PlayerInput _playerInput;
 
-        private bool _blinkArrows = true;
-        private IEnumerator _blinkArrowsCoroutine;
 
         private const string ALPHABET = " ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         private static readonly TextAlignmentOptions[] ALIGNMENT_OPTIONS = {
@@ -56,9 +51,6 @@ namespace UI {
             };
 
             UpdateText();
-
-            _blinkArrowsCoroutine = BlinkArrows();
-            StartCoroutine(_blinkArrowsCoroutine);
             _parent.gameObject.SetActive(true);
         }
 
@@ -95,20 +87,8 @@ namespace UI {
         }
 
 
-        private IEnumerator BlinkArrows() {
-            while (_blinkArrows) {
-                _upArrow.enabled = !_upArrow.enabled;
-                _downArrow.enabled = !_downArrow.enabled;
-                yield return new WaitForSeconds(_blinkingSpeed);
-            }
-        }
-
-
         private void OnDisable() {
             _playerInput.Disable();
-
-            _blinkArrows = false;
-            StopCoroutine(_blinkArrowsCoroutine);
         }
 
     }

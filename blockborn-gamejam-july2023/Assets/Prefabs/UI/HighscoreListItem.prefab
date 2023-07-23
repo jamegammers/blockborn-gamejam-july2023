@@ -484,6 +484,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5588654892700506200}
   - component: {fileID: 5094289399218760948}
+  - component: {fileID: 4105340975172804241}
   - component: {fileID: 190676111855955389}
   m_Layer: 0
   m_Name: HighscoreListItem
@@ -539,6 +540,22 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!111 &4105340975172804241
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7791935072390935671}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: ce0d6c819229d4ec5b97a3b774f55226, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: ce0d6c819229d4ec5b97a3b774f55226, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &190676111855955389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,4 +571,5 @@ MonoBehaviour:
   _parent: {fileID: 3979361609124210397}
   _nameText: {fileID: 3780578176844928182}
   _scoreText: {fileID: 867814739755718668}
+  _animation: {fileID: 4105340975172804241}
   _blinkingSpeed: 0.3

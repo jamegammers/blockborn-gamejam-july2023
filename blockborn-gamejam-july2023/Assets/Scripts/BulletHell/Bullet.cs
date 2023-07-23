@@ -10,6 +10,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] public float speed = 30f;
 
     [SerializeField] private ParticleSystem impactEffect;
+    
+    [SerializeField, Range(1, 5)] private int _damage = 1;
 
     private void OnEnable()
     {
@@ -38,10 +40,23 @@ public class Bullet : MonoBehaviour
         CancelInvoke();
     }
 
-    private void OnCollisionEnter(Collision other)
+    /*private void OnCollisionEnter(Collision other)
     {
         impactEffect.Play();
         StartCoroutine(WaitForParticleSystem());
+    } */
+
+    private void OnTriggerEnter(Collider other)
+    {
+        impactEffect.Play();
+        StartCoroutine(WaitForParticleSystem());
+
+        if (other.gameObject.layer == 8)
+        { 
+            other.gameObject.GetComponent<EnemyLoop>().GetHit(_damage);
+        }
+
+
     }
 
     private IEnumerator WaitForParticleSystem()
