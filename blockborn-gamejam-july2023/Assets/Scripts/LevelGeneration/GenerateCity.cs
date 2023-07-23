@@ -11,6 +11,8 @@ public class GenerateCity : MonoBehaviour
     public PerlinGenerator perlinGenerator;
     public GridSpawner gridSpawner;
 
+    public bool generateOn = true;
+    
     void Awake()
     {
         if (city == null)
@@ -21,7 +23,20 @@ public class GenerateCity : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
+    private void Update()
+    {
+        if (generateOn)
+        {
+            Debug.Log("Generate new Houses");
+            Generate();
+        }
+        else
+        {
+            ClearObjects();
+        }
+    }
+
     public void AddObject(GameObject objToAdd)
     {
         buildings.Add(objToAdd);
@@ -29,6 +44,7 @@ public class GenerateCity : MonoBehaviour
     
     private void Generate()
     {
+        ClearObjects();
         perlinGenerator.Generate();
         gridSpawner.Generate();
     }
