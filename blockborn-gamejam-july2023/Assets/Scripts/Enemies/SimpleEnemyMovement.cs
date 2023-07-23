@@ -23,8 +23,6 @@ public class SimpleEnemyMovement : MonoBehaviour
     [SerializeField] private GameObject playerLeft;
     [SerializeField] private GameObject playerRight;
 
-    [SerializeField] private PlayerAnimation _playerAnimation;
-
     private void Awake()
     {
         _enemy = GetComponent<EnemyLoop>().GetEnemy();
@@ -53,10 +51,9 @@ public class SimpleEnemyMovement : MonoBehaviour
    
         //Ray rayRight = new Ray(playerRight, new Vector3(0, -_raycastDistance, 0));
         RaycastHit hitRight;
-
+    
         if (!isShooting)
         {
-            _playerAnimation.SetWalkAnimation(true);
             CheckForGroundOnSide();
             // if player is walking to left
             if (walkDirection == WalkDirection.Left)
@@ -69,16 +66,14 @@ public class SimpleEnemyMovement : MonoBehaviour
                         // walk left
                         transform.Translate(Vector3.left * _walkingSpeed);
                         walkDirection = WalkDirection.Left;
-                        _playerAnimation.SetFacingDirection(false);
                     }
-
+                    
                     // if there is no ground on left side
                     else
                     {
                         //walk right
                         transform.Translate(Vector3.right * _walkingSpeed);
                         walkDirection = WalkDirection.Right;
-                        _playerAnimation.SetFacingDirection(true);
                     }
                 }
                 // if there is no ground on left side
@@ -90,11 +85,10 @@ public class SimpleEnemyMovement : MonoBehaviour
                         //walk right
                         transform.Translate(Vector3.right * _walkingSpeed);
                         walkDirection = WalkDirection.Right;
-                        _playerAnimation.SetFacingDirection(true);
                     }
                 }
             }
-
+            
             // if player is walking to right
             else
             {
@@ -106,10 +100,9 @@ public class SimpleEnemyMovement : MonoBehaviour
                         // walk right
                         transform.Translate(Vector3.right * _walkingSpeed);
                         walkDirection = WalkDirection.Right;
-                        _playerAnimation.SetFacingDirection(true);
                     }
                 }
-
+                
                 // if there is no ground on right side
                 else
                 {
@@ -119,12 +112,10 @@ public class SimpleEnemyMovement : MonoBehaviour
                         //walk left
                         transform.Translate(Vector3.left * _walkingSpeed);
                         walkDirection = WalkDirection.Left;
-                        _playerAnimation.SetFacingDirection(true);
                     }
                 }
             }
         }
-        else _playerAnimation.SetWalkAnimation(false);
         
         //Debug.DrawRay(playerLeft.transform.position, new Vector3(0, -1 * _raycastDistance, 0), Color.red);
         //Debug.DrawRay(playerRight.transform.position, new Vector3(0, -1 * _raycastDistance, 0), Color.red);
