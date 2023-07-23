@@ -560,7 +560,7 @@ PrefabInstance:
     - target: {fileID: 3719437140647137495, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
         type: 3}
       propertyPath: _levelTiles.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3719437140647137495, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
         type: 3}
@@ -578,7 +578,8 @@ PrefabInstance:
         type: 3}
       propertyPath: _levelTiles.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5648291623696121845, guid: d1519b2758ad35d429716977f04f05c2,
+        type: 3}
     - target: {fileID: 5550836068397862303, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
         type: 3}
       propertyPath: m_Name
