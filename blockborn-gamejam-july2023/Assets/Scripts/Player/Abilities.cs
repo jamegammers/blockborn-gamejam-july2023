@@ -17,6 +17,7 @@ public class Abilities : MonoBehaviour
     public float speed = 5f;
     public float rotateSpeed = 200f;
     [SerializeField] public GameObject MissilePrefab;
+    [SerializeField] public GameObject MissileCollider;
     private GameObject missile;
     [SerializeField] public GameObject shield; 
     
@@ -55,15 +56,11 @@ public class Abilities : MonoBehaviour
                 break;
         }
     }
-
-    private void Update()
-    {
-        
-    }
-
+    
     public IEnumerator HomingMissile()
     {    abilityActive = true;
-
+        MissileCollider.SetActive(true);
+        
         target = GameObject.Find("Enemy").transform;
         missile = Instantiate(MissilePrefab, transform.position, Quaternion.identity);
         Rigidbody rb = missile.GetComponent<Rigidbody>();
