@@ -306,7 +306,8 @@ public class FireBullets : MonoBehaviour
                 bul.transform.rotation = transform.rotation;
                 bul.SetActive(true);
                 bul.GetComponent<Bullet>().SetDirection((position - transform.position).normalized);
-
+                bul.GetComponent<BulletHell.BulletBehaviour>().SetBehaviour(activebulletBehaviour, bulDir);
+                
                 bulletCount++;
 
                 if (bulletCount >= totalBullets)
@@ -395,7 +396,7 @@ public class FireBullets : MonoBehaviour
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
             bul.GetComponent<Bullet>().SetDirection(bulDir);
-
+            bul.GetComponent<BulletHell.BulletBehaviour>().SetBehaviour(activebulletBehaviour, bulDir);
             angle += angleStep;
         }
     }
@@ -445,7 +446,7 @@ public class FireBullets : MonoBehaviour
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
             bul.GetComponent<Bullet>().SetDirection(bulDir);
-
+            bul.GetComponent<BulletHell.BulletBehaviour>().SetBehaviour(activebulletBehaviour, bulDir);
             angle = (float)(angle - Mathf.PI / 2f);
         }
     }
@@ -486,6 +487,7 @@ public class FireBullets : MonoBehaviour
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
             bul.GetComponent<Bullet>().SetDirection(bulDir);
+            bul.GetComponent<BulletHell.BulletBehaviour>().SetBehaviour(activebulletBehaviour, bulDir);
 
         }
     }
