@@ -11,9 +11,11 @@ public class LevelPoolManager : MonoBehaviour
 
     private int level = 1;
     
-    public float _globalEnemyHealth = 3;
+    [HideInInspector] public float _globalEnemyHealth = 3;
 
     private Transform _levelHolder;
+
+    private float currentLevelLength;
     
     private void Awake()
     {
@@ -22,14 +24,18 @@ public class LevelPoolManager : MonoBehaviour
 
     private void Start()
     {
-        _levelHolder = GameObject.Find("LevelHolder").transform;
+        _levelHolder = GameObject.Find("Level").transform;
     }
 
     // Spawns a tile at the end of the current last tile
-    public void GenerateLevel(int levelLength)
+    public void GenerateLevel(float levelLength)
     {
+        currentLevelLength += levelLength;
+        
         //spawn a tile, use level to determine position
-        Vector3 position = new Vector3(level * levelLength, 0, 0);
+        Vector3 position = new Vector3(currentLevelLength, 0, 0);
+        
+        //Vector3 position = gameObject.transform.position;
         
         // Instaniate a random tile from the array of tiles using the RandomizeNumbers method from the Randomize class
         Instantiate(_levelTiles[GetComponent<Randomize>().RandomizeNumbers(0, _levelTiles.Length)], position, Quaternion.identity).transform.parent = _levelHolder;
