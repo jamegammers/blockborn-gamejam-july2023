@@ -168,6 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c721e4257aa5a4ebd8f80245db3952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _randomize: {fileID: 633036810}
+  _enemyPoolManager: {fileID: 633036814}
   enemyPrefabs:
   - {fileID: 8006407798182264730, guid: 40356f029b0cdc74da0b43cedc134f7a, type: 3}
   - {fileID: 4911066782981709085, guid: 8d7f325ff8964084db3167b0130a81b8, type: 3}
@@ -193,6 +195,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerObject_USE_THIS
+      objectReference: {fileID: 0}
+    - target: {fileID: 741319207084485289, guid: 020626ac646e4874fb460bdd9bc3fcda,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7853513000839958513, guid: 020626ac646e4874fb460bdd9bc3fcda,
         type: 3}
