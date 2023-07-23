@@ -17,7 +17,7 @@ MonoBehaviour:
   patternName: Straight
   patternType: 4
   bulletBehaviour: 4
-  bulletAmount: 40
+  bulletAmount: 10
   startAngle: 0
   endAngle: 40
   FireRate: 0.2

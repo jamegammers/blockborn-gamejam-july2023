@@ -16,8 +16,8 @@ MonoBehaviour:
   patternDuration: 3
   patternName: TrackDoubleSpiral
   patternType: 6
-  bulletBehaviour: 0
-  bulletAmount: 300
+  bulletBehaviour: 4
+  bulletAmount: 30
   startAngle: 0
   endAngle: 40
   FireRate: 0.1

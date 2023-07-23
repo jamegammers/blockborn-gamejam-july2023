@@ -17,9 +17,9 @@ MonoBehaviour:
   patternName: Double Spiral
   patternType: 6
   bulletBehaviour: 0
-  bulletAmount: 300
+  bulletAmount: 30
   startAngle: 0
   endAngle: 40
-  FireRate: 0.1
+  FireRate: 0.3
   isAiming: 0
   direction: {x: 0, y: 0}

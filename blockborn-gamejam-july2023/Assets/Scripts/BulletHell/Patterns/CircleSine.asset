@@ -17,7 +17,7 @@ MonoBehaviour:
   patternName: CircleSine
   patternType: 1
   bulletBehaviour: 1
-  bulletAmount: 30
+  bulletAmount: 7
   startAngle: 0
   endAngle: 360
   FireRate: 0.6
