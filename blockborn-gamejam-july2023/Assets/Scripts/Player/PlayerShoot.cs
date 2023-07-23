@@ -15,6 +15,16 @@ public class PlayerShoot : MonoBehaviour
     private PlayerInput _playerInput;
     private bool _shoot = false;
 
+    public float getShootCD()
+    {
+        return _shootCD;
+    }
+    
+    public void setShootCD(float newCD)
+    {
+        _shootCD = newCD;
+    }
+    
     private void Awake()
     {
         _playerInput = new PlayerInput();
