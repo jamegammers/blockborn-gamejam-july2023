@@ -23,7 +23,7 @@ public class CalculateBoundingBox : MonoBehaviour
             
         }
         
-        Debug.Log(b.size);
+        //Debug.Log(b.size);
         
         _endTile.GetComponent<SpawnNextTile>().SetLevelLength(b.size.x);
     }
