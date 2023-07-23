@@ -103,6 +103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 30
   impactEffect: {fileID: 2614715311522021326}
+  renderer: {fileID: 4178837879825225064}
+  _damage: 1
 --- !u!65 &3294542685631721582
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -113,10 +115,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 2816
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 3327
+    m_Bits: 1279
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
