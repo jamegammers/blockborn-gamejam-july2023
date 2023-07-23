@@ -3202,6 +3202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7292717240588815996}
   - component: {fileID: 1105257298339875586}
+  - component: {fileID: 2829173403378566544}
   m_Layer: 9
   m_Name: House Purple Balcony 3x11
   m_TagString: Untagged
@@ -3289,6 +3290,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 11, z: 1}
   m_Center: {x: 1, y: -5, z: 0}
+--- !u!114 &2829173403378566544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7328513126633019694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9880881ceea02d44bc27ad0f2b50872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildHeight: 11
+  buildWidth: 3
 --- !u!1 &7339445752825303846
 GameObject:
   m_ObjectHideFlags: 0

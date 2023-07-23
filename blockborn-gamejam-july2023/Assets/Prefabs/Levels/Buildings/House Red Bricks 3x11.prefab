@@ -430,6 +430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9096777575132990169}
   - component: {fileID: 8251198203065074793}
+  - component: {fileID: -8280553968134425018}
   m_Layer: 9
   m_Name: House Red Bricks 3x11
   m_TagString: Untagged
@@ -517,6 +518,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 11, z: 1}
   m_Center: {x: 1, y: -5, z: 0}
+--- !u!114 &-8280553968134425018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652427017450767291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9880881ceea02d44bc27ad0f2b50872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildHeight: 11
+  buildWidth: 3
 --- !u!1 &841968755616508987
 GameObject:
   m_ObjectHideFlags: 0

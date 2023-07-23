@@ -2194,6 +2194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 733185829748280794}
   - component: {fileID: 7974300067633213205}
+  - component: {fileID: 5652904973445778933}
   m_Layer: 9
   m_Name: House Olive Balcony 3x11
   m_TagString: Untagged
@@ -2281,6 +2282,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 11, z: 1}
   m_Center: {x: 1, y: -5, z: 0}
+--- !u!114 &5652904973445778933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300592807618209217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9880881ceea02d44bc27ad0f2b50872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildHeight: 11
+  buildWidth: 3
 --- !u!1 &5317578617307350053
 GameObject:
   m_ObjectHideFlags: 0
