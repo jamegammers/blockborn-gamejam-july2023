@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185dd61d99ad46a1874b36d58586730e, type: 3}
   m_Name: ArcadeButtonUp
   m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: f8ad52359b886d34c847c172eee96336, type: 3}
+  _clips:
+  - {fileID: 8300000, guid: f8ad52359b886d34c847c172eee96336, type: 3}
   _volume: 1
   _pitch: 0.75
+  _randomizePitch: 0
+  _pitchMin: 0.9
+  _pitchMax: 1.1

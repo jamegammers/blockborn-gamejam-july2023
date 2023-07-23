@@ -20,7 +20,7 @@ namespace UI {
         [SerializeField] private float _animationDuration = 1f;
         [SerializeField] private LeanTweenType _animationEasing = LeanTweenType.easeOutQuad;
         [SerializeField] private float _displayDuration = 1f;
-        [SerializeField] private AudioClip _coinSound;
+        [SerializeField, Required] private AudioSample _coinSound;
 
         private static CoinInserter Instance { get; set; }
         // ReSharper disable once InconsistentNaming
@@ -82,6 +82,7 @@ namespace UI {
 
 
         private void ShowDisplay() {
+            _text.text = _coins.ToString();
             MoveDisplay(_coinDisplay, _displayVisibleOffset);
             MoveDisplay(_hintDisplay, _hintVisibleOffset);
         }

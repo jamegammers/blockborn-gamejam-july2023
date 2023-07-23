@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.Utilities;
+using UnityEngine.SceneManagement;
 using Util;
 
 namespace UI {
@@ -51,6 +52,7 @@ namespace UI {
 
         private List<Highscore> _scores = new();
         private Highscore _newScore;
+        private PlayerInput _playerInput;
 
         private static readonly HighscoreArray DEFAULT_SCORES = new(new[] {
             new Highscore("mer", 1337),
@@ -68,6 +70,9 @@ namespace UI {
             // only for testing
             // Show(4200);
             // CoinInserter.OnCoinInserted += () => Show(4200);
+
+            _playerInput = new PlayerInput();
+            _playerInput.Player.Any.performed += _ => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         public void Show(int newScore) {
@@ -95,7 +100,6 @@ namespace UI {
 
             // display list if no new highscore
             FillList(_scores.ToArray());
-            _listParent.gameObject.SetActive(true);
             // Debug.Log($"scores: { scores.ToArray().ToString<Highscore>() }");
         }
 
@@ -108,7 +112,6 @@ namespace UI {
 
             // show scores list
             FillList(_scores.ToArray());
-            _listParent.gameObject.SetActive(true);
 
             // Debug.Log($"name: {name}");
             _highscoreInput.OnSubmit -= OnInputEnded;
@@ -133,6 +136,9 @@ namespace UI {
                 pos.z = 0;
                 rect.localPosition = pos;
             }
+
+            _listParent.gameObject.SetActive(true);
+            _playerInput.Enable();
         }
 
         private static void SaveScores(Highscore[] scores) {
@@ -142,6 +148,8 @@ namespace UI {
 
             Debug.Log($"saved highscores: { PlayerPrefs.GetString("highscores") }");
         }
+
+        private void OnDisable() => _playerInput.Disable();
 
 
         #if UNITY_EDITOR

@@ -7,9 +7,9 @@ namespace Audio {
     [ExecuteAlways]
     public class AudioManager : MonoBehaviour {
 
-        #if UNITY_EDITOR
-        [SerializeField] private AudioClip _testClip;
-        #endif
+        // #if UNITY_EDITOR
+        // [SerializeField] private AudioClip _testClip;
+        // #endif
 
         private static AudioManager Instance { get; set; }
 
@@ -23,43 +23,35 @@ namespace Audio {
             Instance = this;
         }
 
-        public static void PlayAudio(AudioClip clip, Vector3 position, float volume = 1f, AudioMixerGroup mixer = null) {
+        public static void PlayAudio(AudioSample sample, Vector3 position, AudioMixerGroup mixer = null) {
             if (Instance == null) {
                 Debug.LogError("Audio instance is null");
                 return;
             }
 
-            AudioSample sample = ScriptableObject.CreateInstance<AudioSample>();
-            sample.SetClip(clip);
-            sample.SetVolume(volume);
-
-            Instance.PlayAudioInstance(sample, position, volume, mixer);
+            Instance.PlayAudioInstance(sample, position, mixer);
         }
 
-        public static void PlayAudio(AudioSample sample, Vector3 position) {
-            if (Instance == null) {
-                Debug.LogError("Audio instance is null");
-                return;
-            }
+        private void PlayAudioInstance(AudioSample sample, Vector3 position, AudioMixerGroup mixer = null) {
+            // select random clip
+            AudioClip clip = sample.Clips[Random.Range(0, sample.Clips.Length)];
 
-            Instance.PlayAudioInstance(sample, Instance.transform.position);
-        }
-
-        private void PlayAudioInstance(AudioSample sample, Vector3 position, float volume = 1f, AudioMixerGroup mixer = null) {
             GameObject audioInstance = new() {
                 transform = { position = position },
-                name = $"AudioInstance ({sample.clip.name})"
+                name = $"AudioInstance ({clip})"
             };
 
             AudioSource audioSource = audioInstance.AddComponent<AudioSource>();
-            audioSource.clip = sample.clip;
+            audioSource.clip = clip;
+
+
             audioSource.volume = sample.volume;
-            audioSource.pitch = sample.pitch;
+            audioSource.pitch = sample.randomizePitch ? Random.Range(sample.pitchMin, sample.pitchMax) : sample.pitch;
             audioSource.outputAudioMixerGroup = mixer;
             audioSource.spatialBlend = 1f;
             audioSource.Play();
 
-            StartCoroutine(DestroyAudioInstance(audioInstance, sample.clip.length));
+            StartCoroutine(DestroyAudioInstance(audioInstance, clip.length));
         }
 
         private static IEnumerator DestroyAudioInstance(Object instance, float duration) {
@@ -72,12 +64,12 @@ namespace Audio {
         }
 
 
-        #if UNITY_EDITOR
-        [ContextMenu("Play Sound")]
-        private void TestPlaySound() {
-            PlayAudio(_testClip, transform.position);
-        }
-        #endif
+        // #if UNITY_EDITOR
+        // [ContextMenu("Play Sound")]
+        // private void TestPlaySound() {
+        //     PlayAudio(_testClip, transform.position);
+        // }
+        // #endif
 
     }
 

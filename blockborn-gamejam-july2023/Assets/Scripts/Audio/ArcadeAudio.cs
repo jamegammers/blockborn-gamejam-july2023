@@ -10,9 +10,9 @@ namespace Audio {
 
         [SerializeField] private AudioMixerGroup _mixer;
 
-        #if UNITY_EDITOR
-        [SerializeField] private AudioClip _testClip;
-        #endif
+        // #if UNITY_EDITOR
+        // [SerializeField] private AudioClip _testClip;
+        // #endif
 
 
         private void Awake() {
@@ -24,21 +24,21 @@ namespace Audio {
             Instance = this;
         }
 
-        public void PlayAudio(AudioClip clip, float volume = 1f) {
+        public void PlayAudio(AudioSample sample) {
             if (Instance == null) {
                 Debug.LogError("Audio instance is null");
                 return;
             }
 
-            AudioManager.PlayAudio(clip, transform.position, volume, _mixer);
+            AudioManager.PlayAudio(sample, transform.position, _mixer);
         }
 
-        #if UNITY_EDITOR
-        [ContextMenu("Play Sound")]
-        private void TestPlaySound() {
-            PlayAudio(_testClip);
-        }
-        #endif
+        // #if UNITY_EDITOR
+        // [ContextMenu("Play Sound")]
+        // private void TestPlaySound() {
+        //     PlayAudio(_testClip);
+        // }
+        // #endif
 
     }
 
