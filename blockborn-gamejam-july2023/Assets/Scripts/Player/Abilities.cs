@@ -82,7 +82,7 @@ public class Abilities : MonoBehaviour
     {
         abilityActive = true;
         float oldShootRange = this.GetComponent<PlayerShoot>().getShootCD();
-        this.GetComponent<PlayerShoot>().setShootCD(2f);
+        this.GetComponent<PlayerShoot>().setShootCD(0.2f);
         yield return new WaitForSeconds(abilityDuration);
         this.GetComponent<PlayerShoot>().setShootCD(oldShootRange);
         abilityActive = false;
