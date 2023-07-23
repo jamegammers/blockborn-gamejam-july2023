@@ -17,6 +17,7 @@ public class Abilities : MonoBehaviour
     public float speed = 5f;
     public float rotateSpeed = 200f;
     [SerializeField] public GameObject MissilePrefab;
+    [SerializeField] public GameObject MissileCollider;
     private GameObject missile;
     [SerializeField] public GameObject shield; 
     
@@ -30,6 +31,11 @@ public class Abilities : MonoBehaviour
     void Awake()
     {
         Instance = this;
+    }
+
+    public void SetTarget(GameObject target)
+    {
+        this.target = target.transform;
     }
 
     public void SetAbility(Ability setability)
@@ -55,15 +61,11 @@ public class Abilities : MonoBehaviour
                 break;
         }
     }
-
-    private void Update()
-    {
-        
-    }
-
+    
     public IEnumerator HomingMissile()
     {    abilityActive = true;
-
+        MissileCollider.SetActive(true);
+        
         target = GameObject.Find("Enemy").transform;
         missile = Instantiate(MissilePrefab, transform.position, Quaternion.identity);
         Rigidbody rb = missile.GetComponent<Rigidbody>();
@@ -75,6 +77,7 @@ public class Abilities : MonoBehaviour
             rb.velocity = transform.up * speed;
             yield return new WaitForSeconds(abilityDuration);
         Destroy(missile);
+        MissileCollider.SetActive(false);
         abilityActive = false;
     }
     
