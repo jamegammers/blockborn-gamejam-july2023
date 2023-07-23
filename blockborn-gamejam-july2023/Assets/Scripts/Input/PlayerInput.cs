@@ -71,6 +71,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Any"",
+                    ""type"": ""Button"",
+                    ""id"": ""38bec60c-a188-4dd6-9a88-4af2c6f7079d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -238,6 +247,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""InsertCoin"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e12ff5ee-bcd3-4c38-9d0f-a76efdee7457"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Any"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03ab9591-1600-4c05-8e9d-509040cf1f4b"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Any"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -251,6 +282,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Transform = m_Player.FindAction("Transform", throwIfNotFound: true);
         m_Player_InsertCoin = m_Player.FindAction("InsertCoin", throwIfNotFound: true);
+        m_Player_Any = m_Player.FindAction("Any", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -317,6 +349,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Transform;
     private readonly InputAction m_Player_InsertCoin;
+    private readonly InputAction m_Player_Any;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -326,6 +359,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @Transform => m_Wrapper.m_Player_Transform;
         public InputAction @InsertCoin => m_Wrapper.m_Player_InsertCoin;
+        public InputAction @Any => m_Wrapper.m_Player_Any;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -350,6 +384,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @InsertCoin.started += instance.OnInsertCoin;
             @InsertCoin.performed += instance.OnInsertCoin;
             @InsertCoin.canceled += instance.OnInsertCoin;
+            @Any.started += instance.OnAny;
+            @Any.performed += instance.OnAny;
+            @Any.canceled += instance.OnAny;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -369,6 +406,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @InsertCoin.started -= instance.OnInsertCoin;
             @InsertCoin.performed -= instance.OnInsertCoin;
             @InsertCoin.canceled -= instance.OnInsertCoin;
+            @Any.started -= instance.OnAny;
+            @Any.performed -= instance.OnAny;
+            @Any.canceled -= instance.OnAny;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -393,5 +433,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnTransform(InputAction.CallbackContext context);
         void OnInsertCoin(InputAction.CallbackContext context);
+        void OnAny(InputAction.CallbackContext context);
     }
 }
