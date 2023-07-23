@@ -15,6 +15,8 @@ public class Bullet : MonoBehaviour
     
     [SerializeField, Range(1, 5)] private int _damage = 1;
 
+    [SerializeField] private bool _isEnemyBullet = false;
+    
     private void Awake()
     {
         savedSpeed = speed;
@@ -59,7 +61,15 @@ public class Bullet : MonoBehaviour
     {
         //impactEffect.Play();
         //StartCoroutine(WaitForParticleSystem());
-
+        if (other.gameObject.layer == 6)
+            {
+                //other.gameObject.GetComponent<>().GetHit(_damage);
+                Debug.Log("Hit Player");
+                impactEffect.Play();
+                StartCoroutine(WaitForParticleSystem());
+                speed = 0f;
+            }
+        
         if (other.gameObject.layer == 8)
         { 
             other.gameObject.GetComponent<EnemyLoop>().GetHit(_damage);

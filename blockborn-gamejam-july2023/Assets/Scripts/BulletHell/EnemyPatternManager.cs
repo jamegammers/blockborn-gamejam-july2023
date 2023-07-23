@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,31 +10,55 @@ public class EnemyPatternManager : MonoBehaviour
     [SerializeField] private List<BulletPatterns> patterns;
     [SerializeField] private float[] patternDurations;
     public bool useAlternateDurations;
-    
+    [SerializeField] private Collider ProximityField;
     public float Cooldown;
     private bool isOnCooldown;
     public float patternDuration;
     public bool isFiring = false;
+
+    private bool playerClose = false;
     
     // Start is called before the first frame update
     void Start()
     {
         fireBullets = this.GameObject().GetComponent<FireBullets>();
-        StartFiringPatterns();
+       // StartFiringPatterns();
         //Start a Coroutine of StartPattern filling in a bulletPattern
     }
     
     private void StartFiringPatterns()
     {
-        if (!isFiring && !isOnCooldown)
+        if (!isFiring && !isOnCooldown && playerClose)
         {
             StartCoroutine(ReadBulletPatterns());
         }
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            playerClose = true;
+            Debug.Log("Player is Close");
+            StartFiringPatterns();
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            playerClose = false;
+            isFiring = false;
+            StopCoroutine(ReadBulletPatterns());
+        }
+    }
+
     private IEnumerator ReadBulletPatterns()
     {
-        foreach (BulletPatterns pattern in patterns)
+        while (playerClose)
+        {
+            foreach (BulletPatterns pattern in patterns)
         {
 
             Debug.Log("Calling Pattern " + pattern.patternName);
@@ -60,9 +85,13 @@ public class EnemyPatternManager : MonoBehaviour
                 isOnCooldown = false;
             }
         }
+            Debug.Log("End of Patterns reached");
+            isFiring = false;
+            StartFiringPatterns();
+        }
         
-        Debug.Log("End of Patterns reached");
         isFiring = false;
+       
     }
 
     private IEnumerator StartPattern(BulletPatterns pattern)
