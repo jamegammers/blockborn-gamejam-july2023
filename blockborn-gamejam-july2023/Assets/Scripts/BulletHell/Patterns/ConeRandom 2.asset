@@ -15,9 +15,9 @@ MonoBehaviour:
   Cooldown: 3
   patternDuration: 3
   patternName: StraightAim
-  patternType: 4
+  patternType: 2
   bulletBehaviour: 4
-  bulletAmount: 30
+  bulletAmount: 20
   startAngle: 0
   endAngle: 40
   FireRate: 0.6

@@ -17,7 +17,7 @@ MonoBehaviour:
   patternName: Spiral
   patternType: 5
   bulletBehaviour: 0
-  bulletAmount: 30
+  bulletAmount: 20
   startAngle: 0
   endAngle: 40
   FireRate: 0.1

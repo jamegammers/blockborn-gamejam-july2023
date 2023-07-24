@@ -16,11 +16,11 @@ MonoBehaviour:
   patternDuration: 3
   patternName: Straight
   patternType: 4
-  bulletBehaviour: 4
-  bulletAmount: 10
+  bulletBehaviour: 0
+  bulletAmount: 1
   startAngle: 0
-  endAngle: 40
-  FireRate: 0.2
+  endAngle: 0
+  FireRate: 0.4
   BulletSpeed: 5
-  isAiming: 0
+  isAiming: 1
   direction: {x: 0, y: 0}

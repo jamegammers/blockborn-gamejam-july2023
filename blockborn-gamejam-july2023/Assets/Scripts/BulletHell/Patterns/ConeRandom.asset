@@ -17,7 +17,7 @@ MonoBehaviour:
   patternName: ConeRandom
   patternType: 2
   bulletBehaviour: 0
-  bulletAmount: 30
+  bulletAmount: 20
   startAngle: 100
   endAngle: 200
   FireRate: 0.6
