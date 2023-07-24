@@ -12,10 +12,6 @@ namespace UI {
         [SerializeField] private TMP_Text _scoreText;
         [SerializeField] private Animation _animation;
 
-        [Space(15), Header("Settings")]
-        [SerializeField] private float _blinkingSpeed = 0.3f;
-
-
 
         public void Init(string name, int score, bool newScore = false) {
             _nameText.text = name;

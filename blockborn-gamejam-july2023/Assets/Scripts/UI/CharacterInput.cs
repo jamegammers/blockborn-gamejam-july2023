@@ -21,7 +21,7 @@ namespace UI {
         public Action<string> OnSubmit;
 
 
-        private int[] _name = {1, 1, 1};
+        private int[] _value;
         private int _charIndex;
         private PlayerInput _playerInput;
 
@@ -30,12 +30,8 @@ namespace UI {
             TextAlignmentOptions.MidlineLeft, TextAlignmentOptions.Midline, TextAlignmentOptions.MidlineRight
         };
 
-
-        public void StartInput(int score) {
-            _scoreText.text = score.ToString();
-
+        private void Awake() {
             _playerInput = new PlayerInput();
-            _playerInput.Enable();
 
             _playerInput.Player.Move.performed += ctx => {
                 Vector2 move = ctx.ReadValue<Vector2>();
@@ -51,21 +47,25 @@ namespace UI {
                 _playerInput.Disable();
                 _parent.gameObject.SetActive(false);
             };
-
-            UpdateText();
-            _parent.gameObject.SetActive(true);
         }
 
-
-        private void OnEnable() {
+        public void StartInput(int[] defaultValue) {
+            _value = defaultValue;
             _playerInput.Enable();
+            UpdateText();
+            // _parent.gameObject.SetActive(true);
         }
+
+
+        // private void OnEnable() {
+        //     _playerInput.Enable();
+        // }
 
         private void UpdateChar(float y) {
-            _name[_charIndex] = y switch {
-                > 0 => (_name[_charIndex] + 1) % _alphabet.Length,
-                < 0 => (_name[_charIndex] + 25) % _alphabet.Length,
-                _ => _name[_charIndex]
+            _value[_charIndex] = y switch {
+                > 0 => (_value[_charIndex] + 1) % _alphabet.Length,
+                < 0 => (_value[_charIndex] + 25) % _alphabet.Length,
+                _ => _value[_charIndex]
             };
 
             UpdateText();
@@ -74,7 +74,7 @@ namespace UI {
         private void UpdateText() {
             _nameText.text = "";
             for (int i = 0; i < 3; i++)
-                _nameText.text += _alphabet[_name[i]];
+                _nameText.text += _alphabet[_value[i]];
         }
 
         private void UpdateArrows(float x) {
