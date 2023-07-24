@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private PlayerAnimation _playerAnimation;
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private PlayerShoot _playerShoot;
+    [SerializeField] private HealthUI _healthUI;
     private bool _gettingHit = false;
     private bool _alive = true;
 
@@ -22,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("player get damage");
         _gettingHit = true;
         _health -= damage;
+        _healthUI.SetHealth(_health);
         if (_health <= 0 && _alive == true) GameOver();
         else if (_health > 0) _playerAnimation.PlayDamageAnimation();
         yield return new WaitForSeconds(1f);
