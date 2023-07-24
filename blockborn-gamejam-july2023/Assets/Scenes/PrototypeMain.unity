@@ -881,7 +881,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 32759
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -2193,6 +2193,7 @@ MonoBehaviour:
   _light: {fileID: 1875456386}
   _renderTexture: {fileID: 8400000, guid: d6f254e94479728418f52d2827ed595d, type: 2}
   _calculationStep: 5
+  _calculateEveryFrames: 2
 --- !u!114 &1875456385
 MonoBehaviour:
   m_ObjectHideFlags: 0
