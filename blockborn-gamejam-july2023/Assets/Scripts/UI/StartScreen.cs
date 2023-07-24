@@ -11,10 +11,12 @@ namespace UI {
 
         [SerializeField] private Randomize _randomize;
         [SerializeField] private PlayerMovement _playerMovement;
+        [SerializeField] private PlayerShoot _playerShoot;
 
 
         private void Awake() {
             _playerMovement.enabled = false;
+            _playerShoot.enabled = false;
             _healthUI.gameObject.SetActive(false);
         }
 
@@ -36,6 +38,7 @@ namespace UI {
             _randomize.SetLevelSeed(seed);
 
             _playerMovement.enabled = true;
+            _playerShoot.enabled = true;
             _healthUI.gameObject.SetActive(true);
 
             _seedInput.OnSubmit -= OnInputSubmit;

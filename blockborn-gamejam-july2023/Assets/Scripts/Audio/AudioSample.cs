@@ -27,8 +27,8 @@ namespace Audio {
         internal void SetVolume(float newVolume) => _volume = newVolume;
 
 
-        [PropertySpace(100), Button(ButtonSizes.Gigantic), HideInEditorMode]
         #if UNITY_EDITOR
+        [PropertySpace(100), Button(ButtonSizes.Gigantic), HideInEditorMode]
         public void TestPlay() {
             AudioManager.PlayAudio(this, Camera.main.transform.position);
         }
