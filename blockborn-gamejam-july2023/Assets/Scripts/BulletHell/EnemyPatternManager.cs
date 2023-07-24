@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using BulletHell;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,14 +16,17 @@ public class EnemyPatternManager : MonoBehaviour
     private bool isOnCooldown;
     public float patternDuration;
     public bool isFiring = false;
-
+    
     private bool playerClose = false;
+
+    private BulletPool pool;
     
     // Start is called before the first frame update
     void Start()
     {
         fireBullets = this.GameObject().GetComponent<FireBullets>();
-       // StartFiringPatterns();
+        pool = BulletPool.Instance;
+        // StartFiringPatterns();
         //Start a Coroutine of StartPattern filling in a bulletPattern
     }
     
@@ -60,7 +64,6 @@ public class EnemyPatternManager : MonoBehaviour
         {
             foreach (BulletPatterns pattern in patterns)
         {
-
             Debug.Log("Calling Pattern " + pattern.patternName);
             if (pattern.patternType == BulletPatternEnum.BulletPatternsEnum.None)
             {
@@ -100,9 +103,10 @@ public class EnemyPatternManager : MonoBehaviour
         isFiring = true;
         if (useAlternateDurations) patternDuration = patternDurations[patterns.IndexOf(pattern)];
         else  patternDuration = pattern.patternDuration;
+       // BulletPool.Instance.GetEnemyBulletPrefab().GetComponent<Bullet>().SetSpeed(pattern.BulletSpeed);
         Cooldown = pattern.Cooldown;
         fireBullets.SetBulletPattern(pattern.patternType, pattern.bulletBehaviour, pattern.bulletAmount, 
-            pattern.startAngle, pattern.endAngle, pattern.isAiming, pattern.FireRate);
+            pattern.startAngle, pattern.endAngle, pattern.isAiming, pattern.FireRate, pattern.BulletSpeed);
         yield return new WaitForSeconds(pattern.patternDuration);
         fireBullets.SetBulletPatternNone();
     }

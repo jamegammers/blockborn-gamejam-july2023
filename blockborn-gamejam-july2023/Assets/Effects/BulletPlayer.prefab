@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
+  _bulletLifeTime: 7
   impactEffect: {fileID: 2614715311522021326}
   renderer: {fileID: 4178837879825225064}
   _damage: 1

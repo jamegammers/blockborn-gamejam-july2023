@@ -28,9 +28,10 @@ public class FireBullets : MonoBehaviour
     private GameObject player;
     public bool isAiming = false;
 
+    private float bulletSpeed;
 
     public void SetBulletPattern(BulletPatternEnum.BulletPatternsEnum bulletPattern, BulletHell.BulletBehaviour.BulletBehaviours bulletBehaviour, 
-        int bullets, float startAngle, float endAngle, bool Aiming, float fireRate)
+        int bullets, float startAngle, float endAngle, bool Aiming, float fireRate, float BulletSpeed)
     {
         activebulletPattern = bulletPattern;
         activebulletBehaviour = bulletBehaviour;
@@ -39,6 +40,7 @@ public class FireBullets : MonoBehaviour
         this.endAngle = endAngle;
         isAiming = Aiming;
         this.fireRate = fireRate;
+        this.bulletSpeed = BulletSpeed;
         PatternSwitch();
     }
 
@@ -146,6 +148,7 @@ public class FireBullets : MonoBehaviour
             bul.transform.position = transform.position;
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
+            bul.GetComponent<Bullet>().SetSpeed(bulletSpeed);
             bul.GetComponent<Bullet>().SetDirection(bulDir);
             
             angle += angleStep;
@@ -180,6 +183,7 @@ public class FireBullets : MonoBehaviour
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
             bul.GetComponent<Bullet>().SetDirection(bulDir);
+            bul.GetComponent<Bullet>().SetSpeed(bulletSpeed);
             bul.GetComponent<BulletHell.BulletBehaviour>().SetBehaviour(BulletHell.BulletBehaviour.BulletBehaviours.SineCurve, bulDir);
             //bul.GetComponent<Bullet>().SetDirection(bulDir);
             
@@ -214,6 +218,7 @@ public class FireBullets : MonoBehaviour
             bul.transform.position = transform.position;
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
+            bul.GetComponent<Bullet>().SetSpeed(bulletSpeed);
             bul.GetComponent<Bullet>().SetDirection(bulDir);
             bul.GetComponent<BulletHell.BulletBehaviour>().SetBehaviour(activebulletBehaviour, bulDir);
             //bul.GetComponent<Bullet>().SetDirection(bulDir);
@@ -236,6 +241,7 @@ public class FireBullets : MonoBehaviour
         bul.transform.position = transform.position;
         bul.transform.rotation = transform.rotation;
         bul.SetActive(true);
+        bul.GetComponent<Bullet>().SetSpeed(bulletSpeed);
         bul.GetComponent<Bullet>().SetDirection(bulDir);
 
         angle += 10f;
@@ -255,6 +261,7 @@ public class FireBullets : MonoBehaviour
             bul.transform.position = transform.position;
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
+            bul.GetComponent<Bullet>().SetSpeed(bulletSpeed);
             bul.GetComponent<Bullet>().SetDirection(bulDir);
         }
 
@@ -305,6 +312,7 @@ public class FireBullets : MonoBehaviour
                 bul.transform.position = position;
                 bul.transform.rotation = transform.rotation;
                 bul.SetActive(true);
+                bul.GetComponent<Bullet>().SetSpeed(bulletSpeed);
                 bul.GetComponent<Bullet>().SetDirection((position - transform.position).normalized);
                 bul.GetComponent<BulletHell.BulletBehaviour>().SetBehaviour(activebulletBehaviour, bulDir);
                 
@@ -348,6 +356,7 @@ public class FireBullets : MonoBehaviour
                 bul.transform.position = position;
                 bul.transform.rotation = transform.rotation;
                 bul.SetActive(true);
+                bul.GetComponent<Bullet>().SetSpeed(bulletSpeed);
                 bul.GetComponent<Bullet>().SetDirection((position - transform.position).normalized);
 
                 bulletCount++;
@@ -395,6 +404,7 @@ public class FireBullets : MonoBehaviour
             bul.transform.position = transform.position;
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
+            bul.GetComponent<Bullet>().SetSpeed(bulletSpeed);
             bul.GetComponent<Bullet>().SetDirection(bulDir);
             bul.GetComponent<BulletHell.BulletBehaviour>().SetBehaviour(activebulletBehaviour, bulDir);
             angle += angleStep;
@@ -425,6 +435,7 @@ public class FireBullets : MonoBehaviour
             bul.transform.position = transform.position;
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
+            bul.GetComponent<Bullet>().SetSpeed(bulletSpeed);
             bul.GetComponent<Bullet>().SetDirection(bulDir);
 
             angle += angleStep;
@@ -445,6 +456,7 @@ public class FireBullets : MonoBehaviour
             bul.transform.position = transform.position;
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
+            bul.GetComponent<Bullet>().SetSpeed(bulletSpeed);
             bul.GetComponent<Bullet>().SetDirection(bulDir);
             bul.GetComponent<BulletHell.BulletBehaviour>().SetBehaviour(activebulletBehaviour, bulDir);
             angle = (float)(angle - Mathf.PI / 2f);
@@ -468,6 +480,7 @@ public class FireBullets : MonoBehaviour
         float bulDirY = transform.position.y + Mathf.Cos((angle * Mathf.PI) / 180f);
 
         Vector3 bulMoveVector = new Vector3(bulDirX, bulDirY, 0f);
+        
         bulDir = (bulMoveVector - transform.position).normalized;
         return bulDir;
     }
@@ -486,6 +499,7 @@ public class FireBullets : MonoBehaviour
             bul.transform.position = transform.position;
             bul.transform.rotation = transform.rotation;
             bul.SetActive(true);
+            bul.GetComponent<Bullet>().SetSpeed(bulletSpeed);
             bul.GetComponent<Bullet>().SetDirection(bulDir);
             bul.GetComponent<BulletHell.BulletBehaviour>().SetBehaviour(activebulletBehaviour, bulDir);
 
