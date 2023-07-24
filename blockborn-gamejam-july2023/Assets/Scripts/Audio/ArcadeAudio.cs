@@ -24,15 +24,15 @@ namespace Audio {
             Instance = this;
         }
 
-        public static void PlayAudio(AudioSample sample) => Instance.PlayAudioInstance(sample);
+        public static AudioSource PlayAudio(AudioSample sample) => Instance.PlayAudioInstance(sample);
 
-        public void PlayAudioInstance(AudioSample sample) {
+        public AudioSource PlayAudioInstance(AudioSample sample) {
             if (Instance == null) {
                 Debug.LogError("Audio instance is null");
-                return;
+                return null;
             }
 
-            AudioManager.PlayAudio(sample, transform.position, _mixer);
+            return AudioManager.PlayAudio(sample, transform.position, _mixer);
         }
 
         // #if UNITY_EDITOR

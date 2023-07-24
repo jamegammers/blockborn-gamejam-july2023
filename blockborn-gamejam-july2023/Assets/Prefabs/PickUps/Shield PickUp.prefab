@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability: 0
+  _audioPowerUp: {fileID: 11400000, guid: 7c50966afc6352e49b8e4339b0842a9c, type: 2}
 --- !u!65 &7610345907802488102
 BoxCollider:
   m_ObjectHideFlags: 0
