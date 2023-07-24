@@ -129,7 +129,7 @@ public class FireBullets : MonoBehaviour
         for (int i = 0; i < bulletsAmount + 1; i++)
         {
             // Calculate the direction towards the player using Aimed() method
-            Vector2 bulDir = isAiming ? (-Aim()) : RandomAim();
+            Vector2 bulDir = isAiming ? (Aim()) : RandomAim();
 
             // Rotate the bullet direction by the cone pattern angle
             float rotatedAngle = angle * Mathf.Deg2Rad;
@@ -489,7 +489,7 @@ public class FireBullets : MonoBehaviour
     {
         float angle = (float)Math.Atan2(player.transform.position.y - transform.position.y,
             player.transform.position.x - transform.position.x);
-        for (int i = 0; i < bulletsAmount + 1; i++)
+        for (int i = 0; i <= bulletsAmount; i++)
         {
             float bulDirX = transform.position.x + Mathf.Cos(angle) * 10;
             float bulDirY = transform.position.y + Mathf.Sin(angle) * 10;

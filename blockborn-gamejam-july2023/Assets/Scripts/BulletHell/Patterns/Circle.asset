@@ -17,7 +17,7 @@ MonoBehaviour:
   patternName: Circle
   patternType: 1
   bulletBehaviour: 0
-  bulletAmount: 15
+  bulletAmount: 10
   startAngle: 0
   endAngle: 360
   FireRate: 3

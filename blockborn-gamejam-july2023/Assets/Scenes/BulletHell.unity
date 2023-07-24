@@ -929,6 +929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
+  _bulletLifeTime: 5
   impactEffect: {fileID: 1156230139}
   renderer: {fileID: 0}
   _damage: 1
@@ -1038,7 +1039,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282867107}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.68, y: 6.912672, z: -2.6}
+  m_LocalPosition: {x: 39.74, y: 6.912672, z: -2.6}
   m_LocalScale: {x: -0.22966415, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2443,6 +2444,54 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IncludeLayers.m_Bits
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824309198934687671, guid: a8b6ccba2dde9384e9331ac2ab8c2713,
+        type: 3}
+      propertyPath: patterns.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824309198934687671, guid: a8b6ccba2dde9384e9331ac2ab8c2713,
+        type: 3}
+      propertyPath: useAlternateDurations
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824309198934687671, guid: a8b6ccba2dde9384e9331ac2ab8c2713,
+        type: 3}
+      propertyPath: patterns.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 427e899aea5bdc749bd179b968b6a388,
+        type: 2}
+    - target: {fileID: 8824309198934687671, guid: a8b6ccba2dde9384e9331ac2ab8c2713,
+        type: 3}
+      propertyPath: patterns.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d325cc2975e00d46b45d35f64f8cbf4,
+        type: 2}
+    - target: {fileID: 8824309198934687671, guid: a8b6ccba2dde9384e9331ac2ab8c2713,
+        type: 3}
+      propertyPath: patterns.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: e9e673e758a42b64bbc9766dc895f7b6,
+        type: 2}
+    - target: {fileID: 8824309198934687671, guid: a8b6ccba2dde9384e9331ac2ab8c2713,
+        type: 3}
+      propertyPath: patternDurations.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824309198934687671, guid: a8b6ccba2dde9384e9331ac2ab8c2713,
+        type: 3}
+      propertyPath: patternDurations.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824309198934687671, guid: a8b6ccba2dde9384e9331ac2ab8c2713,
+        type: 3}
+      propertyPath: patternDurations.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824309198934687671, guid: a8b6ccba2dde9384e9331ac2ab8c2713,
+        type: 3}
+      propertyPath: patternDurations.Array.data[2]
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -63,37 +63,40 @@ public class EnemyPatternManager : MonoBehaviour
         while (playerClose)
         {
             foreach (BulletPatterns pattern in patterns)
-        {
-            Debug.Log("Calling Pattern " + pattern.patternName);
-            if (pattern.patternType == BulletPatternEnum.BulletPatternsEnum.None)
             {
-                StopCoroutine(StartPattern(pattern));
-                isFiring = false;
-                if (useAlternateDurations) patternDuration = patternDurations[patterns.IndexOf(pattern)];
-                else  patternDuration = pattern.patternDuration;
-                Cooldown = pattern.Cooldown;
-                fireBullets.SetBulletPatternNone();
-                yield return new WaitForSeconds(pattern.patternDuration);
-            }
-            else
-            {
-                StartCoroutine(StartPattern(pattern));
+                if (pattern.patternType == BulletPatternEnum.BulletPatternsEnum.None)
+                {
+                    StopCoroutine(StartPattern(pattern));
+                    isFiring = false;
+                    if (useAlternateDurations) patternDuration = patternDurations[patterns.IndexOf(pattern)];
+                    else patternDuration = pattern.patternDuration;
+                    Cooldown = pattern.Cooldown;
+                    fireBullets.SetBulletPatternNone();
+                    yield return new WaitForSeconds(pattern.patternDuration);
+                }
+                else
+                {
+                    if (!isFiring)
+                    {
+                        StartCoroutine(StartPattern(pattern));
+                    }
+                }
+
+                if (Cooldown > 0f)
+                {
+                    // Set the isOnCooldown flag to true and start the cooldown timer
+                    isOnCooldown = true;
+                    isFiring = false;
+                    yield return new WaitForSeconds(Cooldown);
+                    isOnCooldown = false;
+                }
             }
 
-            if (Cooldown > 0f)
-            {
-                // Set the isOnCooldown flag to true and start the cooldown timer
-                isOnCooldown = true;
-                yield return new WaitForSeconds(Cooldown);
-                isOnCooldown = false;
-            }
-        }
             Debug.Log("End of Patterns reached");
             isFiring = false;
             StopCoroutine(ReadBulletPatterns());
-            StartFiringPatterns();
         }
-        
+
         isFiring = false;
        
     }
