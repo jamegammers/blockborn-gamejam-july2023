@@ -3455,6 +3455,28 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4130678411458526827, guid: a729725a97e6333abb0486c57afe1ac2,
+        type: 3}
+      propertyPath: m_text
+      value: 'Robo
+
+        Rumble'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130678411458526827, guid: a729725a97e6333abb0486c57afe1ac2,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130678411458526827, guid: a729725a97e6333abb0486c57afe1ac2,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130678411458526827, guid: a729725a97e6333abb0486c57afe1ac2,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 4153218655673716975, guid: a729725a97e6333abb0486c57afe1ac2,
         type: 3}
       propertyPath: m_AnchorMax.y
