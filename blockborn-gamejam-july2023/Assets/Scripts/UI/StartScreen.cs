@@ -40,7 +40,7 @@ namespace UI {
             int seed = StringToSeed(input);
             _onGameStart.Invoke(seed);
             OnGameStart?.Invoke(seed);
-            // _randomize.SetLevelSeed(seed);
+            _randomize.SetLevelSeed(seed);
 
             _seedInput.OnSubmit -= OnInputSubmit;
             Destroy(gameObject);
