@@ -17,9 +17,9 @@ MonoBehaviour:
   patternName: CircleFollow
   patternType: 1
   bulletBehaviour: 4
-  bulletAmount: 30
+  bulletAmount: 5
   startAngle: 0
   endAngle: 360
-  FireRate: 0.6
+  FireRate: 2
   isAiming: 0
   direction: {x: 0, y: 0}
