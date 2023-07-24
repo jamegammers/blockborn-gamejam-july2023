@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace UI {
 
@@ -11,6 +12,7 @@ namespace UI {
         [SerializeField] private CharacterInput _seedInput;
 
         [SerializeField] private UnityEvent<int> _onGameStart;
+        [SerializeField] private Randomize _randomize;
 
         public Action<int> OnGameStart;
 
@@ -38,6 +40,7 @@ namespace UI {
             int seed = StringToSeed(input);
             _onGameStart.Invoke(seed);
             OnGameStart?.Invoke(seed);
+            _randomize.SetLevelSeed(seed);
 
             _seedInput.OnSubmit -= OnInputSubmit;
             Destroy(gameObject);
