@@ -103,10 +103,10 @@ public class EnemyPatternManager : MonoBehaviour
         isFiring = true;
         if (useAlternateDurations) patternDuration = patternDurations[patterns.IndexOf(pattern)];
         else  patternDuration = pattern.patternDuration;
-        BulletPool.Instance.GetEnemyBulletPrefab().GetComponent<Bullet>().SetSpeed(pattern.BulletSpeed);
+       // BulletPool.Instance.GetEnemyBulletPrefab().GetComponent<Bullet>().SetSpeed(pattern.BulletSpeed);
         Cooldown = pattern.Cooldown;
         fireBullets.SetBulletPattern(pattern.patternType, pattern.bulletBehaviour, pattern.bulletAmount, 
-            pattern.startAngle, pattern.endAngle, pattern.isAiming, pattern.FireRate);
+            pattern.startAngle, pattern.endAngle, pattern.isAiming, pattern.FireRate, pattern.BulletSpeed);
         yield return new WaitForSeconds(pattern.patternDuration);
         fireBullets.SetBulletPatternNone();
     }
