@@ -13,18 +13,18 @@ public class GenerateCity : MonoBehaviour
 
     public bool generateOn = true;
     public Vector3 lastBuilding;
-    
+
     void Awake()
     {
         lastBuilding = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         
-        if (city == null)
+        /*if (city == null)
         {
             city = this;
         } else if (city != this)
         {
             Destroy(gameObject);
-        }
+        }*/
     }
 
     private void Update()
@@ -33,10 +33,6 @@ public class GenerateCity : MonoBehaviour
         {
             Debug.Log("Generate new Houses");
             Generate();
-        }
-        else
-        {
-            ClearObjects();
         }
     }
 
@@ -57,10 +53,11 @@ public class GenerateCity : MonoBehaviour
     
     private void Generate()
     {
-        ClearObjects();
+        //ClearObjects();
         perlinGenerator.Generate();
         gridSpawner.Generate();
         GetLastBuilding();
+        generateOn = false;
     }
     
     private void ClearObjects()
