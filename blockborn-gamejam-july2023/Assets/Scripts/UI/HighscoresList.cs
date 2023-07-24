@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.Utilities;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using Util;
 
 namespace UI {
@@ -47,8 +48,9 @@ namespace UI {
         [SerializeField] private GameObject _listItemPrefab;
         [SerializeField] private RectTransform _inputParent;
 
+        [FormerlySerializedAs("_highscoreInput")]
         [Space(15), Header("Input")]
-        [SerializeField] private HighscoreInput _highscoreInput;
+        [SerializeField] private CharacterInput _characterInput;
 
         private List<Highscore> _scores = new();
         private Highscore _newScore;
@@ -93,8 +95,8 @@ namespace UI {
 
             if (_scores.Contains(_newScore)) {                              // check if list contains new score
                 // input name, wait for submit
-                _highscoreInput.OnSubmit += OnInputEnded;
-                _highscoreInput.StartInput(newScore);
+                _characterInput.OnSubmit += OnInputEnded;
+                _characterInput.StartInput(newScore);
                 return;
             }
 
@@ -114,7 +116,7 @@ namespace UI {
             FillList(_scores.ToArray());
 
             // Debug.Log($"name: {name}");
-            _highscoreInput.OnSubmit -= OnInputEnded;
+            _characterInput.OnSubmit -= OnInputEnded;
         }
 
         private void FillList(IEnumerable<Highscore> scores) {

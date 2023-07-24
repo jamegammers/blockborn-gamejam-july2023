@@ -1,11 +1,10 @@
 using System;
-using System.Collections;
 using TMPro;
 using UnityEngine;
 
 namespace UI {
 
-    public class HighscoreInput : MonoBehaviour {
+    public class CharacterInput : MonoBehaviour {
 
         [Header("References")]
         [SerializeField] private RectTransform _parent;
@@ -15,6 +14,9 @@ namespace UI {
 
         [SerializeField] private TMP_Text _scoreText;
 
+        // ReSharper disable once StringLiteralTypo
+        [Space(15), Header("Settings")]
+        [SerializeField] private string _alphabet = " ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         public Action<string> OnSubmit;
 
@@ -24,7 +26,6 @@ namespace UI {
         private PlayerInput _playerInput;
 
 
-        private const string ALPHABET = " ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         private static readonly TextAlignmentOptions[] ALIGNMENT_OPTIONS = {
             TextAlignmentOptions.MidlineLeft, TextAlignmentOptions.Midline, TextAlignmentOptions.MidlineRight
         };
@@ -47,6 +48,7 @@ namespace UI {
 
             _playerInput.Player.Jump.performed += _ => {
                 OnSubmit?.Invoke(_nameText.text);
+                _playerInput.Disable();
                 _parent.gameObject.SetActive(false);
             };
 
@@ -61,8 +63,8 @@ namespace UI {
 
         private void UpdateChar(float y) {
             _name[_charIndex] = y switch {
-                > 0 => (_name[_charIndex] + 1) % ALPHABET.Length,
-                < 0 => (_name[_charIndex] + 25) % ALPHABET.Length,
+                > 0 => (_name[_charIndex] + 1) % _alphabet.Length,
+                < 0 => (_name[_charIndex] + 25) % _alphabet.Length,
                 _ => _name[_charIndex]
             };
 
@@ -72,7 +74,7 @@ namespace UI {
         private void UpdateText() {
             _nameText.text = "";
             for (int i = 0; i < 3; i++)
-                _nameText.text += ALPHABET[_name[i]];
+                _nameText.text += _alphabet[_name[i]];
         }
 
         private void UpdateArrows(float x) {
