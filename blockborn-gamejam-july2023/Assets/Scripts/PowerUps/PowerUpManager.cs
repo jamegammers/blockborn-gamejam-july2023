@@ -16,7 +16,7 @@ public class PowerUpManager : MonoBehaviour
     public void InstanciatePowerUp(Vector3 spawnPos, GameObject powerUpSpawnLocation)
     {
         
-        Debug.Log(_randomize.RandomizeNumbers(0, 0));
+        //Debug.Log(_randomize.RandomizeNumbers(0, 0));
         
         // if randomize number is 0, spawn a power up
         if (_randomize.RandomizeNumbers(0, _spawnChance) == 0)
@@ -31,7 +31,7 @@ public class PowerUpManager : MonoBehaviour
         // else, increase spawn chance
         else
         {
-            if (_spawnChance !< 1)
+            if (_spawnChance > 0)
             {
                 _spawnChance--;
             }
