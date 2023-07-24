@@ -12,9 +12,12 @@ public class GenerateCity : MonoBehaviour
     public GridSpawner gridSpawner;
 
     public bool generateOn = true;
+    public Vector3 lastBuilding;
     
     void Awake()
     {
+        lastBuilding = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        
         if (city == null)
         {
             city = this;
@@ -41,12 +44,23 @@ public class GenerateCity : MonoBehaviour
     {
         buildings.Add(objToAdd);
     }
+
+    private void GetLastBuilding()
+    {
+        if (buildings.Count > 0)
+        {
+            GameObject lastBuildingobj = buildings[buildings.Count - 1];
+            lastBuilding = new Vector3(lastBuildingobj.transform.position.x, 0, 0);
+            gridSpawner.SetNewOrigin(lastBuilding);
+        }
+    }
     
     private void Generate()
     {
         ClearObjects();
         perlinGenerator.Generate();
         gridSpawner.Generate();
+        GetLastBuilding();
     }
     
     private void ClearObjects()
