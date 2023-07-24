@@ -90,6 +90,11 @@ public class Bullet : MonoBehaviour
 
     }
 
+    public void SetSpeed(float newSpeed)
+    {
+        this.speed = newSpeed;
+    }
+
     private IEnumerator WaitForParticleSystem()
     {
         renderer.enabled = false;
