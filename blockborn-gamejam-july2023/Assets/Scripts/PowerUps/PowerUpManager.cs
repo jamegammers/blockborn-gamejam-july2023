@@ -26,8 +26,7 @@ public class PowerUpManager : MonoBehaviour
                 spawnPos, Quaternion.identity).transform.parent = powerUpSpawnLocation.transform;
             
             _spawnChance = 11;
-        } 
-        
+        }
         // else, increase spawn chance
         else
         {
