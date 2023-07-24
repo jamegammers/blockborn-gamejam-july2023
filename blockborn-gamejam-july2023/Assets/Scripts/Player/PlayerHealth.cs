@@ -61,6 +61,7 @@ public class PlayerHealth : MonoBehaviour
     public void Resurrect() {
         _alive = true;
         _health = _initialHealth;
+        _healthUI.Reset();
     }
 
 }
