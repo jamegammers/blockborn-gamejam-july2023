@@ -32,14 +32,13 @@ namespace ArcadeMachine {
             // _light.cookie = _screen;
         }
         
-        private Color CalculateAverageColor(Texture2D texture, int step = 1) {
-            Color[] pixels = texture.GetPixels();
+        private static Color CalculateAverageColor(Texture2D texture, int step = 1) {
             Color averageColor = Color.black;
-            int count = 0;
+            int count = texture.width * texture.height;
 
-            for (int i = 0; i < pixels.Length; i += step) {
-                averageColor += pixels[i];
-                count++;
+            for (int x = 0; x < texture.width; x += step) {
+                for (int y = 0; y < texture.height; y += step)
+                    averageColor += texture.GetPixel(x, y);
             }
 
             averageColor /= count;
