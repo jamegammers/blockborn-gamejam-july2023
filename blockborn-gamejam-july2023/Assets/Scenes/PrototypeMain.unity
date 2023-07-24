@@ -375,6 +375,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &336442162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8762262289267970775, guid: 020626ac646e4874fb460bdd9bc3fcda,
+    type: 3}
+  m_PrefabInstance: {fileID: 1214307684}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7109c0b112471a8499b568dfbdbeff72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &356902529
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,7 +893,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 32759
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -1493,6 +1505,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135950332}
   m_CullTransparentMesh: 1
+--- !u!114 &1158632553 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3363790176824880782, guid: a729725a97e6333abb0486c57afe1ac2,
+    type: 3}
+  m_PrefabInstance: {fileID: 382111281873836720}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3680e55849044f1b307034b82217f0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1214307684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1521,11 +1545,21 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3365564614030245180, guid: 020626ac646e4874fb460bdd9bc3fcda,
+        type: 3}
+      propertyPath: _deathScreen
+      value: 
+      objectReference: {fileID: 1158632553}
     - target: {fileID: 3564203469584839960, guid: 020626ac646e4874fb460bdd9bc3fcda,
         type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5197003102514722566, guid: 020626ac646e4874fb460bdd9bc3fcda,
+        type: 3}
+      propertyPath: _deathScreen
+      value: 
+      objectReference: {fileID: 1158632553}
     - target: {fileID: 7853513000839958513, guid: 020626ac646e4874fb460bdd9bc3fcda,
         type: 3}
       propertyPath: m_RootOrder
@@ -2193,6 +2227,7 @@ MonoBehaviour:
   _light: {fileID: 1875456386}
   _renderTexture: {fileID: 8400000, guid: d6f254e94479728418f52d2827ed595d, type: 2}
   _calculationStep: 5
+  _calculateEveryFrames: 2
 --- !u!114 &1875456385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2566,6 +2601,11 @@ PrefabInstance:
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 301862959146866350, guid: a729725a97e6333abb0486c57afe1ac2,
+        type: 3}
+      propertyPath: _playerMovement
+      value: 
+      objectReference: {fileID: 336442162}
     - target: {fileID: 313018595396615595, guid: a729725a97e6333abb0486c57afe1ac2,
         type: 3}
       propertyPath: m_AnchorMax.y

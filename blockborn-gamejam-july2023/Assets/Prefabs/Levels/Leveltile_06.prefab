@@ -16674,8 +16674,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 11, z: 1}
-  m_Center: {x: 1, y: -5, z: 0}
+  m_Size: {x: 3.25, y: 22.75, z: 1}
+  m_Center: {x: 1.125, y: -10.875, z: 0}
 --- !u!114 &3459093518877816301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21185,8 +21185,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 11, z: 1}
-  m_Center: {x: 1, y: -5, z: 0}
+  m_Size: {x: 3.5, y: 19, z: 1}
+  m_Center: {x: 1.25, y: -9, z: 0}
 --- !u!114 &4361186022327848734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23829,9 +23829,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667a0d2f91117964eab8c9ef4019c5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 8387749216581757621, guid: 1504da56be6e0014781d8f33a5b2bfc0,
-    type: 3}
-  _enemySpawnLocation: {fileID: 5273645998501242647}
+  _gameManager: {fileID: 0}
+  _enemyTransformParent: {fileID: 0}
 --- !u!1 &3426792123100017512
 GameObject:
   m_ObjectHideFlags: 0
@@ -26405,8 +26404,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 11, z: 1}
-  m_Center: {x: 1, y: -5, z: 0}
+  m_Size: {x: 3.5, y: 21, z: 1}
+  m_Center: {x: 1.25, y: -10, z: 0}
 --- !u!114 &2616935069751406795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29069,9 +29068,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667a0d2f91117964eab8c9ef4019c5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 8387749216581757621, guid: 1504da56be6e0014781d8f33a5b2bfc0,
-    type: 3}
-  _enemySpawnLocation: {fileID: 5273645998501242647}
+  _gameManager: {fileID: 0}
+  _enemyTransformParent: {fileID: 0}
 --- !u!1 &4144949928937175482
 GameObject:
   m_ObjectHideFlags: 0
@@ -32912,8 +32910,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 11, z: 1}
-  m_Center: {x: 1, y: -5, z: 0}
+  m_Size: {x: 3.25, y: 22.75, z: 1}
+  m_Center: {x: 1.125, y: -10.875, z: 0}
 --- !u!114 &3663858196996724730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38463,8 +38461,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 11, z: 1}
-  m_Center: {x: 1, y: -5, z: 0}
+  m_Size: {x: 3.25, y: 19, z: 1}
+  m_Center: {x: 1.125, y: -9, z: 0}
 --- !u!114 &6471281600021877709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38607,9 +38605,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667a0d2f91117964eab8c9ef4019c5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 8387749216581757621, guid: 1504da56be6e0014781d8f33a5b2bfc0,
-    type: 3}
-  _enemySpawnLocation: {fileID: 5273645998501242647}
+  _gameManager: {fileID: 0}
+  _enemyTransformParent: {fileID: 0}
 --- !u!1 &5648291623696121845
 GameObject:
   m_ObjectHideFlags: 0
@@ -38619,6 +38616,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 49847038580121267}
+  - component: {fileID: 6566153912677311868}
   m_Layer: 0
   m_Name: Leveltile_06
   m_TagString: Untagged
@@ -38646,6 +38644,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6566153912677311868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5648291623696121845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb58f8fd7d9e3ad4f8704f949bc8e008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5667667731320501516
 GameObject:
   m_ObjectHideFlags: 0
@@ -41974,8 +41984,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 11, z: 1}
-  m_Center: {x: 1.5, y: -4, z: 0}
+  m_Size: {x: 3.5, y: 22.75, z: 1}
+  m_Center: {x: 2.25, y: -5.875, z: 0}
 --- !u!114 &3970641899452107210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42134,8 +42144,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 11, z: 1}
-  m_Center: {x: 1, y: -5, z: 0}
+  m_Size: {x: 3.25, y: 22.75, z: 1}
+  m_Center: {x: 1.125, y: -10.875, z: 0}
 --- !u!114 &4089037050800362030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42462,8 +42472,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 11, z: 1}
-  m_Center: {x: 1, y: -5, z: 0}
+  m_Size: {x: 3.5, y: 22.75, z: 1}
+  m_Center: {x: 1.25, y: -10.875, z: 0}
 --- !u!114 &7524242653348760779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51571,8 +51581,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.25, y: 17, z: 1}
-  m_Center: {x: 2.125, y: -8, z: 0}
+  m_Size: {x: 3.5, y: 22.75, z: 1}
+  m_Center: {x: 1.25, y: -16.875, z: 0}
 --- !u!1 &7722789775369526181
 GameObject:
   m_ObjectHideFlags: 0
@@ -56447,8 +56457,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5, y: 11, z: 1}
-  m_Center: {x: 2, y: -5, z: 0}
+  m_Size: {x: 3.5, y: 22.75, z: 1}
+  m_Center: {x: -1.75, y: -10.875, z: 0}
 --- !u!114 &819773454314592929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61931,6 +61941,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5251100374548511711}
     m_Modifications:
+    - target: {fileID: 1105257298339875586, guid: 42e47b541db248c4aa5efcc3958eb604,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105257298339875586, guid: 42e47b541db248c4aa5efcc3958eb604,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105257298339875586, guid: 42e47b541db248c4aa5efcc3958eb604,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105257298339875586, guid: 42e47b541db248c4aa5efcc3958eb604,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 7292717240588815996, guid: 42e47b541db248c4aa5efcc3958eb604,
         type: 3}
       propertyPath: m_RootOrder
@@ -62407,6 +62437,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5251100374548511711}
     m_Modifications:
+    - target: {fileID: 1105257298339875586, guid: 42e47b541db248c4aa5efcc3958eb604,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105257298339875586, guid: 42e47b541db248c4aa5efcc3958eb604,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105257298339875586, guid: 42e47b541db248c4aa5efcc3958eb604,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105257298339875586, guid: 42e47b541db248c4aa5efcc3958eb604,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -9
+      objectReference: {fileID: 0}
     - target: {fileID: 7292717240588815996, guid: 42e47b541db248c4aa5efcc3958eb604,
         type: 3}
       propertyPath: m_RootOrder
@@ -62693,6 +62743,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5251100374548511711}
     m_Modifications:
+    - target: {fileID: 1105257298339875586, guid: 42e47b541db248c4aa5efcc3958eb604,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 3.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105257298339875586, guid: 42e47b541db248c4aa5efcc3958eb604,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105257298339875586, guid: 42e47b541db248c4aa5efcc3958eb604,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 1.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105257298339875586, guid: 42e47b541db248c4aa5efcc3958eb604,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 7292717240588815996, guid: 42e47b541db248c4aa5efcc3958eb604,
         type: 3}
       propertyPath: m_RootOrder

@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using UI;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -9,8 +9,24 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private PlayerShoot _playerShoot;
     [SerializeField] private HealthUI _healthUI;
-    private bool _gettingHit = false;
+    [SerializeField] private DeathScreen _deathScreen;
+    [SerializeField] private float _deathY = -10f;
+
+    private bool _gettingHit;
     private bool _alive = true;
+    private Vector3 _startPosition;
+    private int _initialHealth;
+
+
+    private void Start() {
+        _startPosition = transform.position;
+        _initialHealth = _health;
+    }
+
+    private void Update() {
+        if (transform.position.y < _deathY && _alive)
+            GameOver();
+    }
 
     public void GetDamage(int damage)
     {
@@ -33,9 +49,18 @@ public class PlayerHealth : MonoBehaviour
     private void GameOver()
     {
         _alive = false;
-        Debug.Log("game over :(");
+        // Debug.Log("game over :(");
         _playerAnimation.PlayDeathAnimation();
         _playerMovement.enabled = false;
         _playerShoot.enabled = false;
+
+        int score = (int) (_startPosition.x + transform.position.x);
+        _deathScreen.Show(score);
     }
+
+    public void Resurrect() {
+        _alive = true;
+        _health = _initialHealth;
+    }
+
 }

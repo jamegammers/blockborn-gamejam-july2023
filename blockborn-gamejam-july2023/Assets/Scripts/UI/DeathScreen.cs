@@ -25,7 +25,7 @@ namespace UI {
 
         #if UNITY_EDITOR
         [ContextMenu("Show")]
-        public void Show() {
+        public void TestShow() {
             Show(6900);
         }
         #endif
@@ -35,6 +35,10 @@ namespace UI {
 
             CoinInserter.WaitForCoin(() => {
                 gameObject.SetActive(false);
+
+                StopAllCoroutines();
+                _countdown = 15;
+
                 _onContinue.Invoke();
                 OnContinue?.Invoke();
             });
