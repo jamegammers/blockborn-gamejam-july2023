@@ -25,7 +25,7 @@ namespace UI {
 
         #if UNITY_EDITOR
         [ContextMenu("Show")]
-        public void Show() {
+        public void TestShow() {
             Show(6900);
         }
         #endif
