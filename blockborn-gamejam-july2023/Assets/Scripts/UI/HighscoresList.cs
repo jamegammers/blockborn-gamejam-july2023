@@ -96,7 +96,7 @@ namespace UI {
             if (_scores.Contains(_newScore)) {                              // check if list contains new score
                 // input name, wait for submit
                 _characterInput.OnSubmit += OnInputEnded;
-                _characterInput.StartInput(new [] { 1, 1, 1});
+                _characterInput.StartInput(new [] { 1, 1, 1 });
                 _inputParent.gameObject.SetActive(true);
                 return;
             }

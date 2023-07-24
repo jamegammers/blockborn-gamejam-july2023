@@ -26,10 +26,6 @@ namespace UI {
         private PlayerInput _playerInput;
 
 
-        private static readonly TextAlignmentOptions[] ALIGNMENT_OPTIONS = {
-            TextAlignmentOptions.MidlineLeft, TextAlignmentOptions.Midline, TextAlignmentOptions.MidlineRight
-        };
-
         private void Awake() {
             _playerInput = new PlayerInput();
 
@@ -73,19 +69,24 @@ namespace UI {
 
         private void UpdateText() {
             _nameText.text = "";
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < _value.Length; i++)
                 _nameText.text += _alphabet[_value[i]];
         }
 
         private void UpdateArrows(float x) {
             _charIndex = x switch {
-                > 0 => (_charIndex + 1) % 3,
-                < 0 => (_charIndex + 2) % 3,
+                > 0 => (_charIndex + 1) % _value.Length,
+                < 0 => (_charIndex + (_value.Length -1)) % _value.Length,
                 _ => _charIndex
             };
 
-            _upArrow.alignment = ALIGNMENT_OPTIONS[_charIndex];
-            _downArrow.alignment = ALIGNMENT_OPTIONS[_charIndex];
+            string arrow = "";
+
+            for (int i = 0; i < _value.Length; i++)
+                arrow += i == _charIndex ? "v" : " ";
+
+            _upArrow.text = arrow;
+            _downArrow.text = arrow;
         }
 
 
