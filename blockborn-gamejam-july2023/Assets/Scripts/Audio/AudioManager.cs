@@ -23,13 +23,13 @@ namespace Audio {
             Instance = this;
         }
 
-        public static void PlayAudio(AudioSample sample, Vector3 position, AudioMixerGroup mixer = null) {
+        public static AudioSource PlayAudio(AudioSample sample, Vector3 position, AudioMixerGroup mixer = null) {
             if (Instance == null) {
                 Debug.LogError("Audio instance is null");
-                return;
+                return null;
             }
 
-            Instance.PlayAudioInstance(sample, position, mixer);
+            return Instance.PlayAudioInstance(sample, position, mixer);
         }
 
         private AudioSource PlayAudioInstance(AudioSample sample, Vector3 position, AudioMixerGroup mixer = null) {
