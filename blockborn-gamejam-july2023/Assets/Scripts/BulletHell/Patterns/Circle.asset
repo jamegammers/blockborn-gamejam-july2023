@@ -20,6 +20,11 @@ MonoBehaviour:
   bulletAmount: 15
   startAngle: 0
   endAngle: 360
+<<<<<<< HEAD
+  FireRate: 0.6
+  BulletSpeed: 30
+=======
   FireRate: 3
+>>>>>>> main
   isAiming: 0
   direction: {x: 0, y: 0}

@@ -16,6 +16,7 @@ public class BulletPatterns : ScriptableObject
 
     public float startAngle, endAngle;
     public float FireRate;
+    public float BulletSpeed = 10f;
     public bool isAiming;
     
     public Vector2 direction;
