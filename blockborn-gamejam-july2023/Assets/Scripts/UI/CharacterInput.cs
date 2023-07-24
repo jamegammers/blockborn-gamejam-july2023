@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace UI {
@@ -7,12 +8,9 @@ namespace UI {
     public class CharacterInput : MonoBehaviour {
 
         [Header("References")]
-        [SerializeField] private RectTransform _parent;
         [SerializeField] private TMP_Text _upArrow;
         [SerializeField] private TMP_Text _downArrow;
         [SerializeField] private TMP_Text _nameText;
-
-        [SerializeField] private TMP_Text _scoreText;
 
         // ReSharper disable once StringLiteralTypo
         [Space(15), Header("Settings")]
@@ -41,15 +39,21 @@ namespace UI {
             _playerInput.Player.Jump.performed += _ => {
                 OnSubmit?.Invoke(_nameText.text);
                 _playerInput.Disable();
-                _parent.gameObject.SetActive(false);
             };
+        }
+
+        public void StartInput(int inputLength) {
+            int[] defaultValue = new int[inputLength];
+            for (int i = 0; i < defaultValue.Length; i++)
+                defaultValue[i] = UnityEngine.Random.Range(0, _alphabet.Length);
+
+            StartInput(defaultValue);
         }
 
         public void StartInput(int[] defaultValue) {
             _value = defaultValue;
             _playerInput.Enable();
             UpdateText();
-            // _parent.gameObject.SetActive(true);
         }
 
 

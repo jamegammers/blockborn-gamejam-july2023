@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.Utilities;
+using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Util;
@@ -47,6 +48,7 @@ namespace UI {
         [SerializeField] private RectTransform _listBox;
         [SerializeField] private GameObject _listItemPrefab;
         [SerializeField] private RectTransform _inputParent;
+        [SerializeField] private TMP_Text _newScoreText;
 
         [FormerlySerializedAs("_highscoreInput")]
         [Space(15), Header("Input")]
@@ -97,6 +99,7 @@ namespace UI {
                 // input name, wait for submit
                 _characterInput.OnSubmit += OnInputEnded;
                 _characterInput.StartInput(new [] { 1, 1, 1 });
+                _newScoreText.text = _newScore.Score.ToString();
                 _inputParent.gameObject.SetActive(true);
                 return;
             }
@@ -115,6 +118,7 @@ namespace UI {
 
             // show scores list
             FillList(_scores.ToArray());
+            _inputParent.gameObject.SetActive(false);
 
             // Debug.Log($"name: {name}");
             _characterInput.OnSubmit -= OnInputEnded;
