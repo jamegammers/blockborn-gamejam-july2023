@@ -1545,6 +1545,11 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3365564614030245180, guid: 020626ac646e4874fb460bdd9bc3fcda,
+        type: 3}
+      propertyPath: _deathScreen
+      value: 
+      objectReference: {fileID: 1158632553}
     - target: {fileID: 3564203469584839960, guid: 020626ac646e4874fb460bdd9bc3fcda,
         type: 3}
       propertyPath: m_TagString

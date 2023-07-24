@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using UI;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -14,13 +12,15 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private DeathScreen _deathScreen;
     [SerializeField] private float _deathY = -10f;
 
-    private bool _gettingHit = false;
+    private bool _gettingHit;
     private bool _alive = true;
     private Vector3 _startPosition;
+    private int _initialHealth;
 
 
     private void Start() {
         _startPosition = transform.position;
+        _initialHealth = _health;
     }
 
     private void Update() {
@@ -57,4 +57,10 @@ public class PlayerHealth : MonoBehaviour
         int score = (int) (_startPosition.x + transform.position.x);
         _deathScreen.Show(score);
     }
+
+    public void Resurrect() {
+        _alive = true;
+        _health = _initialHealth;
+    }
+
 }

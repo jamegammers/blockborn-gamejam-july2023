@@ -35,6 +35,10 @@ namespace UI {
 
             CoinInserter.WaitForCoin(() => {
                 gameObject.SetActive(false);
+
+                StopAllCoroutines();
+                _countdown = 15;
+
                 _onContinue.Invoke();
                 OnContinue?.Invoke();
             });

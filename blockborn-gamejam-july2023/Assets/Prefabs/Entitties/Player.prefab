@@ -307,6 +307,7 @@ GameObject:
   - component: {fileID: 3946084407514318756}
   - component: {fileID: 4797372941760441653}
   - component: {fileID: 27517372073611866}
+  - component: {fileID: 6358968456289207522}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -382,8 +383,6 @@ MonoBehaviour:
   _playerCarSpeed: 0.6
   _carMode: 0
   _transformationSpeed: 0.5
-  _robotSprite: {fileID: 3429816529742987385}
-  _carSprite: {fileID: 5418808677382990185}
 --- !u!114 &3946084407514318756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,6 +425,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 9105116867247981169}
   _playerSprite: {fileID: 3197306102571652686}
+--- !u!114 &6358968456289207522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5187552047133379782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671b4ac673cc46a1b118dffd9611166c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deathScreen: {fileID: 0}
+  _playerMovement: {fileID: 1086128446808238857}
+  _playerHealth: {fileID: 0}
 --- !u!1 &5418808677382990185
 GameObject:
   m_ObjectHideFlags: 0
