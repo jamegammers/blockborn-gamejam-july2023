@@ -11,7 +11,7 @@ public class PowerUpManager : MonoBehaviour
     [Space]
     [SerializeField] private GameObject[] _powerUpList;
 
-    private int _spawnChance = 11;
+    [SerializeField] private int _spawnChance = 11;
 
     public void InstanciatePowerUp(Vector3 spawnPos, GameObject powerUpSpawnLocation)
     {
