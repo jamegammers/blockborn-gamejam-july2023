@@ -21,5 +21,6 @@ MonoBehaviour:
   startAngle: 0
   endAngle: 40
   FireRate: 0.6
+  BulletSpeed: 30
   isAiming: 1
   direction: {x: 0, y: 0}

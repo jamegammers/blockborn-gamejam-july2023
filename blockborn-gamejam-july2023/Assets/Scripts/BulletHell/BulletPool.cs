@@ -26,6 +26,15 @@ namespace BulletHell
             bulletsEnemy = new List<GameObject>();
             bulletsPlayer = new List<GameObject>();
         }
+
+        public GameObject GetEnemyBulletPrefab()
+        {
+            return pooledBulletEnemy;
+        }
+        public GameObject GetPlayerBulletPrefab()
+        {
+            return pooledBulletPlayer;
+        }
         
         public GameObject GetBulletEnemy()
         {
