@@ -17,10 +17,10 @@ MonoBehaviour:
   patternName: TrackSpiral
   patternType: 5
   bulletBehaviour: 4
-  bulletAmount: 30
+  bulletAmount: 2
   startAngle: 0
   endAngle: 40
-  FireRate: 0.1
+  FireRate: 0.2
   BulletSpeed: 5
   isAiming: 0
   direction: {x: 0, y: 0}

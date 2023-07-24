@@ -19,8 +19,8 @@ MonoBehaviour:
   bulletBehaviour: 1
   bulletAmount: 7
   startAngle: 0
-  endAngle: 360
-  FireRate: 0.6
-  BulletSpeed: 5
+  endAngle: 720
+  FireRate: 1.2
+  BulletSpeed: 2
   isAiming: 0
   direction: {x: 0, y: 0}

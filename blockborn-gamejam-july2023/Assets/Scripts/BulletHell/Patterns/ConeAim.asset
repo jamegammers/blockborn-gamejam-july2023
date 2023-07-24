@@ -17,7 +17,7 @@ MonoBehaviour:
   patternName: ConeAim
   patternType: 2
   bulletBehaviour: 0
-  bulletAmount: 10
+  bulletAmount: 4
   startAngle: 0
   endAngle: 40
   FireRate: 2
