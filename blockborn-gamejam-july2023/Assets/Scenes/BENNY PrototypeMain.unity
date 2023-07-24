@@ -203,6 +203,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6036979650315237501, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
+        type: 3}
+      propertyPath: _spawnChance
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036979650315237501, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
+        type: 3}
+      propertyPath: _powerUpList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036979650315237501, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
+        type: 3}
+      propertyPath: _powerUpList.Array.data[0]
+      value: 
+      objectReference: {fileID: 6210369901315325787, guid: 63bd0c90a9fab7c46a1d35319b2a5962,
+        type: 3}
+    - target: {fileID: 6036979650315237501, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
+        type: 3}
+      propertyPath: _powerUpList.Array.data[1]
+      value: 
+      objectReference: {fileID: 2263864331320892971, guid: 3ca81944a8d3b8a4b9fc6ead8d0be0fb,
+        type: 3}
+    - target: {fileID: 6036979650315237501, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
+        type: 3}
+      propertyPath: _powerUpList.Array.data[2]
+      value: 
+      objectReference: {fileID: 2263864331320892971, guid: 3ca81944a8d3b8a4b9fc6ead8d0be0fb,
+        type: 3}
+    - target: {fileID: 6036979650315237501, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
+        type: 3}
+      propertyPath: _powerUpList.Array.data[3]
+      value: 
+      objectReference: {fileID: 2263864331320892971, guid: 3ca81944a8d3b8a4b9fc6ead8d0be0fb,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1988,6 +2022,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 382239052}
     m_Modifications:
+    - target: {fileID: 17088045877083960, guid: 95ab0212885ad3944a83755c4823d50d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 23.900002
+      objectReference: {fileID: 0}
+    - target: {fileID: 17088045877083960, guid: 95ab0212885ad3944a83755c4823d50d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.8000002
+      objectReference: {fileID: 0}
     - target: {fileID: 1805349441272259311, guid: 95ab0212885ad3944a83755c4823d50d,
         type: 3}
       propertyPath: _gameManager
