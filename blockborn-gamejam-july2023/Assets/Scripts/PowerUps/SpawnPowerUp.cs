@@ -10,6 +10,7 @@ public class SpawnPowerUp : MonoBehaviour
 
     private void Awake()
     {
+        _gameManager = GameObject.Find("GameManager");
         _powerUpManager = _gameManager.GetComponent<PowerUpManager>();
         _powerUpManager.InstanciatePowerUp(transform.position, transform.gameObject);
     }

@@ -218,6 +218,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6036979650315237501, guid: 0adfb1be567425e4cbe8fee5ff4159f5,
+        type: 3}
+      propertyPath: _spawnChance
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1499,6 +1504,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 971ebd3c9849b4d4ca56406e8b36723c,
         type: 2}
+    - target: {fileID: 5197003102514722566, guid: 020626ac646e4874fb460bdd9bc3fcda,
+        type: 3}
+      propertyPath: _health
+      value: 999
+      objectReference: {fileID: 0}
     - target: {fileID: 5197003102514722566, guid: 020626ac646e4874fb460bdd9bc3fcda,
         type: 3}
       propertyPath: _healthUI

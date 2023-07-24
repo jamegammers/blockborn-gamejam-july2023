@@ -15,10 +15,10 @@ public class PerlinGenerator : MonoBehaviour
     public int perlinGridStepSizeX = 4;
     public int perlinGridStepSizeY = 4;
 
-    public bool visualizeGrid = false;
+    /*public bool visualizeGrid = false;
     public GameObject visualizationCube;
     public float visualizationHeightScale = 5f;
-    public RawImage visualizationUI;
+    public RawImage visualizationUI;*/
 
 
     private Texture2D perlinTexture;
@@ -38,10 +38,10 @@ public class PerlinGenerator : MonoBehaviour
     public void Generate()
     {
         GenerateNoise();
-        if (visualizeGrid)
+        /*if (visualizeGrid)
         {
             VisualizeGrid();
-        }
+        }*/
     }
 
     void GenerateNoise()
@@ -62,7 +62,7 @@ public class PerlinGenerator : MonoBehaviour
         }
 
         perlinTexture.Apply();
-        visualizationUI.texture = perlinTexture;
+        //visualizationUI.texture = perlinTexture;
     }
 
     Color SampleNoise(int x, int y)
@@ -100,6 +100,7 @@ public class PerlinGenerator : MonoBehaviour
         return sampledValue;
     }
     
+    /*
     void VisualizeGrid()
     {
         GameObject visualizationParent = new GameObject("VisualizationParent");
@@ -121,6 +122,7 @@ public class PerlinGenerator : MonoBehaviour
         visualizationParent.transform.position = 
             new Vector3(-perlinGridStepSizeX * .5f, -visualizationHeightScale * .5f, -perlinGridStepSizeY * .5f);
     }
+    */
 
     public void SetNoiseScaleFromSlider(Slider slider)
     {

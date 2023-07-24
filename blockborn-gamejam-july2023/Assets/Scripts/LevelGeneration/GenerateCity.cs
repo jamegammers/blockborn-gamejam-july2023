@@ -12,16 +12,21 @@ public class GenerateCity : MonoBehaviour
     public GridSpawner gridSpawner;
 
     public bool generateOn = true;
-    
+    public Vector3 lastBuilding;
+
+    private int _clearObjects = 0;
+
     void Awake()
     {
-        if (city == null)
+        lastBuilding = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        
+        /*if (city == null)
         {
             city = this;
         } else if (city != this)
         {
             Destroy(gameObject);
-        }
+        }*/
     }
 
     private void Update()
@@ -31,30 +36,43 @@ public class GenerateCity : MonoBehaviour
             Debug.Log("Generate new Houses");
             Generate();
         }
-        else
-        {
-            ClearObjects();
-        }
     }
 
     public void AddObject(GameObject objToAdd)
     {
         buildings.Add(objToAdd);
     }
-    
-    private void Generate()
+
+    private void GetLastBuilding()
     {
-        ClearObjects();
+        if (buildings.Count > 0)
+        {
+            GameObject lastBuildingobj = buildings[buildings.Count - 1];
+            lastBuilding = new Vector3(lastBuildingobj.transform.position.x, 0, 0);
+            gridSpawner.SetNewOrigin(lastBuilding);
+        }
+    }
+    
+    public void Generate()
+    {
+        
         perlinGenerator.Generate();
         gridSpawner.Generate();
+        GetLastBuilding();
+        generateOn = false;
+
+        if (_clearObjects > 2)
+        {
+            ClearObjects();
+            _clearObjects = 0;
+        } else _clearObjects++;
     }
     
     private void ClearObjects()
     {
-        foreach (GameObject obj in buildings)
+        for (int i = 0; i < gridSpawner.gridX * gridSpawner.gridZ; i++)
         {
-            Destroy(obj);
+            Destroy(buildings[i]);
         }
-        buildings.Clear();
     }
 }

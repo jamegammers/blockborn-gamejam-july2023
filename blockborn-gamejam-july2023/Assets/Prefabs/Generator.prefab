@@ -1,0 +1,162 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &739172020173790347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1207679342026027292}
+  - component: {fileID: 925846628085039771}
+  - component: {fileID: 4943971160561519590}
+  - component: {fileID: 7378211820294430826}
+  m_Layer: 0
+  m_Name: Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1207679342026027292
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739172020173790347}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.9518085, y: 2.370798, z: 0.061212838}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1219116726551405728}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &925846628085039771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739172020173790347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b1fa602f9dd4254d814414ab0ca910d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildings: []
+  perlinGenerator: {fileID: 4943971160561519590}
+  gridSpawner: {fileID: 7378211820294430826}
+  generateOn: 1
+  lastBuilding: {x: 0, y: 0, z: 0}
+--- !u!114 &4943971160561519590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739172020173790347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9776abf01ccdc140ac8a772ba54c18f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  perlinTextureSizeX: 0
+  perlinTextureSizeY: 0
+  randomizeNoiseOffset: 0
+  perlinOffset: {x: 0, y: 0}
+  noiseScale: 1
+  perlinGridStepSizeX: 0
+  perlinGridStepSizeY: 0
+--- !u!114 &7378211820294430826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739172020173790347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 240444051d3a7d44188d9c3608ac43d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridX: 15
+  gridZ: 3
+  prefabsToSpawn:
+  - {fileID: 2366828504493686854, guid: 6f90b5b84ee26d3419cb8ea3fb0c49ec, type: 3}
+  - {fileID: 6348066434829919440, guid: edafd2f1514c9514a9f93243f4a6d9bd, type: 3}
+  - {fileID: 2752979514999076342, guid: 5e8877134c55642458f120e84c608f61, type: 3}
+  - {fileID: 2752979514999076342, guid: 907b8ef8c9b9b8f4a82bdbc4af25f265, type: 3}
+  - {fileID: 7347056650118266993, guid: 6c85df7513b0209489bc5ddedc4aeafa, type: 3}
+  - {fileID: 4536528954990966711, guid: d15fa23cf8c112f4881dc8ab66786d37, type: 3}
+  - {fileID: 5300592807618209217, guid: fc61eb5a9d99a004e8e309c36302a981, type: 3}
+  - {fileID: 8370861905489372375, guid: 1b35cd0aca1469e42a498431edabd7ba, type: 3}
+  - {fileID: 5197574846252148602, guid: 1cb971f04234fb44aace3b9a04d394bb, type: 3}
+  - {fileID: 7166829392500109161, guid: 38b57ce247c32b248985c0dfaae34360, type: 3}
+  - {fileID: 7166829392500109161, guid: 8b9b585542d45ef42ac3ffddbfb4da8a, type: 3}
+  - {fileID: 8659537160112767593, guid: f73da4120d4df8642b334a9225fedd10, type: 3}
+  - {fileID: 8659537160112767593, guid: 7c907b64cbe280b419cf36ea7e41e9e3, type: 3}
+  - {fileID: 7328513126633019694, guid: 42e47b541db248c4aa5efcc3958eb604, type: 3}
+  - {fileID: 652427017450767291, guid: 504d7351a7653924cab5972e52b9283f, type: 3}
+  - {fileID: 652427017450767291, guid: 2c781dce69e66af4c933219abd709b3f, type: 3}
+  - {fileID: 7721728694382497783, guid: 09847d52c9071544ab8a6af48d15b9d2, type: 3}
+  - {fileID: 8949521191421182180, guid: 9515e205e5beadf44b2f023a68bf4604, type: 3}
+  - {fileID: 7721728694382497783, guid: 47560bb0aa6b4e14fb38c75d34eca173, type: 3}
+  - {fileID: 7721728694382497783, guid: e9cc167db948b194da2a9328d55c77c4, type: 3}
+  - {fileID: 2480118718658860428, guid: affffa24d04b0824294dd9b0c425b8c6, type: 3}
+  - {fileID: 3459372058526800675, guid: c64efbe6f0105a9458b13f383096662a, type: 3}
+  prefabToSpawn: {fileID: 6974804899179611204, guid: eb76dfd30e890d04e84331158fc7c15d,
+    type: 3}
+  gridOrigin: {x: 0, y: 0, z: 0}
+  gridOffset: 4
+  generateOnEnable: 1
+  _generateCity: {fileID: 925846628085039771}
+  BuildingList: {fileID: 3443157974579848483}
+  lastBuilding: {x: 0, y: 0, z: 0}
+--- !u!1 &3443157974579848483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1219116726551405728}
+  - component: {fileID: 5729259989030495024}
+  m_Layer: 0
+  m_Name: BuildingList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1219116726551405728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3443157974579848483}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1207679342026027292}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5729259989030495024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3443157974579848483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69614a8faea6419489d6af81a2b64971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

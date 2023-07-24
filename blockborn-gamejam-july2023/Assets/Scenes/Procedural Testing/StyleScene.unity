@@ -4664,12 +4664,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!54 &583674417 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 7937546174662437234, guid: c932bdc7f979b024194b8e40d82b4ced,
-    type: 3}
-  m_PrefabInstance: {fileID: 2132667896}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &583674419 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7883049386471465116, guid: c932bdc7f979b024194b8e40d82b4ced,
@@ -4694,7 +4688,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667a0d2f91117964eab8c9ef4019c5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 0}
+  _gameManager: {fileID: 0}
+  _enemyTransformParent: {fileID: 0}
 --- !u!1 &883053235
 GameObject:
   m_ObjectHideFlags: 0
@@ -6694,7 +6689,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _rbody
       value: 
-      objectReference: {fileID: 583674417}
+      objectReference: {fileID: 0}
     - target: {fileID: 5187552047133379782, guid: c932bdc7f979b024194b8e40d82b4ced,
         type: 3}
       propertyPath: m_Name
@@ -7017,6 +7012,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Global Volume
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414949822636669103, guid: d43937f3010872645b397e75e17d85d6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
