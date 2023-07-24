@@ -866,7 +866,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189806271942146507}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.60001, y: 6.8999996, z: 0}
+  m_LocalPosition: {x: -12.50001, y: 6.8999996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1790,9 +1790,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667a0d2f91117964eab8c9ef4019c5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 8387749216581757621, guid: 1504da56be6e0014781d8f33a5b2bfc0,
-    type: 3}
-  _enemySpawnLocation: {fileID: 5273645998501242647}
+  _gameManager: {fileID: 0}
+  _enemyTransformParent: {fileID: 0}
 --- !u!1 &447051430252494113
 GameObject:
   m_ObjectHideFlags: 0
@@ -12546,8 +12545,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5, y: 11, z: 1}
-  m_Center: {x: 2, y: -5, z: 0}
+  m_Size: {x: 5.5, y: 11, z: 1}
+  m_Center: {x: 2.25, y: -5, z: 0}
 --- !u!114 &1957699859413555793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15528,9 +15527,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667a0d2f91117964eab8c9ef4019c5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 8387749216581757621, guid: 1504da56be6e0014781d8f33a5b2bfc0,
-    type: 3}
-  _enemySpawnLocation: {fileID: 5273645998501242647}
+  _gameManager: {fileID: 0}
+  _enemyTransformParent: {fileID: 0}
 --- !u!1 &3451886767378927455
 GameObject:
   m_ObjectHideFlags: 0
@@ -25451,9 +25449,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667a0d2f91117964eab8c9ef4019c5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 8387749216581757621, guid: 1504da56be6e0014781d8f33a5b2bfc0,
-    type: 3}
-  _enemySpawnLocation: {fileID: 5273645998501242647}
+  _gameManager: {fileID: 0}
+  _enemyTransformParent: {fileID: 0}
 --- !u!1 &5648291623696121845
 GameObject:
   m_ObjectHideFlags: 0
@@ -25463,6 +25460,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 49847038580121267}
+  - component: {fileID: 3451513896398718644}
   m_Layer: 0
   m_Name: Leveltile_05
   m_TagString: Untagged
@@ -25490,6 +25488,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3451513896398718644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5648291623696121845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb58f8fd7d9e3ad4f8704f949bc8e008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5659426502476531751
 GameObject:
   m_ObjectHideFlags: 0
@@ -25871,8 +25881,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6, y: 11, z: 1}
-  m_Center: {x: 2.5, y: -5, z: 0}
+  m_Size: {x: 6.5, y: 11, z: 1}
+  m_Center: {x: 2.75, y: -5, z: 0}
 --- !u!114 &3972830779663275511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27696,8 +27706,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6, y: 11, z: 1}
-  m_Center: {x: 2.5, y: -5, z: 0}
+  m_Size: {x: 6.5, y: 11, z: 1}
+  m_Center: {x: 2.75, y: -5, z: 0}
 --- !u!114 &5816786862415200880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28746,7 +28756,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6634294753894506805}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 60, y: -19, z: 0}
+  m_LocalPosition: {x: 62.7, y: -19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31076,8 +31086,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5, y: 11, z: 1}
-  m_Center: {x: 2, y: -5, z: 0}
+  m_Size: {x: 5.5, y: 11, z: 1}
+  m_Center: {x: 2.25, y: -5, z: 0}
 --- !u!114 &3431469737345955674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39921,6 +39931,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: House Yellow Bricks 3x11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094414521103120773, guid: affffa24d04b0824294dd9b0c425b8c6,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094414521103120773, guid: affffa24d04b0824294dd9b0c425b8c6,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
