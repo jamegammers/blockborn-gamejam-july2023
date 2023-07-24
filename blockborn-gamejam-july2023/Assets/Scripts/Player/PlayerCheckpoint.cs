@@ -11,6 +11,7 @@ namespace Player {
         [SerializeField] private PlayerShoot _playerShoot;
         [SerializeField] private PlayerHealth _playerHealth;
         [SerializeField] private Transform _cameraTransform;
+        [SerializeField] private PlayerAnimation _playerAnimation;
 
         private Vector3 _lastCheckpoint;
 
@@ -34,6 +35,8 @@ namespace Player {
 
             _cameraTransform.position =
                 new Vector3(_lastCheckpoint.x, _cameraTransform.position.y, _cameraTransform.position.z);
+
+            _playerAnimation.ResetAnimation();
 
             _playerHealth.Resurrect();
             _playerMovement.enabled = true;
