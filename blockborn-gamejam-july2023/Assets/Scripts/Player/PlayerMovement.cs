@@ -1,3 +1,4 @@
+using Audio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     //[SerializeField] private Rigidbody _rbody;
     [SerializeField] private PlayerAnimation _playerAnimation;
+    
     [SerializeField] private CharacterController _cController;
     [SerializeField, Range(0.1f, 5)] private float _playerSpeed = 0.3f;   
     [SerializeField, Range(1f, 50f)] private float _jumpHeight = 12f;
@@ -43,6 +45,10 @@ public class PlayerMovement : MonoBehaviour
     //[SerializeField] private GameObject _robotSprite;
     //[SerializeField] private GameObject _carSprite;
 
+    [Header("AudioFiles")]
+    [SerializeField] private AudioSample _audioWalk;
+    [SerializeField] private AudioSample _audioTransform;
+    [SerializeField] private AudioSample _audioJump;
     private void Awake()
     {
         //Setting up the inputs
@@ -113,6 +119,11 @@ public class PlayerMovement : MonoBehaviour
         _playerAnimation.SetWalkAnimation(_velocity.x != 0);
         _playerAnimation.SetMidAirAnimation(!_cController.isGrounded);
         if (!_movementPressed && _currentAim != 4) _playerAnimation.SetFacingDirection(true);
+    }
+
+    public void WalkSound()
+    {
+        ArcadeAudio.PlayAudio(_audioWalk);
     }
 
     //Checks in which direction the joystick is facing
@@ -266,6 +277,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 //_rbody.AddForce(Vector3.up * _jumpHeight, ForceMode.Impulse);
                 _velocity.y = Mathf.Sqrt(_jumpHeight * -3f * -9.81f);
+                ArcadeAudio.PlayAudio(_audioJump);
                 Crouch(false);
                 _playerAnimation.PlayJumpAnimation();
                 if (!_checkingGround) StartCoroutine(CheckGroundedAfterSeconds(0.1f));
@@ -312,6 +324,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator TransformCar()
     {
+        ArcadeAudio.PlayAudio(_audioTransform);
         _playerAnimation.SetTransformingAnimation(true);
         _transforming = true;
         _carMode = !_carMode;

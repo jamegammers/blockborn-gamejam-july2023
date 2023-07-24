@@ -2,6 +2,7 @@ using BulletHell;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Audio;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class PlayerShoot : MonoBehaviour
 
     private PlayerInput _playerInput;
     private bool _shoot = false;
+
+    [Header("Sounds")]
+    [SerializeField] private AudioSample _shootSound;
 
     public float getShootCD()
     {
@@ -98,7 +102,7 @@ public class PlayerShoot : MonoBehaviour
         bul.GetComponent<Bullet>().SetDirection(direction);
 
         _playerAnimation.PlayAttackAnimation((AimDirections)_playerMovement._currentAim);
-
+        ArcadeAudio.PlayAudio(_shootSound);
         yield return new WaitForSeconds(_shootCD);
         _currentlyShooting = false;
     }

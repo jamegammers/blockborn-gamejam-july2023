@@ -1,6 +1,7 @@
 using System.Collections;
 using UI;
 using UnityEngine;
+using Audio;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class PlayerHealth : MonoBehaviour
     private Vector3 _startPosition;
     private int _initialHealth;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioSample _audioHurt;
+    [SerializeField] private AudioSample _audioGameOver;
 
     private void Start() {
         _startPosition = transform.position;
@@ -36,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
 
     private IEnumerator Damage(int damage)
     {
-        Debug.Log("player get damage");
+        ArcadeAudio.PlayAudio(_audioHurt);
         _gettingHit = true;
         _health -= damage;
         _healthUI.SetHealth(_health);
@@ -50,6 +54,7 @@ public class PlayerHealth : MonoBehaviour
     {
         _alive = false;
         // Debug.Log("game over :(");
+        ArcadeAudio.PlayAudio(_audioGameOver);
         _playerAnimation.PlayDeathAnimation();
         _playerMovement.enabled = false;
         _playerShoot.enabled = false;

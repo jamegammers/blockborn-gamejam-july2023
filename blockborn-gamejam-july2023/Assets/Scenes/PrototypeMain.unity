@@ -130,12 +130,26 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3411460897873967689}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &194325120 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1207679342026027292, guid: 02020b45c6a4db5448f9c0bc44f2813b,
+--- !u!1 &129508973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6544970250542460816, guid: 020626ac646e4874fb460bdd9bc3fcda,
     type: 3}
-  m_PrefabInstance: {fileID: 667885187}
+  m_PrefabInstance: {fileID: 1214307684}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &129508977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129508973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da8966cd8300d234f8e4831245f25fc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerMovement: {fileID: 336442162}
+  _audioEngine: {fileID: 11400000, guid: 2054af49841f6934d882ecde5603dfe4, type: 2}
 --- !u!1001 &196571296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1584,6 +1598,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3753972889252943083, guid: 020626ac646e4874fb460bdd9bc3fcda,
+        type: 3}
+      propertyPath: _shootSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 971ebd3c9849b4d4ca56406e8b36723c,
+        type: 2}
     - target: {fileID: 5197003102514722566, guid: 020626ac646e4874fb460bdd9bc3fcda,
         type: 3}
       propertyPath: _healthUI
@@ -1591,9 +1611,21 @@ PrefabInstance:
       objectReference: {fileID: 382111281873836721}
     - target: {fileID: 5197003102514722566, guid: 020626ac646e4874fb460bdd9bc3fcda,
         type: 3}
+      propertyPath: _audioHurt
+      value: 
+      objectReference: {fileID: 11400000, guid: 87312a16ac6bd7e45a5684f1bffaf13b,
+        type: 2}
+    - target: {fileID: 5197003102514722566, guid: 020626ac646e4874fb460bdd9bc3fcda,
+        type: 3}
       propertyPath: _deathScreen
       value: 
       objectReference: {fileID: 1158632553}
+    - target: {fileID: 5197003102514722566, guid: 020626ac646e4874fb460bdd9bc3fcda,
+        type: 3}
+      propertyPath: _audioGameOver
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c8eb53125a008744a4efb6a8e7d7c0e,
+        type: 2}
     - target: {fileID: 5271297023051552152, guid: 020626ac646e4874fb460bdd9bc3fcda,
         type: 3}
       propertyPath: m_IsActive
@@ -1654,10 +1686,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8762262289267970775, guid: 020626ac646e4874fb460bdd9bc3fcda,
+        type: 3}
+      propertyPath: _audioWalk
+      value: 
+      objectReference: {fileID: 11400000, guid: aed77678d48a1504b914236c45714b2b,
+        type: 2}
+    - target: {fileID: 8762262289267970775, guid: 020626ac646e4874fb460bdd9bc3fcda,
+        type: 3}
+      propertyPath: _audioTransform
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f6641296cedfe2458927039ffbf681d,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6544970250542460816, guid: 020626ac646e4874fb460bdd9bc3fcda,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 129508977}
   m_SourcePrefab: {fileID: 100100000, guid: 020626ac646e4874fb460bdd9bc3fcda, type: 3}
 --- !u!4 &1214307685 stripped
 Transform:
@@ -3429,6 +3477,28 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130678411458526827, guid: a729725a97e6333abb0486c57afe1ac2,
+        type: 3}
+      propertyPath: m_text
+      value: 'Robo
+
+        Rumble'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130678411458526827, guid: a729725a97e6333abb0486c57afe1ac2,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130678411458526827, guid: a729725a97e6333abb0486c57afe1ac2,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130678411458526827, guid: a729725a97e6333abb0486c57afe1ac2,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 4153218655673716975, guid: a729725a97e6333abb0486c57afe1ac2,
         type: 3}

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 185dd61d99ad46a1874b36d58586730e, type: 3}
-  m_Name: ArcadeJoystickDown
+  m_Name: Shoot Enemy
   m_EditorClassIdentifier: 
   _clips:
-  - {fileID: 8300000, guid: b7e7b1f83721b8f4db07b5139cf84044, type: 3}
-  _volume: 0.4
+  - {fileID: 8300000, guid: 2562a7263fc875b40bfa1b0880aa7351, type: 3}
+  _volume: 0.2
   _loop: 0
-  _pitch: 0.8
+  _pitch: 0.5
   _randomizePitch: 0
-  _pitchMin: 0.1
-  _pitchMax: 0.1
+  _pitchMin: 0.85
+  _pitchMax: 1.05
