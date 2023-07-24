@@ -7,6 +7,7 @@ namespace UI {
         [SerializeField] private RectTransform _titleParent;
         [SerializeField] private RectTransform _seedInputParent;
         [SerializeField] private CharacterInput _seedInput;
+        [SerializeField] private HealthUI _healthUI;
 
         [SerializeField] private Randomize _randomize;
         [SerializeField] private PlayerMovement _playerMovement;
@@ -14,6 +15,7 @@ namespace UI {
 
         private void Awake() {
             _playerMovement.enabled = false;
+            _healthUI.gameObject.SetActive(false);
         }
 
         private void Start() {
@@ -34,6 +36,7 @@ namespace UI {
             _randomize.SetLevelSeed(seed);
 
             _playerMovement.enabled = true;
+            _healthUI.gameObject.SetActive(true);
 
             _seedInput.OnSubmit -= OnInputSubmit;
             Destroy(gameObject);

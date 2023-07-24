@@ -14,4 +14,10 @@ public class HealthUI : MonoBehaviour
             _healthBars[i - 1].SetActive(false);
         }
     }
+
+    public void Reset() {
+        foreach (GameObject bar in _healthBars)
+            bar.SetActive(true);
+    }
+
 }

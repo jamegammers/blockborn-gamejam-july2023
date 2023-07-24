@@ -24,7 +24,7 @@ namespace Player {
                 return;
 
             _lastCheckpoint = other.transform.position;
-            Debug.Log($"Checkpoint: {_lastCheckpoint}");
+            // Debug.Log($"Checkpoint: {_lastCheckpoint}");
         }
 
         private void OnContinue() {
@@ -39,7 +39,7 @@ namespace Player {
             _playerMovement.enabled = true;
             _playerShoot.enabled = true;
 
-            Debug.Log($"Player respawned at {_lastCheckpoint}");
+            // Debug.Log($"Player respawned at {_lastCheckpoint}");
         }
     }
 
