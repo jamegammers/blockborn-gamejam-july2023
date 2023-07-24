@@ -105,7 +105,7 @@ MonoBehaviour:
   impactEffect: {fileID: 3220042601005245979}
   renderer: {fileID: 4152745567616636951}
   _damage: 1
-  _isEnemyBullet: 0
+  _isEnemyBullet: 1
 --- !u!65 &521568468603352993
 BoxCollider:
   m_ObjectHideFlags: 0

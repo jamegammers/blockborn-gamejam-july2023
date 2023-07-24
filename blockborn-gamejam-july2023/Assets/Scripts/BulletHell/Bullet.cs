@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     private Vector2 direction;
     [SerializeField] public float speed = 30f;
     private float savedSpeed;
+    [SerializeField] private float _bulletLifeTime = 5f;
 
     [SerializeField] private ParticleSystem impactEffect;
     [SerializeField] private SpriteRenderer renderer;
@@ -26,7 +27,7 @@ public class Bullet : MonoBehaviour
     {
         renderer.enabled = true;
         speed = savedSpeed;
-        Invoke("Destroy", 5f);
+        Invoke("Destroy", _bulletLifeTime);
         impactEffect.Stop();
     }
     
