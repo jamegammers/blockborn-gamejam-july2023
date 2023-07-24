@@ -15,6 +15,7 @@ MonoBehaviour:
   _clips:
   - {fileID: 8300000, guid: f8ad52359b886d34c847c172eee96336, type: 3}
   _volume: 1
+  _loop: 0
   _pitch: 0.9
   _randomizePitch: 0
   _pitchMin: 0.678
