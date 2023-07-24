@@ -375,6 +375,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &336442162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8762262289267970775, guid: 020626ac646e4874fb460bdd9bc3fcda,
+    type: 3}
+  m_PrefabInstance: {fileID: 1214307684}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7109c0b112471a8499b568dfbdbeff72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &356902529
 GameObject:
   m_ObjectHideFlags: 0
@@ -2567,6 +2579,11 @@ PrefabInstance:
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 301862959146866350, guid: a729725a97e6333abb0486c57afe1ac2,
+        type: 3}
+      propertyPath: _playerMovement
+      value: 
+      objectReference: {fileID: 336442162}
     - target: {fileID: 313018595396615595, guid: a729725a97e6333abb0486c57afe1ac2,
         type: 3}
       propertyPath: m_AnchorMax.y

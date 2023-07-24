@@ -11,17 +11,13 @@ namespace UI {
         [SerializeField] private RectTransform _seedInputParent;
         [SerializeField] private CharacterInput _seedInput;
 
-        [SerializeField] private UnityEvent<int> _onGameStart;
         [SerializeField] private Randomize _randomize;
+        [SerializeField] private PlayerMovement _playerMovement;
 
-        public Action<int> OnGameStart;
 
-
-        #if UNITY_EDITOR
         private void Awake() {
-            OnGameStart += i => Debug.Log($"game starting with seed {i}");
+            _playerMovement.enabled = false;
         }
-        #endif
 
         private void Start() {
             CoinInserter.WaitForCoin(ShowSeedInput);
@@ -38,9 +34,9 @@ namespace UI {
 
         private void OnInputSubmit(string input) {
             int seed = StringToSeed(input);
-            _onGameStart.Invoke(seed);
-            OnGameStart?.Invoke(seed);
             _randomize.SetLevelSeed(seed);
+
+            _playerMovement.enabled = true;
 
             _seedInput.OnSubmit -= OnInputSubmit;
             Destroy(gameObject);
