@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.Utilities;
+using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using Util;
 
 namespace UI {
@@ -46,9 +48,11 @@ namespace UI {
         [SerializeField] private RectTransform _listBox;
         [SerializeField] private GameObject _listItemPrefab;
         [SerializeField] private RectTransform _inputParent;
+        [SerializeField] private TMP_Text _newScoreText;
 
+        [FormerlySerializedAs("_highscoreInput")]
         [Space(15), Header("Input")]
-        [SerializeField] private HighscoreInput _highscoreInput;
+        [SerializeField] private CharacterInput _characterInput;
 
         private List<Highscore> _scores = new();
         private Highscore _newScore;
@@ -93,8 +97,10 @@ namespace UI {
 
             if (_scores.Contains(_newScore)) {                              // check if list contains new score
                 // input name, wait for submit
-                _highscoreInput.OnSubmit += OnInputEnded;
-                _highscoreInput.StartInput(newScore);
+                _characterInput.OnSubmit += OnInputEnded;
+                _characterInput.StartInput(new [] { 1, 1, 1 });
+                _newScoreText.text = _newScore.Score.ToString();
+                _inputParent.gameObject.SetActive(true);
                 return;
             }
 
@@ -112,9 +118,10 @@ namespace UI {
 
             // show scores list
             FillList(_scores.ToArray());
+            _inputParent.gameObject.SetActive(false);
 
             // Debug.Log($"name: {name}");
-            _highscoreInput.OnSubmit -= OnInputEnded;
+            _characterInput.OnSubmit -= OnInputEnded;
         }
 
         private void FillList(IEnumerable<Highscore> scores) {
@@ -179,9 +186,9 @@ namespace UI {
 
         [ContextMenu("TestShowScores")]
         public void TestShowScores() {
-            CoinInserter.WaitForCoin(() => {
-                Show(4200);
-            });
+            Show(4200);
+            // CoinInserter.WaitForCoin(() => {
+            // });
         }
 
         #endif

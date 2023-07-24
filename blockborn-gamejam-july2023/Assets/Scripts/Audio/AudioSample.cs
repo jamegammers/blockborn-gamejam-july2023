@@ -8,6 +8,7 @@ namespace Audio {
 
         [SerializeField] private AudioClip[] _clips;
         [SerializeField] private float _volume = 1f;
+        [SerializeField] private bool _loop;
         [SerializeField, Range(0, 2f), DisableIf("_randomizePitch")] private float _pitch = 1f;
         [SerializeField] private bool _randomizePitch;
         [SerializeField, Range(0, 2f), ShowIf("_randomizePitch")] private float _pitchMin = 0.9f;
@@ -15,6 +16,7 @@ namespace Audio {
 
         public AudioClip[] Clips => _clips;
         public float volume => _volume;
+        public bool loop => _loop;
         public float pitch => _pitch;
         public bool randomizePitch => _randomizePitch;
         public float pitchMin => _pitchMin;

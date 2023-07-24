@@ -17,10 +17,14 @@ MonoBehaviour:
   patternName: WayAllRange
   patternType: 9
   bulletBehaviour: 1
-  bulletAmount: 40
+  bulletAmount: 10
   startAngle: 0
   endAngle: 40
+<<<<<<< HEAD
   FireRate: 0.2
   BulletSpeed: 30
+=======
+  FireRate: 0.6
+>>>>>>> main
   isAiming: 0
   direction: {x: 0, y: 0}

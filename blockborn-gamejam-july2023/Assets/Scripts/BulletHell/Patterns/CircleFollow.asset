@@ -17,10 +17,14 @@ MonoBehaviour:
   patternName: CircleFollow
   patternType: 1
   bulletBehaviour: 4
-  bulletAmount: 30
+  bulletAmount: 5
   startAngle: 0
   endAngle: 360
+<<<<<<< HEAD
   FireRate: 0.6
   BulletSpeed: 30
+=======
+  FireRate: 2
+>>>>>>> main
   isAiming: 0
   direction: {x: 0, y: 0}

@@ -32,7 +32,7 @@ namespace Audio {
             Instance.PlayAudioInstance(sample, position, mixer);
         }
 
-        private void PlayAudioInstance(AudioSample sample, Vector3 position, AudioMixerGroup mixer = null) {
+        private AudioSource PlayAudioInstance(AudioSample sample, Vector3 position, AudioMixerGroup mixer = null) {
             // select random clip
             AudioClip clip = sample.Clips[Random.Range(0, sample.Clips.Length)];
 
@@ -43,15 +43,17 @@ namespace Audio {
 
             AudioSource audioSource = audioInstance.AddComponent<AudioSource>();
             audioSource.clip = clip;
-
-
             audioSource.volume = sample.volume;
+            audioSource.loop = sample.loop;
             audioSource.pitch = sample.randomizePitch ? Random.Range(sample.pitchMin, sample.pitchMax) : sample.pitch;
             audioSource.outputAudioMixerGroup = mixer;
             audioSource.spatialBlend = 1f;
             audioSource.Play();
 
-            StartCoroutine(DestroyAudioInstance(audioInstance, clip.length));
+            if (!sample.loop)
+                StartCoroutine(DestroyAudioInstance(audioInstance, clip.length));
+
+            return audioSource;
         }
 
         private static IEnumerator DestroyAudioInstance(Object instance, float duration) {
