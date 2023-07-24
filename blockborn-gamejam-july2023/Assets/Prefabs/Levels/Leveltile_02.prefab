@@ -362,9 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667a0d2f91117964eab8c9ef4019c5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 8387749216581757621, guid: 1504da56be6e0014781d8f33a5b2bfc0,
-    type: 3}
-  _enemySpawnLocation: {fileID: 5273645998501242647}
+  _gameManager: {fileID: 0}
+  _enemyTransformParent: {fileID: 5273645998501242647}
 --- !u!1 &649757145555853761
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,9 +1135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667a0d2f91117964eab8c9ef4019c5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 8387749216581757621, guid: 1504da56be6e0014781d8f33a5b2bfc0,
-    type: 3}
-  _enemySpawnLocation: {fileID: 5273645998501242647}
+  _gameManager: {fileID: 0}
+  _enemyTransformParent: {fileID: 5273645998501242647}
 --- !u!1 &3670906861843629169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1886,9 +1884,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667a0d2f91117964eab8c9ef4019c5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 8387749216581757621, guid: 1504da56be6e0014781d8f33a5b2bfc0,
-    type: 3}
-  _enemySpawnLocation: {fileID: 5273645998501242647}
+  _gameManager: {fileID: 0}
+  _enemyTransformParent: {fileID: 5273645998501242647}
 --- !u!1 &5648291623696121845
 GameObject:
   m_ObjectHideFlags: 0

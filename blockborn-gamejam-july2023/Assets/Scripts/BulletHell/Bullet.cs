@@ -63,8 +63,7 @@ public class Bullet : MonoBehaviour
         //StartCoroutine(WaitForParticleSystem());
         if (other.gameObject.layer == 6)
             {
-                //other.gameObject.GetComponent<>().GetHit(_damage);
-                Debug.Log("Hit Player");
+                if (other.gameObject.GetComponent<PlayerHealth>() != null) other.gameObject.GetComponent<PlayerHealth>().GetDamage(_damage);
                 impactEffect.Play();
                 StartCoroutine(WaitForParticleSystem());
                 speed = 0f;
@@ -77,6 +76,11 @@ public class Bullet : MonoBehaviour
             StartCoroutine(WaitForParticleSystem());
             speed = 0f;
         } else if (other.gameObject.layer == 9)
+        {
+            impactEffect.Play();
+            StartCoroutine(WaitForParticleSystem());
+            speed = 0f;
+        } else if (other.gameObject.layer == 13)
         {
             impactEffect.Play();
             StartCoroutine(WaitForParticleSystem());

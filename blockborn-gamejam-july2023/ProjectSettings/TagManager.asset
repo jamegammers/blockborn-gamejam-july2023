@@ -19,6 +19,7 @@ TagManager:
   - PlayerFoot
   - Platform
   - Bullet
+  - Shield
   - PowerUp
   - 
   - 
