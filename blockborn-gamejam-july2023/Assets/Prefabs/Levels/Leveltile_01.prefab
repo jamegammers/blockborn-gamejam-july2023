@@ -4590,6 +4590,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Red Bricks 6x11
       objectReference: {fileID: 0}
+    - target: {fileID: 8251198203065074793, guid: 2c781dce69e66af4c933219abd709b3f,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251198203065074793, guid: 2c781dce69e66af4c933219abd709b3f,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -9
+      objectReference: {fileID: 0}
     - target: {fileID: 9096777575132990169, guid: 2c781dce69e66af4c933219abd709b3f,
         type: 3}
       propertyPath: m_RootOrder
