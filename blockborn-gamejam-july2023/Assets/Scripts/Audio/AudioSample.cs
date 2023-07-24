@@ -7,7 +7,7 @@ namespace Audio {
     public class AudioSample : ScriptableObject {
 
         [SerializeField] private AudioClip[] _clips;
-        [SerializeField] private float _volume = 1f;
+        [SerializeField, Range(0, 2f)] private float _volume = 1f;
         [SerializeField] private bool _loop;
         [SerializeField, Range(0, 2f), DisableIf("_randomizePitch")] private float _pitch = 1f;
         [SerializeField] private bool _randomizePitch;

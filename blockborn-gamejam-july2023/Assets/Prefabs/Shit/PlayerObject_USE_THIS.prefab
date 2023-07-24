@@ -708,6 +708,11 @@ PrefabInstance:
       objectReference: {fileID: 4182135896976967703}
     - target: {fileID: 6358968456289207522, guid: c932bdc7f979b024194b8e40d82b4ced,
         type: 3}
+      propertyPath: _playerAnimation
+      value: 
+      objectReference: {fileID: 8568865572005374852}
+    - target: {fileID: 6358968456289207522, guid: c932bdc7f979b024194b8e40d82b4ced,
+        type: 3}
       propertyPath: _characterController
       value: 
       objectReference: {fileID: 7372616988626064555}

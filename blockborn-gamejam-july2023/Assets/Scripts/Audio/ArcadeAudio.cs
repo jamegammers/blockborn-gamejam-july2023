@@ -24,7 +24,9 @@ namespace Audio {
             Instance = this;
         }
 
-        public void PlayAudio(AudioSample sample) {
+        public static void PlayAudio(AudioSample sample) => Instance.PlayAudioInstance(sample);
+
+        public void PlayAudioInstance(AudioSample sample) {
             if (Instance == null) {
                 Debug.LogError("Audio instance is null");
                 return;

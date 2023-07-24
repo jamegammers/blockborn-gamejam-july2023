@@ -20,6 +20,7 @@ public class PlayerAnimation : MonoBehaviour
     private int _carHash = Animator.StringToHash("Car");
     private int _carTransformHash = Animator.StringToHash("CarTransform");
     private int _transformingHash = Animator.StringToHash("Transforming");
+    private int _resetHash = Animator.StringToHash("Reset");
 
     private Vector3 _startScale;
     private bool _facingRight;
@@ -62,7 +63,8 @@ public class PlayerAnimation : MonoBehaviour
 
     public void PlayDeathAnimation()
     {
-        _animator.SetTrigger(_deathHash);
+        _animator.SetBool(_deathHash, true);
+        //_animator.enabled = false;
     }
 
     public void PlayDamageAnimation()
@@ -97,6 +99,13 @@ public class PlayerAnimation : MonoBehaviour
     {
         _animator.SetBool(_carHash, isCar);
         _animator.SetTrigger(_carTransformHash);
+    }
+
+    public void ResetAnimation()
+    {
+        //_animator.enabled = true;
+        _animator.SetBool(_deathHash, false);
+        _animator.SetTrigger(_resetHash);
     }
 
     public void SetTransformingAnimation(bool transforming)
